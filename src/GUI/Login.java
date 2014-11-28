@@ -33,6 +33,10 @@ public class Login extends JPanel {
 	/**
 	 * 
 	 */
+	public static void main(String[] args){
+		
+	}
+	
 	private static final long serialVersionUID = 1L;
 	private final JLabel lblWelcome = new JLabel("Welcome");
 	private final JLabel lblUsername = new JLabel("Username");
