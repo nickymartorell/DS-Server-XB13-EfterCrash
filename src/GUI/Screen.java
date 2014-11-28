@@ -54,7 +54,7 @@ public class Screen extends JFrame {
 	}
 
 	public Screen() {
-		setTitle("Doek4life");
+		setTitle("CBS Calendar Server");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 768);

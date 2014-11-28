@@ -62,7 +62,7 @@ public class AddUser extends JPanel {
 		textField_Email = new JTextField();
 		textField_Email.setForeground(new Color(105, 105, 105));
 		textField_Email.setName("");
-		textField_Email.setBounds(755, 213, 120, 34);
+		textField_Email.setBounds(723, 214, 218, 34);
 		add(textField_Email);
 		textField_Email.setColumns(10);
 
@@ -75,7 +75,7 @@ public class AddUser extends JPanel {
 		textField_Type = new JTextField();
 		textField_Type.setForeground(new Color(105, 105, 105));
 		textField_Type.setColumns(10);
-		textField_Type.setBounds(755, 259, 120, 34);
+		textField_Type.setBounds(723, 260, 218, 34);
 		add(textField_Type);
 
 		JLabel lblEmail = new JLabel("Type");
@@ -87,7 +87,7 @@ public class AddUser extends JPanel {
 		textField_Password = new JTextField();
 		textField_Password.setForeground(new Color(105, 105, 105));
 		textField_Password.setColumns(10);
-		textField_Password.setBounds(755, 305, 120, 34);
+		textField_Password.setBounds(723, 306, 218, 34);
 		add(textField_Password);
 
 		JLabel lblTeam = new JLabel("Password");
