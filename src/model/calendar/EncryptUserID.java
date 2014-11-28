@@ -1,5 +1,7 @@
 package model.calendar;
 
+
+
 import java.security.MessageDigest;
 
 /**
@@ -52,9 +54,11 @@ public class EncryptUserId {
 
     }
 
-	public String getKey(String userId) {
-		
-		return crypt(userId+ HASHKEY);
+    public static String getUserId() {
+        return userId;
+    }
+	public static String getKey() {
+        return crypt(EncryptUserId.getUserId() + HASHKEY);
 	}
     
 }
