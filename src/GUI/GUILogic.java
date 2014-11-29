@@ -2,6 +2,9 @@ package GUI;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import GUI.UserInformation;
@@ -54,13 +57,39 @@ public class GUILogic {
 			
 			String string ="";
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
-			string = String.format("textField: %s\n" + "password:%s", user, pass);
+			string = String.format("userName: %s\n" + "password:%s", user, pass);
 			JOptionPane.showMessageDialog(null, string);
 			
 			new MainMenu().setVisible(true);
 			
-			
+			try { 
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = (Connection);
+				DriverManager.getConnection("jcbc:mysql:localhost:3306/stefan", "root", "1234");
+				String sql ="select email, password from users where email ='" +userName.getText()+"'password='"+password.getText()+"'";
 				
+				//laver statements og executer query 
+				
+				Statement st = (Statement) con.createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				
+				if(rs.next());
+				{String dbpass=rs.getString(1);
+				if(dbpass.equals(pass)){
+					JOptionPane.showMessageDialog(null, "Login Successful!", "Sucess", JOptionPane.PLAIN_MESSAGE);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Login Unsuccessful!", "Error", 1);
+					
+					
+				}
+				}
+				
+			}
+			
+			
+			/**	
 				if(u == false){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
@@ -78,6 +107,7 @@ public class GUILogic {
 			}
 		}	
 	}
+	*/
 	private class MainMenuActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getMainMenu().getBtnLogOut()){
