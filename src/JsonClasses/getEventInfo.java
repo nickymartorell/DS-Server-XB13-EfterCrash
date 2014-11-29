@@ -10,6 +10,7 @@ public class getEventInfo {
 	private String Location;
 	private String Createdby;
 	private String ActivityID;
+	
 	public String getUserName() {
 		return userName;
 	}

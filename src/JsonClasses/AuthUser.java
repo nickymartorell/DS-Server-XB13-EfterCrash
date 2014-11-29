@@ -2,9 +2,7 @@ package JsonClasses;
 
 public class AuthUser implements java.io.Serializable
 {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUId = 1L;
 	private String overallId = "logIn";
 	private String email;

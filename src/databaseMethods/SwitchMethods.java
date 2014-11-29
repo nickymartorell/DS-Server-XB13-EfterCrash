@@ -59,8 +59,7 @@ public class SwitchMethods extends Model
 	{
 		String [] keys = {"Name","active","CreatedBy","PrivatePublic"};
 		String [] values = {newCalendarName,"1",userName, Integer.toString(publicOrPrivate)};
-	//	qb.update("calendar", keys, values).all().Execute(); OBS Denne er fjernet efter forl�sning
-		qb.insertInto("cbscalendar", keys).values(values).Execute();
+			qb.insertInto("cbscalendar", keys).values(values).Execute();
 //		doUpdate("insert into test.calender (Name, Active, CreatedBy, PrivatePublic) VALUES ('"+newCalenderName+"', '1', '"+userName+"', '"+publicOrPrivate+"');");
 	}
 	/**
@@ -257,7 +256,23 @@ public class SwitchMethods extends Model
 		
 		return authenticate;
 	}
+	
+	
+	public String getEventInfo (String description, String location, String title) throws SQLException{
+		String stringToBeReturned="";
 
+		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
+		
+		while(resultSet.next()){
+			stringToBeReturned += resultSet.toString();
+		}
+		return stringToBeReturned;
+		
+		//tjekke op på database
+	}
+	
+	
+	
 
 	
 }

@@ -102,10 +102,9 @@ public class GiantSwitch {
 		case "getEventInfo":
 			getEventInfo GEI = (getEventInfo)gson.fromJson(jsonString, getEventInfo.class);
 			System.out.println("Recieved getEventInfo");
-			//mangler metode i SwitchMethods
-			
-			
+			answer = SW.getEventInfo(GEI.getTitle(), GEI.getLocation(), GEI.getDescription());
 			break;
+			//tjekke op på metode
 			
 		case "deleteEvent":
 			deleteEvent DE = (deleteEvent)gson.fromJson(jsonString, deleteEvent.class);
