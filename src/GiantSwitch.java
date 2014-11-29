@@ -106,10 +106,13 @@ public class GiantSwitch {
 			break;
 			//tjekke op på metode
 			
+			
 		case "deleteEvent":
 			deleteEvent DE = (deleteEvent)gson.fromJson(jsonString, deleteEvent.class);
 			System.out.println("Recieved deleteEvent");
-			//mangler metode i SwitchMethods
+			answer = SW.deleteEvent(DE.getUserName(), DE.getTitle());
+			//tjekke op på metode
+			
 			break;
 		
 		case "saveNote":

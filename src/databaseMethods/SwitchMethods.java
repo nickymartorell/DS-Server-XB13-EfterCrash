@@ -124,7 +124,7 @@ public class SwitchMethods extends Model
 	
 	public String removeCalendar (String userName, String calendarName) throws SQLException
 	{
-		String stringToBeReturend = "";
+		String stringToBeReturned = "";
 		String usernameOfCreator ="";
 		String calendarExists = "";
 		resultSet = qb.selectFrom("Calender").where("Name", "=", calendarName).ExecuteQuery();
@@ -145,25 +145,25 @@ public class SwitchMethods extends Model
 			}
 			if(!usernameOfCreator.equals(userName))
 			{
-				stringToBeReturend = "Only the creator of the calender is able to delete it.";
+				stringToBeReturned = "Only the creator of the calender is able to delete it.";
 			}
 			else
 			{
 				String [] keys = {"Active"};
 				String [] values = {"2"};
 				qb.update("Calendar", keys, values).where("Name", "=", calendarName).Execute();
-				stringToBeReturend = "Calender has been set inactive";
+				stringToBeReturned = "Calender has been set inactive";
 			}
-			stringToBeReturend = resultSet.toString();
+			stringToBeReturned = resultSet.toString();
 		}
 		else
 		{
-			stringToBeReturend = "The calender you are trying to delete, does not exists.";
+			stringToBeReturned = "The calender you are trying to delete, does not exists.";
 		}
 		
 		
 		
-		return stringToBeReturend;
+		return stringToBeReturned;
 	}
 	
 	
@@ -272,10 +272,112 @@ public class SwitchMethods extends Model
 	}
 	
 	
+	public String removeEvent (String title, String userName) throws SQLException{
+		String stringToBeReturned ="";
+		String userNameOfCreator ="";
+		String EventExists = "";
+		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
+		
+		while(resultSet.next()){
+			EventExists = resultSet.toString();
+		}
+		if(!EventExists.equals("")){
+			String [] value = {"CreatedBy"};
+			resultSet = qb.selectFrom(value, "Events").where("Name", "=", title).ExecuteQuery();
+			while(resultSet.next()){
+				userNameOfCreator = resultSet.toString();
+				System.out.println(userNameOfCreator);
+			}
+			
+			//! operator “re- verses” the meaning of a condition. så hvis IKKE brugernavnet er lig med brugernavnet på creator, bliver denne besked printet
+			
+			if(!userNameOfCreator.equals(userName)){
+				stringToBeReturned = "Only the creator of the event is able to delete it!";
+			}
+			else{
+				String [] keys = {"Active"};
+				String [] values ={"2"};
+				qb.update("Events", keys, values).where("Title", "=", title).Execute();
+				stringToBeReturned = "The event has been set inactive"; //overvej omformulering
+			}
+			stringToBeReturned = resultSet.toString();
+		}
+		else{
+			stringToBeReturned = "The event you are trying to delete does not exist!";
+		}
+		return stringToBeReturned;
+	}
+	
+	
+	public String deleteEvent(String userName, String title) throws SQLException{
+		String stringToBeReturned="";
+		testConnection();
+		stringToBeReturned = deleteEvent(userName, title);
+		
+		return stringToBeReturned;
+	}
+	
+	
+	//denne her skal dobbelttjekkes!!!!! 
+	public String removeNote (String noteID, String UserName) throws SQLException{
+		String stringToBeReturned ="";
+		String userNameOfCreator ="";
+		String NoteExists = "";
+		resultSet = qb.selectFrom("notes").where("noteID", "=", noteID).ExecuteQuery();
+		
+		while(resultSet.next()){
+			NoteExists = resultSet.toString();
+		
+			
+			if(!NoteExists.equals("")){
+				String [] value = {"CreatedBy"};
+				resultSet = qb.selectFrom(value, "notes").where("noteID", "=", noteID).ExecuteQuery();
+				while(resultSet.next()){
+					userNameOfCreator = resultSet.toString();
+					System.out.println(userNameOfCreator);
+				}
+				
+				//! operator “re- verses” the meaning of a condition. så hvis IKKE brugernavnet er lig med brugernavnet på creator, bliver denne besked printet
+				
+				if(!userNameOfCreator.equals(UserName)){
+					stringToBeReturned = "Only the creator of the note is able to delete it!";
+				}
+				else{
+					String [] keys = {"Active"};
+					String [] values ={"2"};
+					qb.update("notes", keys, values).where("noteID", "=", noteID).Execute();
+					stringToBeReturned = "The note has been deleted"; //overvej omformulering
+				}
+				stringToBeReturned = resultSet.toString();
+			}
+			else{
+				stringToBeReturned = "The note you are trying to delete does not exist!";
+			}
+
+		}
+		
+		return stringToBeReturned;
+	}
+	
+	public String deleteNote(String userName, String noteID) throws SQLException{
+		String stringToBeReturned="";
+		testConnection();
+		stringToBeReturned = deleteNote(userName, noteID);
+		
+		return stringToBeReturned;
+	}
+	
+}
+	
+		
+	
+
+
+	
 	
 
 	
-}
+
 
 	
 	
