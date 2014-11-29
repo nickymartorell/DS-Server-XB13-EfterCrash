@@ -3,7 +3,6 @@ import config.Configurations;
 
 public class Main {
 	//Starts public main method.
-	//Stefan hej
 	public static void main(String[] args) {
 		Configurations cf = new Configurations();
 		
