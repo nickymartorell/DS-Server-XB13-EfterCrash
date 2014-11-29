@@ -13,6 +13,7 @@ import model.QueryBuild.*;
 import GUI.Screen;
 
 @SuppressWarnings("unused")
+
 public class GUILogic {
 	private Screen screen;
 	private boolean u;
@@ -48,10 +49,17 @@ public class GUILogic {
 			try{
 				
 			String userName = screen.getLogin().getTextFieldUsername().getText();
+			@SuppressWarnings("deprecation")
 			String password = screen.getLogin().getTextFieldPassword().getText();
-			u=a.login(userName, password);
 			
+			String string ="";
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
+			string = String.format("textField: %s\n" + "password:%s", user, pass);
+			JOptionPane.showMessageDialog(null, string);
+			
+			new MainMenu().setVisible(true);
+			
+			
 				
 				if(u == false){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
