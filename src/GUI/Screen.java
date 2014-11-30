@@ -87,7 +87,7 @@ public class Screen extends JFrame {
 		
 		contentPane.add(mainMenu, MAINMENU);
 		
-		
+	}
 		
 		
 		/**
@@ -132,7 +132,7 @@ public class Screen extends JFrame {
 		return noteList;
 	}
 	public UserList getUserList() {
-		return userlist;
+		return userList;
 	}
 	public void show(String card) {
 		c.show(getContentPane(),  card);
