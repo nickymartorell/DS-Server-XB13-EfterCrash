@@ -29,7 +29,7 @@ public class GUILogic {
 		screen = new Screen();
 
 
-		screen.getLogin().addActionListener(new LoginActionListener());
+		//screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
 		screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
@@ -53,46 +53,42 @@ public class GUILogic {
 				
 			String userName = screen.getLogin().getTextFieldUsername().getText();
 			@SuppressWarnings("deprecation")
-			String password = screen.getLogin().getTextFieldPassword().getText();
-			
+			String password = screen.getLogin().getTextFieldPassword().getPassword();
+		/**	
 			String string ="";
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
-			string = String.format("userName: %s\n" + "password:%s", user, pass);
+			string = String.format("userName: %s\n" + "password:%s",user,pass);
 			JOptionPane.showMessageDialog(null, string);
 			
 			new MainMenu().setVisible(true);
 			
 			try { 
 				Class.forName("com.mysql.jdbc.Driver");
-				Connection con = (Connection);
-				DriverManager.getConnection("jcbc:mysql:localhost:3306/stefan", "root", "1234");
-				String sql ="select email, password from users where email ='" +userName.getText()+"'password='"+password.getText()+"'";
+				connection = DriverManager.getConnection("jcbc:mysql:localhost:3306/CBSCalender", "root", "1234");
+				String sql ="SELECT email, password FROM users WHERE email ='" +userName.getText()+"'password='"+password.getText()+"'";
 				
 				//laver statements og executer query 
 				
 				Statement st = (Statement) con.createStatement();
 				ResultSet rs = st.executeQuery(sql);
-				
-				if(rs.next());
+				/**
+				if	(u != true)
 				{String dbpass=rs.getString(1);
 				if(dbpass.equals(pass)){
 					JOptionPane.showMessageDialog(null, "Login Successful!", "Sucess", JOptionPane.PLAIN_MESSAGE);
 				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "Login Unsuccessful!", "Error", 1);
-					
-					
-				}
-				}
-				
-			}
-			
-			
-			/**	
 				if(u == false){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
+					
+				}
+				
+			
+				
+			
+			
+			
+				
 			}
 
 			if	(u != true)
@@ -100,12 +96,12 @@ public class GUILogic {
 						screen.show(Screen.MAINMENU);
 					}
 				
-	
+
 			}	
-			}	
+				
 			catch(Exception e3){
 			}
-		}	
+			
 	}
 	*/
 	private class MainMenuActionListener implements ActionListener {

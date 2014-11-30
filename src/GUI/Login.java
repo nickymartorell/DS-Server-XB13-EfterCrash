@@ -97,7 +97,7 @@ public class Login extends JPanel {
 		add(btnLogIn);
 		btnForgotLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			JOptionPane.showInputDialog("Bad Luck!");
+				JOptionPane.showInputDialog("Bad Luck!");
 			}
 		});
 		btnForgotLogIn.setContentAreaFilled(false);
@@ -139,13 +139,13 @@ public class Login extends JPanel {
 	public JButton getBtnForgotLogIn() {
 		return btnForgotLogIn;
 	}
-	/**
+	
 	public void addActionListener(ActionListener l) {
 		btnLogIn.addActionListener(l);
 		btnForgotLogIn.addActionListener(l);
 		
 }
-*/
+
 	public JTextField getTextFieldUsername() {
 		return textFieldUsername;
 	}

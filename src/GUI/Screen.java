@@ -16,26 +16,28 @@ public class Screen extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final String LOGIN = "name_276091497157488";
-	public static final String MAINMENU = "name_276416022878030";
-	public static final String USERINFO = "name_277892826656058";
-	public static final String ADDUSERGUI = "name_278604525733268";
-	public static final String NOTELIST = "name_278522430661848";
-	public static final String USERLIST = "name_280161954000083";
-	public static final String EVENTLIST = "name_534038022095149";
-	public static final String ADDEVENTGUI = "name_6308445225625";
-	public static final String ADDUSER = "name_10334207821613";
+	public static final String LOGIN = "LOGIN";
+	public static final String MAINMENU = "MAINMENU";
+	public static final String USERINFO = "USERINFO";
+	public static final String ADDUSERGUI = "ADDUSERGUI";
+	public static final String NOTELIST = "NOTELIST";
+	public static final String USERLIST = "USERLIST";
+	public static final String EVENTLIST = "EVENTLIST";
+	public static final String ADDEVENTGUI = "ADDEVENTGUI";
+	public static final String ADDUSER = "ADDUSER";
 	
 	private JPanel contentPane;
-	private final Login login = new Login();
-	private final MainMenu mainMenu = new MainMenu();
-	private final UserInfo userInfo = new UserInfo();
-	private final NoteList noteList = new NoteList();
-	private final UserList userlist = new UserList();
+	public Login login;
+	private  MainMenu mainMenu;
+	private  UserInfo userInfo;
+	private  NoteList noteList;
+	private  UserList userList;
 	CardLayout c;
-	private final EventList eventList = new EventList();
+	private  EventList eventList;
 	private AddEventGUI addEventGUI;
-	private final AddUser addUser = new AddUser();
+	private  AddUser addUser; 
+	
+
 
 	/**
 	 * Launch the application.
@@ -58,12 +60,39 @@ public class Screen extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 768);
-		
-		JPanel contentPane = (JPanel) this.getContentPane();
-		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		this.setContentPane(contentPane);
+		contentPane = new JPanel();
+		contentPane.setBorder(null);
+		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
+		
+		
+		login = new Login();
+		contentPane.add(login, LOGIN);
+		
+		mainMenu = new MainMenu();
+		contentPane.add(mainMenu, MAINMENU);
+		
+		userInfo = new UserInfo();
+		contentPane.add(userInfo, USERINFO);
+		
+		noteList = new NoteList();
+		contentPane.add(noteList, NOTELIST);
+		
+		userList = new UserList();
+		contentPane.add(userList, USERLIST);
+		
+		
+		
+		
+		contentPane.add(mainMenu, MAINMENU);
+		
+		
+		
+		
+		/**
+		
+		this.setContentPane(contentPane);
 		contentPane.add(login, "name_276091497157488");
 		
 		
@@ -87,7 +116,7 @@ public class Screen extends JFrame {
 		contentPane.add(userlist, "name_280161954000083");
 		c = (CardLayout) getContentPane().getLayout();
 	}
-	
+	*/
 	public Login getLogin() {
 		return login;
 	}
