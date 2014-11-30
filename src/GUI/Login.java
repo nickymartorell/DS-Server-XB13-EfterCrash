@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+import java.awt.CardLayout;
 import java.awt.Font;
 
 import javax.swing.JOptionPane;
@@ -74,15 +75,13 @@ public class Login extends JPanel {
 		lblPassword.setBounds(499, 378, 123, 30);
 		
 		add(lblPassword);
+		
 		btnLogIn.setContentAreaFilled(false);
 		btnLogIn.setFont(new Font("Arial", Font.BOLD, 30));
 		btnLogIn.setForeground(new Color(255, 255, 255));
 		btnLogIn.setBackground(Color.WHITE);
 		btnLogIn.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnLogIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		textFieldUsername.setOpaque(false);
 		textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldUsername.setForeground(Color.BLACK);
@@ -140,9 +139,9 @@ public class Login extends JPanel {
 		return btnForgotLogIn;
 	}
 	
-	public void addActionListener(ActionListener l) {
-		btnLogIn.addActionListener(l);
-		btnForgotLogIn.addActionListener(l);
+	public void addActionListener(ActionListener X) {
+		btnLogIn.addActionListener(X);
+		btnForgotLogIn.addActionListener(X);
 		
 }
 

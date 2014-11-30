@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import GUI.UserInformation;
-import GUI.AuthUser;
 
 import javax.swing.JOptionPane;
 
@@ -21,15 +20,14 @@ public class GUILogic {
 	private Screen screen;
 	private boolean u;
 	private boolean full = false;
-	
-	AuthUser a = new AuthUser();
+
 	
 
 	public GUILogic(){
 		screen = new Screen();
 
 
-		//screen.getLogin().addActionListener(new LoginActionListener());
+		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
 		screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
@@ -49,11 +47,15 @@ public class GUILogic {
 	
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			try{
+			screen.show(Screen.MAINMENU);
+			
+		}
+	}
+	
 				
-			String userName = screen.getLogin().getTextFieldUsername().getText();
-			@SuppressWarnings("deprecation")
-			String password = screen.getLogin().getTextFieldPassword().getPassword();
+			//String userName = screen.getLogin().getTextFieldUsername().getText();
+			//@SuppressWarnings("deprecation")
+			//String password = screen.getLogin().getTextFieldPassword().getPassword();
 		/**	
 			String string ="";
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){

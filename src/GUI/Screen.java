@@ -2,10 +2,15 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 import java.awt.CardLayout;
 
@@ -82,7 +87,14 @@ public class Screen extends JFrame {
 		userList = new UserList();
 		contentPane.add(userList, USERLIST);
 		
+		eventList = new EventList();
+		contentPane.add(eventList, EVENTLIST);
 		
+		addEventGUI = new AddEventGUI();
+		contentPane.add(addEventGUI, ADDEVENTGUI);
+		
+		addUser = new AddUser();
+		contentPane.add(addUser, ADDUSER);
 		
 		
 		contentPane.add(mainMenu, MAINMENU);
@@ -90,33 +102,7 @@ public class Screen extends JFrame {
 	}
 		
 		
-		/**
-		
-		this.setContentPane(contentPane);
-		contentPane.add(login, "name_276091497157488");
-		
-		
-		addEventGUI = new AddEventGUI();
-		contentPane.add(addEventGUI, "name_6308445225625");
-		login.getBtnLogIn().setContentAreaFilled(false);
-		login.getBtnForgotLogIn().setContentAreaFilled(false);
-		
-		
-		
-		contentPane.add(addUser, "name_10334207821613");
-		
-		contentPane.add(mainMenu, "name_276416022878030");
-		
-		contentPane.add(userInfo, "name_277892826656058");
-		
-		contentPane.add(noteList, "name_278522430661848");
-		
-		contentPane.add(eventList, "name_534038022095149");
-		
-		contentPane.add(userlist, "name_280161954000083");
-		c = (CardLayout) getContentPane().getLayout();
-	}
-	*/
+
 	public Login getLogin() {
 		return login;
 	}
