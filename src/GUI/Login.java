@@ -94,11 +94,13 @@ public class Login extends JPanel {
 		btnLogIn.setBounds(572, 449, 222, 51);
 		
 		add(btnLogIn);
+		/**
 		btnForgotLogIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showInputDialog("Bad Luck!");
 			}
 		});
+		*/
 		btnForgotLogIn.setContentAreaFilled(false);
 		btnForgotLogIn.setForeground(new Color(255, 255, 255));
 		btnForgotLogIn.setBorderPainted(false);
@@ -140,8 +142,7 @@ public class Login extends JPanel {
 	}
 	
 	public void addActionListener(ActionListener X) {
-		btnLogIn.addActionListener(X);
-		btnLogIn.setActionCommand("LoginBtn");
+		
 		btnForgotLogIn.addActionListener(X);
 		
 }

@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -28,28 +29,27 @@ public class GUILogic {
 
 
 		screen.getLogin().addActionListener(new LoginActionListener());
-		screen.getMainMenu().addActionListener(new MainMenuActionListener());
-		screen.getUserInfo().addActionListener(new UserInfoActionListener());
-		screen.getNoteList().addActionListener(new NoteListActionListener());
-		screen.getUserList().addActionListener(new UserListActionListener());
-		screen.getEventlist().addActionListener(new EventListActionListener());
-		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
-		screen.getAddUser().addActionListener(new AddUserActionListener());
+		//screen.getMainMenu().addActionListener(new MainMenuActionListener());
+		//screen.getUserInfo().addActionListener(new UserInfoActionListener());
+		//screen.getNoteList().addActionListener(new NoteListActionListener());
+		//screen.getUserList().addActionListener(new UserListActionListener());
+		//screen.getEventlist().addActionListener(new EventListActionListener());
+		//screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
+		//screen.getAddUser().addActionListener(new AddUserActionListener());
 
 		
 		
 	}
+	
 	public void run() {
 
 		screen.show(Screen.LOGIN);
 		screen.setVisible(true);
 		
-		String cmd = e.getActionCommand();
 	}
 	
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(cmd.equals("LoginBtn")){
 				screen.show(Screen.MAINMENU);
 			}
 			
@@ -110,6 +110,8 @@ public class GUILogic {
 			
 	}
 	*/
+
+/**
 	private class MainMenuActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getMainMenu().getBtnLogOut()){
@@ -266,3 +268,4 @@ public class GUILogic {
 	
 	
 }
+*/
