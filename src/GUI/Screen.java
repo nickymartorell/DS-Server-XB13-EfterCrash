@@ -96,8 +96,8 @@ public class Screen extends JFrame {
 		addUser = new AddUser();
 		contentPane.add(addUser, ADDUSER);
 		
+		c = (CardLayout) getContentPane().getLayout();
 		
-		contentPane.add(mainMenu, MAINMENU);
 		
 	}
 		

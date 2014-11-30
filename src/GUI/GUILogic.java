@@ -43,11 +43,15 @@ public class GUILogic {
 
 		screen.show(Screen.LOGIN);
 		screen.setVisible(true);
+		
+		String cmd = e.getActionCommand();
 	}
 	
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			screen.show(Screen.MAINMENU);
+			if(cmd.equals("LoginBtn")){
+				screen.show(Screen.MAINMENU);
+			}
 			
 		}
 	}
