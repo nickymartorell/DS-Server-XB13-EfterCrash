@@ -26,7 +26,17 @@ public class EncryptUserId {
             e.printStackTrace();
         }
     }
-
+    
+    //Henter userid
+    public static String getUserId() {
+        return userId;
+    }
+    
+    //Henter hash key
+	public static String getKey() {
+        return crypt(EncryptUserId.getUserId() + HASHKEY);
+	}
+    
     // Enkryptere en tekst streng som bliver parset til funktionen
     public static String crypt(String str) {
         if (str == null || str.length() == 0) {
@@ -51,15 +61,6 @@ public class EncryptUserId {
 
         System.out.print("Secret key: " + crypt(userId + HASHKEY));
         String key = crypt(userId+ HASHKEY);
-
     }
-
-    public static String getUserId() {
-        return userId;
-    }
-	public static String getKey() {
-        return crypt(EncryptUserId.getUserId() + HASHKEY);
-	}
-    
 }
 

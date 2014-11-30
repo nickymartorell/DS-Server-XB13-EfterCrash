@@ -1,21 +1,45 @@
 package model.Forecast;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ForecastTest {
+import model.Model;
+import model.QueryBuild.QueryBuilder;
 
-	// Main metode til at koere en test af vejrudsigt funktionen
-    public static void main(String[] args) throws SQLException {
+public class ForecastTest extends Model {
 
-        ForecastModel fm = new ForecastModel();
-        
-        ArrayList<Forecast> forecastList = fm.requestForecast();
-        
-        for (int i = 0; i < forecastList.size(); i++) {
-        	System.out.println(forecastList.get(i).toString());
-		}
-       
+	//smider den friske data i db
+    public void Forecast2db() {
+
+    	try{
+            ForecastModel fm = new ForecastModel();
+            QueryBuilder qb = new QueryBuilder();
+            ArrayList<ForecastArray> forecastList = fm.requestForecast();
+
+            String[] fields = {"date", "des", "cels"};
+            
+            for(int i = 0; i < forecastList.size(); i++) {
+            	
+            String date = forecastList.get(i).getDate();
+            String des = forecastList.get(i).getDesc();
+            String cels = forecastList.get(i).getCelsius();
+            String[] values = {date,des,cels};
+         		
+            qb.insertInto("forecast",fields).values(values).Execute();         
+            }
+          }
+        catch (Exception e){
+        }
     }
-
+    public void refreshForecast(){
+        try{
+        	//rydder gammelt data
+            PreparedStatement ps = doQuery("TRUNCATE TABLE forecast;");
+            ps.execute();
+            Forecast2db();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

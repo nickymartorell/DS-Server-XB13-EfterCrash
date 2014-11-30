@@ -23,25 +23,21 @@ public class EventCreator {
 			while (rs.next())
 			{
 				//String values from SQL database (must be created)
-				int eventID = rs.getInt("eventId");
-				int type = rs.getInt("type");
-				int location = rs.getInt("location");
-				int createdby = rs.getInt("createdby");
-				
+				int id = rs.getInt("id");
+				String type = rs.getString("type");
+				String location = rs.getString("location");
+					
 				
 				Date startDate = rs.getDate("start");
 				Time startTime = rs.getTime("start");
 				
 				Date endDate = rs.getDate("end");
 				Time endTime = rs.getTime("end");
-				
-				String nameEvent = rs.getString("name");
-				String text = rs.getString("text");
-				
-				String stringEventID = String.valueOf(eventID);
+								
+				String stringEventID = String.valueOf(id);
 				String stringType = String.valueOf(type);
 				String stringLocation = String.valueOf(location);
-				String stringCreatedby = String.valueOf(createdby);
+		
 				String stringStartDate = String.valueOf(startDate);
 				String stringStartTime = String.valueOf(startTime);				
 				String stringEndDate = String.valueOf(endDate);
@@ -56,7 +52,7 @@ public class EventCreator {
 				
 				System.out.println(String.valueOf(startDate.getTime()));
 				
-				events.add(new Event(stringEventID, stringEventID, stringType, stringType, stringLocation, stringLocation,stringCreatedby, alStart, alEnd));				
+				events.add(new Event(stringEventID, stringEventID, stringType, stringType, stringLocation, stringLocation, alStart, alEnd));				
 			}
 			
 		} catch (SQLException e) {

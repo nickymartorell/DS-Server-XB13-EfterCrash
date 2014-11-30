@@ -2,6 +2,53 @@ CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
+CREATE TABLE IF NOT EXISTS events
+(
+	id int NOT NULL AUTO_INCREMENT,
+	type VARCHAR(100) NOT NULL,
+	location VARCHAR (100),
+	start datetime NOT NULL,
+	end datetime NOT NULL,
+	name varchar(100) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS users
+(
+	userid int NOT NULL AUTO_INCREMENT,
+	email varchar(40) NOT NULL,
+	active boolean,
+	created datetime NOT NULL DEFAULT NOW(),
+	password varchar(200) NOT NULL,
+	PRIMARY KEY (userid)
+);
+
+CREATE TABLE users (
+  userid int(11) NOT NULL AUTO_INCREMENT,
+  email varchar(40) NOT NULL,
+  active tinyint(4) DEFAULT 1,
+  password varchar(200) NOT NULL,
+  admin BOOLEAN NOT NULL,
+  PRIMARY KEY (userid)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO users (userid, email, active, password, admin)
+VALUES
+  (1,'admin@admin.dk',1,'admin', 1),
+  (2,'mamu13ag@student.cbs.dk',1,'hej123',0);
+
+
+DROP TABLE qoute
+
+
+//forecast
+CREATE TABLE forecast (
+  date datetime NOT NULL,
+  des varchar(200) NOT NULL,
+  cels varchar(20) NOT NULL
+
+) 
+
 /* Create Tables */
 
 CREATE TABLE IF NOT EXISTS Calender
@@ -18,35 +65,16 @@ CREATE TABLE IF NOT EXISTS Calender
 );
 
 
-CREATE TABLE IF NOT EXISTS dailyupdate
+
+CREATE TABLE IF NOT EXISTS quote
 (
-	date datetime NOT NULL UNIQUE,
-	apparentTemperature double,
-	summary text,
-	qotd varchar(300) NOT NULL,
-	msg_type varchar (100) NOT NULL,
-	update_timestamp TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
-	PRIMARY KEY (date)
+	quote varchar(300) NOT NULL,
+	autor varchar (100) NOT NULL,
+	topic varchar(100) NOT NULL
 );
 
 
-CREATE TABLE IF NOT EXISTS events
-(
-	eventid int NOT NULL AUTO_INCREMENT,
-	type int NOT NULL,
-	location int,
-	createdby int NOT NULL,
-	start datetime NOT NULL,
-	end datetime NOT NULL,
-	name varchar(0) NOT NULL,
-	text text NOT NULL,
-	-- Decides wether the event is an import-event or user created
-	-- 
-	customevent boolean COMMENT 'Decides wether the event is an import-event or user created
-',
-	CalenderID int NOT NULL,
-	PRIMARY KEY (eventid)
-);
+
 
 
 CREATE TABLE IF NOT EXISTS locationdata

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
-import model.Forecast.Forecast;
+import model.Forecast.ForecastArray;
 import model.QueryBuild.QueryBuilder;
 
 import org.json.simple.JSONObject;
@@ -28,11 +28,7 @@ public class QOTDModel {
     QueryBuilder qb = new QueryBuilder();
     
     private ResultSet resultSet;
-    
-    /**
-     *
-     */ 
-    
+     
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader = null;
         try {
@@ -48,10 +44,8 @@ public class QOTDModel {
             if (reader != null)
                 reader.close();
         }
- 
-    }
-    
-     	public void saveQuote() {
+    }  
+    	public void saveQuote() {
 
             /**
              * getting text from website and putiing into string
@@ -70,19 +64,16 @@ public class QOTDModel {
     			String topic = (String) jsonObject.get("topic");
 
     			
-    			String[] keys = {"qotd"};
-    			String[] keys2 = {quote};
+    			String[] fields = {"quote","autor","topic"};
     			
-    			
-    			qb.update("dailyupdate", keys, keys2).where("msg_type", "=", "1").Execute();
-    			
+    			String[] values = { quote, author , topic };
+    	
+       			qb.insertInto("quote", fields).values(values).Execute();
     	
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
-    			
+				e.printStackTrace();
+			}		
     }
      
     /**
@@ -91,20 +82,18 @@ public class QOTDModel {
      */
   	public String getQuote(){
   		String q = "";
-  		String[] key = {"qotd"};
+  		String[] key = {"quote"};
   		try {
-  			resultSet = qb.selectFrom("dailyupdate").all().ExecuteQuery();
+  			resultSet = qb.selectFrom("quote").all().ExecuteQuery();
 			while(resultSet.next()) {
-				q = resultSet.getString("qotd");
+				q = resultSet.getString("quote");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return q;
-  	}
-  	
-  	
+  	}	
   	 public void updateQuote(){
 	     	Date date = new Date(); // Current date & time
 	     	long maxTimeNoUpdate = 86400; // Maximum one day with no update
@@ -120,6 +109,5 @@ public class QOTDModel {
 	     		// return fresh weather data
 	     		saveQuote();	
 	     	} 
-	     }
-  	
+	     } 	
 }
