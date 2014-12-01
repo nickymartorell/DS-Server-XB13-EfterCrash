@@ -3,7 +3,10 @@ package JsonClasses;
 public class Users implements java.io.Serializable
 {
 	
-	private static final long serialVersionUId = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String overallId = "logIn";
 	private int userId;
 	private String email;
@@ -11,7 +14,11 @@ public class Users implements java.io.Serializable
 	private boolean isAdmin;
 	private boolean isActive;
 	
+	public Users() {	
+	}
+	
 	public Users(int userId, String email, String password, boolean isAdmin, boolean isActive) {
+		super();
 		this.userId = userId;
 		this.email = email;
 		this.password = password;
@@ -49,14 +56,10 @@ public class Users implements java.io.Serializable
 	public void setPassword(String password) {
 		this.password = password;
 	}	
-	
-	
-	
 	public String getOverallId() {
 		return overallId;
 	}
 	public void setOverallId(String overallId) {
 		this.overallId = overallId;
 	}
-
 }

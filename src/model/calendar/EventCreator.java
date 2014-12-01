@@ -7,15 +7,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import JsonClasses.Users;
+import model.Model;
 import model.QueryBuild.QueryBuilder;
 
 /**
  * Created by jesperbruun on 10/10/14.
- * Den laver selve arrayet af alle generede Event
  */
-public class EventCreator {
+public class EventCreator extends Model {
     ArrayList<Event> events = new ArrayList<Event>();
-
+    ArrayList<Users> users = new ArrayList<Users>();
+    
     public ArrayList<Event> getEvents() {
     	QueryBuilder qb = new QueryBuilder();
     	try {
@@ -65,17 +67,55 @@ public class EventCreator {
     public void setEvents(ArrayList<Event> event) {
         this.events = event;
     }
+
+//    public ArrayList<Users> getUsers() {
+//    
+//    	QueryBuilder qb = new QueryBuilder();
+//    	try {
+//			ResultSet rs = qb.selectFrom("users").all().ExecuteQuery();
+//			while (rs.next())
+//			{
+//				int id = rs.getInt("userid");
+//				String email = rs.getString("email");
+//				String password = rs.getString("password");		
+//				boolean isAdmin = rs.getBoolean("admin");
+//				boolean isActive = rs.getBoolean("active");	
+//				
+//				
+//				String stringID = String.valueOf(id);
+//				String stringEmail = String.valueOf(email);
+//				String stringPassword = String.valueOf(password);
+//				String StringIsAdmin = String.valueOf(isAdmin);
+//				String StringActive = String.valueOf(isActive);
+//				
+//				users.add(new Users(stringID, stringEmail, stringPassword, StringIsAdmin, StringActive));				
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	return users;
+//    }
+		
+    public void setUsers(ArrayList<Users> users) {
+        this.users = users;
+    }
     
     // Konverterer array events til en tekst streng
     @Override
     public String toString() {
         return Arrays.toString(events.toArray());
     }
-    
-    public static void main(String []args){
-    	EventCreator Hej = new EventCreator();
-    	
-    	Hej.getEvents();
-    	System.out.println(Hej.toString());
+    public String toStringUsers() {
+        return Arrays.toString(users.toArray());
     }
+				
+	
+//    public static void main(String []args){
+//    	EventCreator Hej = new EventCreator();
+//    	
+//    	Hej.getUsers();
+//    	System.out.println(Hej.toStringUsers());
+//    }
 }

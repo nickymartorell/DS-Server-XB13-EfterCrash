@@ -3,6 +3,7 @@ package model.calendar;
 
 import model.calendar.EventCreator;
 import model.QueryBuild.QueryBuilder;
+import JsonClasses.Users;
 
 import com.google.gson.Gson;
 import com.mysql.jdbc.Connection;
@@ -23,11 +24,12 @@ import model.Model;
  * Created by jesperbruun on 13/10/14.
  */
 
-public class CalendarMethods {
+public class CalendarMethods extends Model {
 	
 	
 	   private static Gson gson;
 	   private static QueryBuilder qb;
+	 
 	
 
     private static String readUrl(String urlString) throws Exception {
@@ -101,8 +103,7 @@ public class CalendarMethods {
             		   				events.getEvents().get(i).getDescription(),//VARCHAR
             		   				events.getEvents().get(i).getType(), //VARCHAR        		   				
             };
-               qb.insertInto("events", fields).values(values).Execute();	             		
-            
+               qb.insertInto("events", fields).values(values).Execute();	             		       
             }        
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,19 +111,37 @@ public class CalendarMethods {
     }    
     
     public String getUsers() {
+		
     	try {
     		qb = new QueryBuilder();
     		gson = new Gson();
+    		    		
+    		ResultSet rs = qb.selectFrom("users").all().ExecuteQuery();
+    		List<Users> userList = new ArrayList<>();  
     		
-    		//LAV ARRAYLIST SOM KAN HOLDE ALLE USERS
-    		
-    		ARRAYLISTNAVN = qb.selectFrom("users").all().ExecuteQuery();
-    		
-    		List<users> userList = new ArrayList();
-    	}
-    }
+    		while(rs.next()){
+    			
+    		Users user = new Users();
+    		user.setUserId(rs.getInt("userid"));
+    		user.setEmail(rs.getString("email"));
+    		user.setPassword(rs.getString("password"));
+    		user.setAdmin(rs.getBoolean("admin"));
+    		user.setActive(rs.getBoolean("active"));
+    		userList.add(user);    		
+//    		}
+//    		for (int i = 0; i< userList.size(); i ++){
+//    		System.out.println(userList.get(i).getEmail());
+//    		System.out.println(userList.get(i).getUserId());
+//     		
+    		return gson.toJson(userList);
+    		}} catch (Exception e) {
+             e.printStackTrace();
+         }
+         return null;
+     }
     public static void main (String[]args) throws Exception{
-    	new CalendarMethods().export2Database();
-    	
+    	//new CalendarMethods().export2Database();
+    	new CalendarMethods().getUsers();
+    	System.out.println();
     }
 }
