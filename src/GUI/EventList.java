@@ -1,32 +1,27 @@
 	package GUI;
 
 	import javax.swing.JPanel;
-
-	import java.awt.Dimension;
-
-	import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+
+	import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+	import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 	import java.awt.Font;
 
-	import javax.swing.SwingConstants;
-import javax.swing.JButton;
+	import javax.swing.ImageIcon;
 
 	import java.awt.Color;
-
-	import javax.swing.JScrollPane;
-
-	import java.awt.Component;
 
 	import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
-import javax.swing.JTextPane;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 
 
 	@SuppressWarnings("unused")
@@ -124,7 +119,7 @@ import java.awt.event.ActionEvent;
 						btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 						btnAdd.setBounds(988, 234, 118, 29);
 						add(btnAdd);
-			
+						//btnAdd.addActionListener();
 						JLabel label = new JLabel("");
 						label.setIcon(new ImageIcon(EventList.class
 								.getResource("/Images/MetalBackground.jpg")));
@@ -133,11 +128,11 @@ import java.awt.event.ActionEvent;
 
 		}
 		
-		public void addActionListener(ActionListener l) {
-			btnAdd.addActionListener(l);
-			btnDelete.addActionListener(l);
-			btnLogout.addActionListener(l);
-			btnMainMenu.addActionListener(l);
+		public void addActionListener(ActionListener x) {
+			btnAdd.addActionListener(x);
+			btnDelete.addActionListener(x);
+			btnLogout.addActionListener(x);
+			btnMainMenu.addActionListener(x);
 		}
 
 		public JButton getBtnAdd() {

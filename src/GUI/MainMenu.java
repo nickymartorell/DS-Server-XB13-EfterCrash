@@ -35,7 +35,7 @@ public class MainMenu extends JPanel {
 	private JLabel lblCBSlogo;
 	
 
-	
+	//Sync
 	public MainMenu() {
 		setSize(new Dimension(1366, 768));
 		setLayout(null);
@@ -96,13 +96,12 @@ public class MainMenu extends JPanel {
 	}
 	public void addActionListener(ActionListener X) {
 		btnLogOut.addActionListener(X);
-		btnLogOut.setActionCommand("btnLogout");
+		
 		btnEventlist.addActionListener(X);
-		btnEventlist.setActionCommand("btnEventList");
+	
 		btnNotelist.addActionListener(X);
-		btnNotelist.setActionCommand("btnNoteList");
 		btnUserlist.addActionListener(X);
-		btnUserlist.setActionCommand("btnUserList");
+	
 		
 		
 	}

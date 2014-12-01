@@ -33,9 +33,10 @@ public class GUILogic {
 		//screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		//screen.getNoteList().addActionListener(new NoteListActionListener());
 		//screen.getUserList().addActionListener(new UserListActionListener());
-		//screen.getEventlist().addActionListener(new EventListActionListener());
+		screen.getEventlist().addActionListener(new EventListActionListener());
 		//screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		//screen.getAddUser().addActionListener(new AddUserActionListener());
+		
 
 		
 		
@@ -132,8 +133,8 @@ public class GUILogic {
 
 		}
 	}
-}
-	/**
+
+ /**
 	private class AddEventGUIActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddEventGUI().getBtnLogout()){
@@ -174,6 +175,8 @@ public class GUILogic {
 			}
 		}
 	}
+
+	/**
 	private class AddUserActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddUser().getBtnLogout()){
@@ -257,6 +260,7 @@ public class GUILogic {
 
 		}
 	}
+	*/
 	
 	private class EventListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -267,9 +271,14 @@ public class GUILogic {
 			if (e.getSource() == screen.getEventlist().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
+			if (e.getSource() == screen.getEventlist().getBtnAdd()){
+				screen.show(Screen.ADDEVENTGUI);
+			}
+			if (e.getSource() == screen.getEventlist().getBtnDelete()){
+				screen.show(Screen.MAINMENU);
+			}
 		}
 	}
 	
 	
 }
-*/

@@ -36,29 +36,28 @@ public class Screen extends JFrame {
 	private  MainMenu mainMenu;
 	private  UserInfo userInfo;
 	private  NoteList noteList;
-	private  UserList userList;
-	CardLayout c;
+	private  UserList userList;	
 	private  EventList eventList;
 	private AddEventGUI addEventGUI;
 	private  AddUser addUser; 
-	
+	CardLayout c;
 
 
 	
-	  //Launch the application.
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Screen frame = new Screen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	  //Launch the application.
+//	
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Screen frame = new Screen();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	public Screen() {
 		setTitle("CBS Calendar Server");
@@ -86,9 +85,9 @@ public class Screen extends JFrame {
 		
 		userList = new UserList();
 		contentPane.add(userList, USERLIST);
-		
-		eventList = new EventList();
-		contentPane.add(eventList, EVENTLIST);
+//		
+//		eventList = new EventList();
+//		contentPane.add(eventList, EVENTLIST);
 		
 		addEventGUI = new AddEventGUI();
 		contentPane.add(addEventGUI, ADDEVENTGUI);
