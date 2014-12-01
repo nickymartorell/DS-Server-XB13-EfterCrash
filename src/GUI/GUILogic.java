@@ -12,6 +12,7 @@ import GUI.UserInformation;
 
 import javax.swing.JOptionPane;
 
+import databaseMethods.SwitchMethods;
 import model.QueryBuild.*;
 import GUI.Screen;
 
@@ -32,7 +33,7 @@ public class GUILogic {
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
 		//screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
-		//screen.getUserList().addActionListener(new UserListActionListener());
+		screen.getUserList().addActionListener(new UserListActionListener());
 		//screen.getEventlist().addActionListener(new EventListActionListener());
 		//screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		//screen.getAddUser().addActionListener(new AddUserActionListener());
@@ -55,6 +56,24 @@ public class GUILogic {
 			}
 			
 		}
+	
+	private class UserListActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String knap = e.getActionCommand();
+			
+			if(knap.equals(UserList.ADD)) {
+				
+				
+				
+			    String firstName = JOptionPane.showInputDialog(null, "UserID", null);
+		        String lastName = JOptionPane.showInputDialog(null, "Email", null);
+		        String eMail = JOptionPane.showInputDialog(null, "Date", null);
+		        String password = JOptionPane.showInputDialog(null, "Write your password", null);
+		        
+		       
+			}
+		}
+	}
 
 	private class MainMenuActionListener implements ActionListener {
 		

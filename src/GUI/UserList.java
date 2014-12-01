@@ -28,7 +28,7 @@ public class UserList extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final ActionListener ActionListener = null;
+	public static final String ADD = "add";
 	private boolean DEBUG = false;
 	private JButton btnAdd;
 	private JButton btnDelete;
@@ -44,15 +44,9 @@ public class UserList extends JPanel {
                                 "Active",
                                 "Created datetime",
                                 "Password"};
- 
-
 
         	Object[][] data = new Object[200][200];
-        		
-        
-        
-	
-    
+
         try {
 			QueryBuilder qb = new QueryBuilder();
 			rs = qb.selectFrom("users").all().ExecuteQuery();
@@ -70,13 +64,11 @@ public class UserList extends JPanel {
 			e1.printStackTrace();
 		}
 
- 
         final JTable table = new JTable(data, columnNames);
         table.setPreferredScrollableViewportSize(new Dimension(500, 70));
         table.setFillsViewportHeight(true);
         table.setRowSelectionAllowed(true);
         
- 
         if (DEBUG) {
             table.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
@@ -92,10 +84,8 @@ public class UserList extends JPanel {
         scrollPane.setViewportBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255, 255), new Color(0, 0, 205), new Color(255, 255, 255)), null));
 
         scrollPane.setBounds(417, 225, 590, 360);
-
         scrollPane.setBounds(388, 225, 591, 361);
 
- 
         //Add the scroll pane to this panel.
         add(scrollPane);
         
@@ -104,12 +94,12 @@ public class UserList extends JPanel {
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
         btnAdd.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
+        public void actionPerformed(ActionEvent arg0) {
 
-          String firstName = JOptionPane.showInputDialog(null, "UserID", null);
-          String lastName = JOptionPane.showInputDialog(null, "Email", null);
-          String eMail = JOptionPane.showInputDialog(null, "Date", null);
-          String password = JOptionPane.showInputDialog(null, "Write your password", null);
+        String firstName = JOptionPane.showInputDialog(null, "UserID", null);
+        String lastName = JOptionPane.showInputDialog(null, "Email", null);
+        String eMail = JOptionPane.showInputDialog(null, "Date", null);
+        String password = JOptionPane.showInputDialog(null, "Write your password", null);
           
         	}
         });
@@ -202,13 +192,14 @@ public class UserList extends JPanel {
     }
     public void addActionListener(ActionListener l) {
 		btnAdd.addActionListener(l);
+		btnAdd.setActionCommand(ADD);
     	btnDelete.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);	
 	}
-    public static ActionListener getActionlistener() {
-		return ActionListener;
-	}
+//    public static ActionListener getActionlistener() {
+//		return ActionListener;
+//	}
 	public JButton getBtnAdd() {
 		return btnAdd;
 	}

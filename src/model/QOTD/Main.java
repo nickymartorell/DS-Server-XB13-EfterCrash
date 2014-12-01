@@ -16,10 +16,6 @@ public class Main {
 		
 		GUILogic gl = new GUILogic();
 		gl.run();
-//		Screen screen = new Screen();
-//		screen.show(Screen.LOGIN);
-	
-//	
 		/**
 		//Forecast test
 		ForecastTest ft = new ForecastTest();

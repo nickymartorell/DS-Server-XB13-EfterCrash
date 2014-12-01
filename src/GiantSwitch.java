@@ -3,7 +3,7 @@ import java.sql.SQLException;
 import model.QOTD.QOTDModel;
 import model.calendar.Event;
 import model.note.Note;
-import JsonClasses.AuthUser;
+import model.user.*;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
@@ -35,6 +35,7 @@ public class GiantSwitch {
 		
 		Gson gson = new GsonBuilder().create();
 		String answer = "";	
+
 		//Creates a switch which determines which method should be used. Methods will be applied later on
 		switch (Determine(jsonString)) {
 		//If the Json String contains one of the keywords below, run the relevant method.
@@ -48,22 +49,21 @@ public class GiantSwitch {
 			break;
 
 		/**********
-		 ** LOGIN **
+		 ** LOGIN FAA DEN LIGE FIKSET ** 
 		 **********/
-		case "logIn":
-			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
-			System.out.println("Recieved logIn");
-			try{
-			answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword(), AU.getAuthUserIsAdmin());
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
-			break;
+//		case "logIn":
+//			AuthenticateUser AU = (AuthenticateUser)gson.fromJson(jsonString, AuthenticateUser.class);
+//			System.out.println("Recieved logIn");
+//			try{
+//			answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword(), AU.getAuthUserIsAdmin());
+//			} catch (SQLException e){
+//				e.printStackTrace();
+//			}
+//			break;
 
 		case "logOut":
 			System.out.println("Recieved logOut");
 			break;
-
 		/*************
 		 ** CALENDAR **
 		 *************/

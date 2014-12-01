@@ -1,6 +1,8 @@
 package databaseMethods;
 import java.sql.SQLException;
 
+import com.google.gson.Gson;
+
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
@@ -9,6 +11,7 @@ public class SwitchMethods extends Model
 {
 	QueryBuilder qb = new QueryBuilder();
 	QOTDModel qm = new QOTDModel();
+	Gson gson = new Gson();
 	
 
 	
@@ -20,6 +23,17 @@ public class SwitchMethods extends Model
 	 * @return
 	 * @throws SQLException
 	 */
+	
+	//TILFOEJ NY USER
+	//nej er for doven til at lave klasse hvor admin er true.
+	//Vi skal kun have 1 admin
+	public boolean newUser(String eMail, String password) throws SQLException 
+	{
+		String[] field = {"email", "active", "password","admin"};
+		String[] values = {eMail, "1", password, "0"};
+		qb.insertInto("users", field).values(values).Execute();
+		return true;
+	}
 
 	public String createNewCalendar (String userName, String calendarName, int privatePublic) throws SQLException
 	{
@@ -323,7 +337,6 @@ public class SwitchMethods extends Model
 					System.out.println(userNameOfCreator);
 				}
 				
-				//! operator “re- verses” the meaning of a condition. så hvis IKKE brugernavnet er lig med brugernavnet på creator, bliver denne besked printet
 				
 				if(!userNameOfCreator.equals(UserName)){
 					stringToBeReturned = "Only the creator of the note is able to delete it!";
