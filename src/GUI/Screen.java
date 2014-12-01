@@ -116,9 +116,9 @@ public class Screen extends JFrame {
 	public NoteList getNoteList() {
 		return noteList;
 	}
-	//public UserList getUserList() {
-		//return userList;
-	//}
+	public UserList getUserList() {
+		return userList;
+	}
 	public void show(String card) {
 		c.show(getContentPane(),  card);
 	}

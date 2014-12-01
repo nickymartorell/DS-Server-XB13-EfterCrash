@@ -189,60 +189,36 @@ public class UserList extends JPanel {
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    private static void createAndShowGUI() {
+    public static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("SimpleTableDemo");
         frame.setSize(1366, 768);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
         //Create and set up the content pane.
         UserList newContentPane = new UserList();
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
- 
-
-        
         frame.setVisible(true);
     }
- 
-    public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-     
-
-        }
-        });
-    }
-    
     public void addActionListener(ActionListener l) {
 		btnAdd.addActionListener(l);
     	btnDelete.addActionListener(l);
 		btnLogout.addActionListener(l);
-		btnMainMenu.addActionListener(l);
-		
+		btnMainMenu.addActionListener(l);	
 	}
-
-	public static ActionListener getActionlistener() {
+    public static ActionListener getActionlistener() {
 		return ActionListener;
 	}
-
 	public JButton getBtnAdd() {
 		return btnAdd;
 	}
-
 	public JButton getBtnDelete() {
 		return btnDelete;
 	}
-
 	public JButton getBtnMainMenu() {
 		return btnMainMenu;
 	}
-
 	public JButton getBtnLogout() {
 		return btnLogout;
-	}
-	
+	}	
 }

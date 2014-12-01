@@ -64,7 +64,8 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnUserlist()){
-				screen.show(Screen.USERLIST);
+				UserList.createAndShowGUI();
+				screen.setVisible(false);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnNotelist()){
 				screen.show(Screen.NOTELIST);
@@ -72,8 +73,6 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnEventlist()){
 				screen.show(Screen.EVENTLIST);
 			}
-			
-
 		}
 	}
 
