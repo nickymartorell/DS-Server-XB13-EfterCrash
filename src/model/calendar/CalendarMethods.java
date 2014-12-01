@@ -27,7 +27,7 @@ public class CalendarMethods {
 	
 	
 	   private static Gson gson;
-	   private static QueryBuilder queryBuilder;
+	   private static QueryBuilder qb;
 	
 
     private static String readUrl(String urlString) throws Exception {
@@ -53,7 +53,7 @@ public class CalendarMethods {
     		String json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserId.getUserId() + "/" + EncryptUserId.getKey() + ".json");
     		gson = new Gson();
             EventCreator events = gson.fromJson(json, EventCreator.class);
-            queryBuilder = new QueryBuilder();
+            qb = new QueryBuilder();
             
             //Field i data
             String[] fields = {"id","location","start","end","name","type"};
@@ -101,13 +101,26 @@ public class CalendarMethods {
             		   				events.getEvents().get(i).getDescription(),//VARCHAR
             		   				events.getEvents().get(i).getType(), //VARCHAR        		   				
             };
-               queryBuilder.insertInto("events", fields).values(values).Execute();	             		
+               qb.insertInto("events", fields).values(values).Execute();	             		
             
             }        
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }     
+    }    
+    
+    public String getUsers() {
+    	try {
+    		qb = new QueryBuilder();
+    		gson = new Gson();
+    		
+    		//LAV ARRAYLIST SOM KAN HOLDE ALLE USERS
+    		
+    		ARRAYLISTNAVN = qb.selectFrom("users").all().ExecuteQuery();
+    		
+    		List<users> userList = new ArrayList();
+    	}
+    }
     public static void main (String[]args) throws Exception{
     	new CalendarMethods().export2Database();
     	

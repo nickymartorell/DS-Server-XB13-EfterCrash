@@ -48,7 +48,6 @@ public abstract class Model {
         resultSet.close();
         return false;
     }
-
     /**
      * Reads and executes SQL from File.
      *

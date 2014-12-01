@@ -1,6 +1,6 @@
 package JsonClasses;
 
-public class AuthUser implements java.io.Serializable
+public class Users implements java.io.Serializable
 {
 	
 	private static final long serialVersionUId = 1L;
@@ -8,15 +8,19 @@ public class AuthUser implements java.io.Serializable
 	private String email;
 	private String password;
 	private boolean isAdmin;
-	private boolean isAuthenticated;
+	private boolean isActive;
 	
-	public boolean isAuthenticated() {
-		return isAuthenticated;
+	public Users(int userId, String email, String password, boolean isAdmin, boolean, isActive) {
+		
+	}
+	
+	public boolean isActive() {
+		return isActive;
 	}
 	public void setAuthenticated(boolean isAuthenticated) {
 		this.isAuthenticated = isAuthenticated;
 	}
-	//Getters and setters for everything, bitch
+	
 	public String getOverallId() {
 		return overallId;
 	}
