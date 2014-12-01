@@ -48,11 +48,7 @@ public class MainMenu extends JPanel {
 		
 		btnUserlist = new JButton("Userlist");
 		btnUserlist.setContentAreaFilled(false);
-		btnUserlist = new JButton("User-list");
-		btnUserlist.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+	
 		btnUserlist.setForeground(Color.WHITE);
 		btnUserlist.setFont(new Font("Arial", Font.BOLD, 30));
 		btnUserlist.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
@@ -98,11 +94,15 @@ public class MainMenu extends JPanel {
 		add(lblBackground);
 
 	}
-	public void addActionListener(ActionListener l) {
-		btnLogOut.addActionListener(l);
-		btnEventlist.addActionListener(l);
-		btnNotelist.addActionListener(l);
-		btnUserlist.addActionListener(l);
+	public void addActionListener(ActionListener X) {
+		btnLogOut.addActionListener(X);
+		btnLogOut.setActionCommand("btnLogout");
+		btnEventlist.addActionListener(X);
+		btnEventlist.setActionCommand("btnEventList");
+		btnNotelist.addActionListener(X);
+		btnNotelist.setActionCommand("btnNoteList");
+		btnUserlist.addActionListener(X);
+		btnUserlist.setActionCommand("btnUserList");
 		
 		
 	}
