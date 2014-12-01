@@ -191,7 +191,7 @@ public class UserList extends JPanel {
      */
     public static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("SimpleTableDemo");
+        JFrame frame = new JFrame("CBS-Calendar-Userlist");
         frame.setSize(1366, 768);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Create and set up the content pane.
