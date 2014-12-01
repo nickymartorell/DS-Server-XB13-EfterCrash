@@ -11,7 +11,6 @@ import JsonClasses.createEvents;
 import JsonClasses.deleteEvent;
 import JsonClasses.deleteNote;
 import JsonClasses.getCalendar;
-import JsonClasses.getEventInfo;
 import JsonClasses.getEvents;
 import JsonClasses.getNote;
 import JsonClasses.saveNote;
@@ -54,7 +53,11 @@ public class GiantSwitch {
 		case "logIn":
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
 			System.out.println("Recieved logIn");
+			try{
 			answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword(), AU.getAuthUserIsAdmin());
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
 			break;
 
 		case "logOut":
@@ -76,9 +79,7 @@ public class GiantSwitch {
 			answer = SW.deleteCalendar(DC.getUserName(), DC.getCalendarName());
 			break;
 		
-		case "saveImportedCalendar":
-			
-			
+		case "saveImportedCalendar":// this is not necessary since it should save automathically 
 			break;
 			
 		case "getCalendar":
@@ -96,21 +97,13 @@ public class GiantSwitch {
 		case "createEvent":
 			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
 			System.out.println("Recieved saveEvent");
-			answer = SW.createEvents(CE.getEventName(), CE.getDescription(), CE.getLocation(), CE.getTitle(), CE.getType(), CE.getuserName(), CE.getActivityID(), CE.getCreatedby());
-			break;
-
-		case "getEventInfo":
-			getEventInfo GEI = (getEventInfo)gson.fromJson(jsonString, getEventInfo.class);
-			System.out.println("Recieved getEventInfo");
-			answer = SW.getEventInfo(GEI.getTitle(), GEI.getLocation(), GEI.getDescription());
-			break;
-			//tjekke op på metode
-			
+			answer = SW.createEvents(CE.getCreatedby(), CE.getstartTime(), CE.getendTime(), CE.getName(), CE.getText(), CE.getactive());
+			break; 
 			
 		case "deleteEvent":
 			deleteEvent DE = (deleteEvent)gson.fromJson(jsonString, deleteEvent.class);
 			System.out.println("Recieved deleteEvent");
-			answer = SW.deleteEvent(DE.getUserName(), DE.getTitle());
+			answer = SW.deleteEvent(DE.getName());
 			//tjekke op på metode
 			
 			break;
@@ -132,7 +125,7 @@ public class GiantSwitch {
 		case "deleteNote":
 			deleteNote DN = (deleteNote)gson.fromJson(jsonString, deleteNote.class);
 			System.out.println("Recieved deleteNote");
-			//mangler metode i SwitchMethods
+			//tjekke metode i SwitchMethods
 			break;
 
 		/**********
@@ -164,11 +157,8 @@ public class GiantSwitch {
 	//Creates a long else if statement, which checks the JSon string which keyword it contains, and returns the following 
 	//keyword if
 	public String Determine(String ID) {
-
 		if (ID.contains("getEvents")) {
-			return "getEvents";
-		} else if (ID.contains("getEventInfo")) {
-			return "getEventInfo";
+			return "getEvents"; 
 		} else if (ID.contains("saveNote")) {
 			return "saveNote";
 		} else if (ID.contains("getNote")) {

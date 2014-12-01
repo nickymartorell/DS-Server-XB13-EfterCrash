@@ -1,26 +1,14 @@
 package JsonClasses;
 
-public class getEvents {
-	
-	
-	private String userName;
+
+
+public class getEvents implements java.io.Serializable {
+//only necessary to have the things in this the methods searches for when looking for events
+	private static final long serialVersionUID = -3269894274812108796L;//true??
 	private String overallID = "getEvents";
-	private String Title;
-	private String Type;
-	private String Description;
-	private String Location;
 	private String Createdby;
-	private String ActivityID;
 	
-//getters and setters
-	
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	
+	//gettere og settere
 	public String getOverallID(){
 		return overallID;
 	}
@@ -29,36 +17,7 @@ public class getEvents {
 		this.overallID = overallID;
 	}
 	
-	public String getTitle(){
-		return Title;
-	}
-	public void setTitle(String Title){
-		this.Title = Title;
-	}
-	
-	public String getType(){
-		return Type;
-	}
-	
-	public void setType(String type){
-	this.Type = type;
-	}
-	
-	public String getDescription(){
-		return Description;
-	}
-	
-	public void setDescription(String description){
-		this.Description = description;
-	}
-	
-	public String getLocation(){
-		return Location;
-	}
-	
-	public void setLocation(String location){
-		this.Location = location;
-	}
+
 	
 	public String Createdby(){
 		return Createdby;
@@ -68,11 +27,5 @@ public class getEvents {
 		this.Createdby = createdby;
 	}
 	
-	public String ActivityID(){
-		return ActivityID;
-	}
 	
-	public void setActivityID(String activityID){
-		this.ActivityID = activityID;
-	}
 }

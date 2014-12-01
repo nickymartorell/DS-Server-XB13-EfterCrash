@@ -2,58 +2,73 @@ package JsonClasses;
 
 public class createEvents {
 
-	
-	private String userName;
-	private String Title;
-	private String Type;
-	private String Description;
+	private String overallID = "createEvents";
+	private int Type;
 	private String Location;
 	private String Createdby;
-	private String ActivityID;
-	private String EventName;
+	private String startTime;
+	private String endTime;
+	private String Name;
+	private String Text;
+	private int active;
 	
-	public String getEventName(){
-	return EventName;
+	public int getactive(){
+		return active;
 	}
 	
-	public void setEventName(String EventName){
-		this.EventName = EventName;
+	public void setactive(int active){
+		this.active = active;
 	}
 	
-	public String getuserName(){
-		return userName;
+	public String getendTime(){
+		return endTime;
+	}
+	public void setendTime(String endTime){
+		this.endTime = endTime;
 	}
 	
-	public void setuserName(String userName){
-		this.userName = userName;
+	public String getstartTime(){
+		return startTime;
+	}
+	public void setstartTime(String startTime){
+		this.startTime = startTime;
 	}
 	
-	public String getTitle(){
-		return Title;
+	public String getoverallID(){
+		return overallID;
+	}
+	public void setoverallID(String overallID){
+		this.overallID = overallID;
 	}
 	
-	public void setTitle(String Title){
-		this.Title = Title;
+	public String getText(){
+	return Text;
 	}
 	
-	public String getType(){
+	public void setText(String Text){
+		this.Text = Text;
+	}
+	
+	public String getName(){
+		return Name;
+	}
+	
+	public void setName(String Name){
+		this.Name = Name;
+	}
+	
+	
+	public int getType(){
 		return Type;
 	}
 	
-	public void setType(String Type){
+	public void setType(int Type){
 		this.Type = Type;
 	}
 	
-	public String getDescription(){
-		return Description;
-	}
-	
-	public void setDescription(String Description){
-		this.Description = Description;
-	}
 	
 	public String getLocation(){
-	return Location;
+		return Location;
 	}
 	
 	public void setLocation(String Location){
@@ -69,12 +84,6 @@ public class createEvents {
 	public void setCreatedby(String Createdby){
 		this.Createdby = Createdby;
 }
-	public String getActivityID(){
-	return ActivityID;
-	}
-	
-	public void setActivityID(String ActivityID){
-		this.ActivityID = ActivityID;
-	}
+
 }
 

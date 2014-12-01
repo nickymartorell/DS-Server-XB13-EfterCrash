@@ -6,6 +6,7 @@ public class deleteNote {
 	private String dateTime;
 	private String eventID;
 	public String geteventID;
+	
 	public int getNoteID() {
 		return noteID;
 	}
