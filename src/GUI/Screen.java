@@ -83,11 +83,11 @@ public class Screen extends JFrame {
 		noteList = new NoteList();
 		contentPane.add(noteList, NOTELIST);
 		
-		userList = new UserList();
-		contentPane.add(userList, USERLIST);
-//		
-//		eventList = new EventList();
-//		contentPane.add(eventList, EVENTLIST);
+		//userList = new UserList();
+		//contentPane.add(userList, USERLIST);
+	
+		eventList = new EventList();
+		contentPane.add(eventList, EVENTLIST);
 		
 		addEventGUI = new AddEventGUI();
 		contentPane.add(addEventGUI, ADDEVENTGUI);
@@ -116,9 +116,9 @@ public class Screen extends JFrame {
 	public NoteList getNoteList() {
 		return noteList;
 	}
-	public UserList getUserList() {
-		return userList;
-	}
+	//public UserList getUserList() {
+		//return userList;
+	//}
 	public void show(String card) {
 		c.show(getContentPane(),  card);
 	}
