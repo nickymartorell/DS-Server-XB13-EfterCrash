@@ -23,7 +23,14 @@ public class WeatherInfo {
 	}
 	public void setTemperature(String temperature) {
 		this.temperature = temperature;
+		
 	}
 	
+	public String getoverallID(){
+		return overallID;
+	}
+	public void setoverallID(String overallID){
+		this.overallID = overallID;
+	}
 	
 }

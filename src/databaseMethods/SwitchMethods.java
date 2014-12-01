@@ -83,7 +83,7 @@ public class SwitchMethods extends Model
 		String stringToBeReturned ="";
 		
 		
-		//huske at rette navnet til det rigtige navn på vores databaser!!!
+		
 		resultSet = qb.selectFrom("Calendar").where("Name", "=", userName).ExecuteQuery();
 		
 		while(resultSet.next())
@@ -98,7 +98,7 @@ public class SwitchMethods extends Model
 		String stringToBeReturned ="";
 		
 		// er det den rigtige database?
-		resultSet = qb.selectFrom("Events").where("CreatedBy", "=", createdBy).ExecuteQuery();
+		resultSet = qb.selectFrom("events").where("CreatedBy", "=", createdBy).ExecuteQuery();
 		
 		while(resultSet.next()){
 			stringToBeReturned += resultSet.toString();
@@ -217,15 +217,15 @@ public class SwitchMethods extends Model
 			return "1"; // returnerer fejlkoden "1" hvis email ikke findes
 		}
 	}
-
+	
 
 	
-	public String createEvents(String EventName, String userName, String Title, String Type, String Description, String Location, String Createdby, String ActivityID) throws SQLException{
+	public String createEvents(String createdBy, String startTime, String endTime, String name, String text, int active) throws SQLException{
 		String stringToBeReturned = "";
 		testConnection();
 		
-		if(autenticateNewEvent(EventName) ==false){
-			addNewEvent(EventName, Title, Type, Description, Location, Createdby, ActivityID);
+		if(autenticateNewEvent(name) ==false){
+			addNewEvent(name, startTime, endTime, text, createdBy, active);
 			stringToBeReturned = "The new event has been created!!";
 		}
 		else{
@@ -234,11 +234,11 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 
-//IKKE SIKKER PÅ AT DET ER KORREKT DET HER!! 
+//IKKE SIKKER PÅ AT DET ER KORREKT DET HER, tjek databasen!! 
 
-	private void addNewEvent(String eventName, String title, String type, String description, String location, String createdby,String activityID) throws SQLException {
+	private void addNewEvent(String createdBy, String startTime, String endTime, String name, String text, int active) throws SQLException {
 		String [] keys = {"Name", "title", "type", "description", "location","createdby","activityID"};
-		String [] values = {eventName, title, type, description, location, createdby, activityID};
+		String [] values = {name, startTime, endTime, text, createdBy};
 		qb.insertInto("cbsCalendar", keys).values(values).Execute();
 		
 	}
@@ -258,46 +258,32 @@ public class SwitchMethods extends Model
 	}
 	
 	
-	public String getEventInfo (String description, String location, String title) throws SQLException{
-		String stringToBeReturned="";
-
-		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
-		
-		while(resultSet.next()){
-			stringToBeReturned += resultSet.toString();
-		}
-		return stringToBeReturned;
-		
-		//tjekke op på database
-	}
-	
-	
-	public String removeEvent (String title, String userName) throws SQLException{
+	public String removeEvent (String name, String createdBy) throws SQLException{
 		String stringToBeReturned ="";
 		String userNameOfCreator ="";
 		String EventExists = "";
-		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
+		resultSet = qb.selectFrom("events").where("title", "=", name).ExecuteQuery();
 		
 		while(resultSet.next()){
 			EventExists = resultSet.toString();
 		}
 		if(!EventExists.equals("")){
-			String [] value = {"CreatedBy"};
-			resultSet = qb.selectFrom(value, "Events").where("Name", "=", title).ExecuteQuery();
+			String [] value = {"createdBy"};
+			resultSet = qb.selectFrom(value, "events").where("name", "=", name).ExecuteQuery();
 			while(resultSet.next()){
 				userNameOfCreator = resultSet.toString();
 				System.out.println(userNameOfCreator);
 			}
 			
-			//! operator “re- verses” the meaning of a condition. så hvis IKKE brugernavnet er lig med brugernavnet på creator, bliver denne besked printet
+			//så hvis IKKE brugernavnet er lig med brugernavnet på creator, bliver denne besked printet
 			
-			if(!userNameOfCreator.equals(userName)){
+			if(!userNameOfCreator.equals(createdBy)){
 				stringToBeReturned = "Only the creator of the event is able to delete it!";
 			}
 			else{
 				String [] keys = {"Active"};
 				String [] values ={"2"};
-				qb.update("Events", keys, values).where("Title", "=", title).Execute();
+				qb.update("Events", keys, values).where("Title", "=", name).Execute();
 				stringToBeReturned = "The event has been set inactive"; //overvej omformulering
 			}
 			stringToBeReturned = resultSet.toString();
@@ -309,10 +295,10 @@ public class SwitchMethods extends Model
 	}
 	
 	
-	public String deleteEvent(String userName, String title) throws SQLException{
+	public String deleteEvent(String Name) throws SQLException{
 		String stringToBeReturned="";
 		testConnection();
-		stringToBeReturned = deleteEvent(userName, title);
+		stringToBeReturned = deleteEvent(Name);
 		
 		return stringToBeReturned;
 	}
@@ -362,12 +348,24 @@ public class SwitchMethods extends Model
 	public String deleteNote(String userName, String noteID) throws SQLException{
 		String stringToBeReturned="";
 		testConnection();
+		
+		//String 
 		stringToBeReturned = deleteNote(userName, noteID);
 		
-		return stringToBeReturned;
+		return stringToBeReturned; //tjekke om event ID 
 	}
+
+
+
 	
-}
+	}
+
+
+
+	
+	
+
+
 	
 		
 	
