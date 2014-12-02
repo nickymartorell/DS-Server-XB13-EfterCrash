@@ -35,8 +35,12 @@ public class UserList extends JPanel {
 	private JButton btnLogout;
 	private JButton btnMainMenu;
 	private ResultSet rs;
+	private GUILogic gl;
+public static JFrame frame;
 	
     public UserList() {
+    	
+    	gl = new GUILogic();
     	setSize(new Dimension(1366, 768));
  
         String[] columnNames = {"UserID",
@@ -93,21 +97,19 @@ public class UserList extends JPanel {
         btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
-        btnAdd.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent arg0) {
+        
 
-        String firstName = JOptionPane.showInputDialog(null, "UserID", null);
-        String lastName = JOptionPane.showInputDialog(null, "Email", null);
-        String eMail = JOptionPane.showInputDialog(null, "Date", null);
-        String password = JOptionPane.showInputDialog(null, "Write your password", null);
-         
-        	}
-        });
+      
         
         btnAdd.setBounds(1019, 556, 118, 29);
         add(btnAdd);
         
         JButton btnLogout = new JButton("Log out");
+        btnLogout.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		  gl.runLogin();
+        	}
+        });	  
         btnLogout.setForeground(Color.WHITE);
         btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
         btnLogout.setContentAreaFilled(false);
@@ -115,9 +117,11 @@ public class UserList extends JPanel {
         btnLogout.setBounds(642, 688, 152, 44);
         add(btnLogout);
         
+        
         JButton btnMainMenu = new JButton("Main Menu");
         btnMainMenu.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
+        		  gl.runMenu();
         	}
         });
         btnMainMenu.setForeground(Color.WHITE);
@@ -181,7 +185,7 @@ public class UserList extends JPanel {
      */
     public static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("CBS-Calendar-Userlist");
+    	 frame = new JFrame("CBS-Calendar-Userlist");
         frame.setSize(1366, 768);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Create and set up the content pane.
@@ -189,6 +193,9 @@ public class UserList extends JPanel {
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
         frame.setVisible(true);
+    }
+    public static void lukNed(){
+    	frame.dispose(); 	
     }
     public void addActionListener(ActionListener l) {
 		btnAdd.addActionListener(l);

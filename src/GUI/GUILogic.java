@@ -49,7 +49,20 @@ public class GUILogic {
 		screen.setVisible(true);
 		
 	}
-	
+	public void runMenu() {
+
+		screen.show(Screen.MAINMENU);
+		screen.setVisible(true);
+		UserList.lukNed();
+		
+	}
+	public void runLogin() {
+
+		screen.show(Screen.LOGIN);
+		screen.setVisible(true);
+		UserList.lukNed();
+		
+	}
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 				screen.show(Screen.MAINMENU);
@@ -85,6 +98,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnUserlist()){
 				UserList.createAndShowGUI();
 				screen.setVisible(false);
+				screen.dispose();
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnNotelist()){
 				screen.show(Screen.NOTELIST);
