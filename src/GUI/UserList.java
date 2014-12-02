@@ -36,7 +36,7 @@ public class UserList extends JPanel {
 	private JButton btnMainMenu;
 	private ResultSet rs;
 	private GUILogic gl;
-public static JFrame frame;
+	public static JFrame frame;
 	
     public UserList() {
     	
@@ -185,7 +185,7 @@ public static JFrame frame;
      */
     public static void createAndShowGUI() {
         //Create and set up the window.
-    	 frame = new JFrame("CBS-Calendar-Userlist");
+    	frame = new JFrame("CBS-Calendar-Userlist");
         frame.setSize(1366, 768);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Create and set up the content pane.

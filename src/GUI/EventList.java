@@ -47,7 +47,7 @@ import java.sql.SQLException;
 		private JButton btnLogout;
 		private JButton btnMainMenu;
 		private ResultSet rs;
-		
+		public static JFrame frame;
 		
 		public EventList() {
 			setSize(new Dimension(1366, 768));
@@ -170,10 +170,12 @@ import java.sql.SQLException;
 	        }
 	        System.out.println("--------------------------");
 	    }
-	 
+	    public static void lukNed(){
+	    	frame.dispose(); 	
+	    }
 		 public static void createAndShowGUI() {
 		        //Create and set up the window.
-		        JFrame frame = new JFrame("CBS-Calendar-Eventlist");
+		        frame = new JFrame("CBS-Calendar-Eventlist");
 		        frame.setSize(1366, 768);
 		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		        //Create and set up the content pane.
