@@ -100,7 +100,7 @@ public class UserList extends JPanel {
         String lastName = JOptionPane.showInputDialog(null, "Email", null);
         String eMail = JOptionPane.showInputDialog(null, "Date", null);
         String password = JOptionPane.showInputDialog(null, "Write your password", null);
-          
+         
         	}
         });
         

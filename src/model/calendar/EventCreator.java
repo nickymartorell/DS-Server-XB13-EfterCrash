@@ -1,5 +1,7 @@
 package model.calendar;
 
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -28,18 +30,22 @@ public class EventCreator extends Model {
 				int id = rs.getInt("id");
 				String type = rs.getString("type");
 				String location = rs.getString("location");
-					
-				
 				Date startDate = rs.getDate("start");
-				Time startTime = rs.getTime("start");
-				
+				Time startTime = rs.getTime("start");			
 				Date endDate = rs.getDate("end");
 				Time endTime = rs.getTime("end");
-								
+				String ai = rs.getString("activityid");
+				String cb = rs.getString("createdby");
+				String name = rs.getString("name");
+				
+				
 				String stringEventID = String.valueOf(id);
 				String stringType = String.valueOf(type);
 				String stringLocation = String.valueOf(location);
-		
+				String stringAi = String.valueOf(ai);
+				String StringCb = String.valueOf(cb);
+				String StringName = String.valueOf(name);
+				
 				String stringStartDate = String.valueOf(startDate);
 				String stringStartTime = String.valueOf(startTime);				
 				String stringEndDate = String.valueOf(endDate);
@@ -54,7 +60,7 @@ public class EventCreator extends Model {
 				
 				System.out.println(String.valueOf(startDate.getTime()));
 				
-				events.add(new Event(stringEventID, stringEventID, stringType, stringType, stringLocation, stringLocation, alStart, alEnd));				
+				events.add(new Event(StringName,stringEventID,stringType,stringLocation,stringAi,StringCb, alStart,alEnd));				
 			}
 			
 		} catch (SQLException e) {

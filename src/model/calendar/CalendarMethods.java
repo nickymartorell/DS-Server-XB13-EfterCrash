@@ -1,6 +1,8 @@
 package model.calendar;
 
 
+
+
 import model.calendar.EventCreator;
 import model.QueryBuild.QueryBuilder;
 import JsonClasses.Users;
@@ -58,7 +60,7 @@ public class CalendarMethods extends Model {
             qb = new QueryBuilder();
             
             //Field i data
-            String[] fields = {"id","location","start","end","name","type"};
+            String[] fields = {"id","location","start","end","name","type","activityid","createdby"};
             
             //formatering af datetime
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -96,12 +98,14 @@ public class CalendarMethods extends Model {
                 String strEnd = sdf.format(endDate);
 
 
-               String[] values = {  events.getEvents().get(i).getEventId(), //INT
+               String[] values = {  events.getEvents().get(i).getId(), //INT
             		   				events.getEvents().get(i).getLocation(), //VARCHAR
             		   				strStart, //DATETIME
             		   				strEnd, //DATETIME
-            		   				events.getEvents().get(i).getDescription(),//VARCHAR
-            		   				events.getEvents().get(i).getType(), //VARCHAR        		   				
+            		   				events.getEvents().get(i).getCreatedby(),//VARCHAR
+            		   				events.getEvents().get(i).getType(), //VARCHAR 
+            		   				events.getEvents().get(i).getActivityid(), //VARCHAR
+            		   				events.getEvents().get(i).getName(),
             };
                qb.insertInto("events", fields).values(values).Execute();	             		       
             }        
@@ -141,7 +145,6 @@ public class CalendarMethods extends Model {
      }
     public static void main (String[]args) throws Exception{
     	//new CalendarMethods().export2Database();
-    	new CalendarMethods().getUsers();
-    	System.out.println();
+    	new CalendarMethods().export2Database();
     }
 }

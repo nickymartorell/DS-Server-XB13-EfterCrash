@@ -108,7 +108,7 @@ public class AddEventGUI extends JPanel {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			//Submit changes to databases
-			//hvad sker der n�r �ndringer ved en bruger submittes
+	
 			}
 		}
 		);

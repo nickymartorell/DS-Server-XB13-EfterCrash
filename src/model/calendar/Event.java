@@ -2,6 +2,8 @@ package model.calendar;
 
 
 
+
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,12 +14,11 @@ import model.note.Note;
  * Til hver specifik event bliver de defineret saaledes.
  */
 public class Event {
-    private String activityId;
-    private String eventId;
+    private String id;
     private String type;
-    private String title;
-    private String description;
     private String location;
+    private String activityid;
+    private String createdby;
     private ArrayList<String> start;
     private ArrayList<String> end;
     
@@ -28,23 +29,20 @@ public class Event {
     private String strDateEnd;
 
     private String text;
-    private ArrayList<Note> noter;
-    private boolean customevent;
+    
+//  private ArrayList<Note> noter;
+//  private boolean customevent;
 
-    // Settere og gettere for Event objektet 
-    public void setActivityId(String activityId){
-        this.activityId = activityId;
-    }
-    public String getActivityId(){
-        return activityId;
-    }
-
-    public void setEventId(String eventId){
-        this.eventId = eventId;
-    }
-    public String getEventId(){
-        return eventId;
-    }
+  // Settere og gettere for Event objektet 
+    
+    
+    public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	private String name;
 
     public void setType(String type){
         this.type = type;
@@ -52,35 +50,18 @@ public class Event {
     public String getType(){
         return type;
     }
-
-    public void setTitle(String title){
-        this.title = title;
-    }
-    public String getTitle(){
-        return title;
-    }
-
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public String getDescription(){
-        return description;
-    }
-
     public void setLocation(String location){
         this.location = location;
     }
     public String getLocation(){
         return location;
-    }
-    
+    } 
     public void setStart(ArrayList<String> start){
         this.start = start;
     }
     public ArrayList<String> getStart(){
         return start;
-    }
-    
+    }  
     public void setDateStart(Date start){this.dateStart = start;}
     public Date getDateStart(){return dateStart;}
 
@@ -96,18 +77,36 @@ public class Event {
     public ArrayList<String> getEnd(){
         return end;
     }
-	public Event(String activityId, String eventId, String type, String title,
-			String description, String location, ArrayList<String> start,
+	public Event(String name, String activityId, String eventId, String type, String createdby,
+			String location, ArrayList<String> start,
 			ArrayList<String> end) {
 		super();
-		this.activityId = activityId;
-		this.eventId = eventId;
+		this.name = name;
+		this.activityid = activityId;
+		this.id = eventId;
 		this.type = type;
-		this.title = title;
-		this.description = description;
+		this.createdby = createdby;	
 		this.location = location;
 		this.start = start;
 		this.end = end;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getActivityid() {
+		return activityid;
+	}
+	public void setActivityid(String activityid) {
+		this.activityid = activityid;
+	}
+	public String getCreatedby() {
+		return createdby;
+	}
+	public void setCreatedby(String createdby) {
+		this.createdby = createdby;
 	}
 	
 	

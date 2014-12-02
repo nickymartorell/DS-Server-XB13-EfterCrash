@@ -10,13 +10,14 @@ CREATE TABLE IF NOT EXISTS events
 	type VARCHAR(100) NOT NULL,
 	activityid varchar(255) NOT NULL,
 	location VARCHAR (100),
-	createdby varchar(255) NOT NULL,
+	createdby varchar(255),
 	start datetime NOT NULL,
 	end datetime NOT NULL,
-	name varchar(100) NOT NULL,
+	name varchar(100),
 	PRIMARY KEY (id)
 );
 
+set global max_connections = 2000000000;
 CREATE TABLE users (
   userid int(11) NOT NULL AUTO_INCREMENT,
   email varchar(40) NOT NULL,
