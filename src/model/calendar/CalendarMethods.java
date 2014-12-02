@@ -4,6 +4,8 @@ package model.calendar;
 
 
 import model.calendar.EventCreator;
+import model.Forecast.ForecastArray;
+import model.Forecast.ForecastTest;
 import model.QueryBuild.QueryBuilder;
 import JsonClasses.Users;
 
@@ -60,7 +62,7 @@ public class CalendarMethods extends Model {
             qb = new QueryBuilder();
             
             //Field i data
-            String[] fields = {"id","location","start","end","name","type","activityid","createdby"};
+            String[] fields = {"id","location","start","end","type","activityid","createdby"};
             
             //formatering af datetime
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -105,15 +107,43 @@ public class CalendarMethods extends Model {
             		   				events.getEvents().get(i).getCreatedby(),//VARCHAR
             		   				events.getEvents().get(i).getType(), //VARCHAR 
             		   				events.getEvents().get(i).getActivityid(), //VARCHAR
-            		   				events.getEvents().get(i).getName(),
+            		   				
             };
                qb.insertInto("events", fields).values(values).Execute();	             		       
             }        
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }    
-    
+    }     
+    public String getEvents() {
+    	try {
+    		qb = new QueryBuilder();
+    		gson = new Gson();
+    		    		
+    		ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
+    		List<Event> eventList = new ArrayList<>();  
+    		
+    		while(rs.next()){
+    			Event event = new Event();
+    			event.setActivityid(rs.getString("id"));
+    			event.setType(rs.getString("type"));
+    			event.setActivityid(rs.getString("activityid"));
+    			event.setLocation(rs.getString("location"));
+    			event.setCreatedby(rs.getString("createdby"));
+    		  //event.setDateStart(rs.getDate("start"));
+    			event.setStrDateStart(rs.getString("start"));
+    			event.setStrDateEnd(rs.getString("end"));
+    			
+    		    eventList.add(event);
+    		}
+    		rs.close();
+    		return gson.toJson(eventList);
+    		
+    	} catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
     public String getUsers() {
 		
     	try {
@@ -121,10 +151,8 @@ public class CalendarMethods extends Model {
     		gson = new Gson();
     		    		
     		ResultSet rs = qb.selectFrom("users").all().ExecuteQuery();
-    		List<Users> userList = new ArrayList<>();  
-    		
-    		while(rs.next()){
-    			
+    		List<Users> userList = new ArrayList<>();      		
+    		while(rs.next()){  			
     		Users user = new Users();
     		user.setUserId(rs.getInt("userid"));
     		user.setEmail(rs.getString("email"));
@@ -132,19 +160,40 @@ public class CalendarMethods extends Model {
     		user.setAdmin(rs.getBoolean("admin"));
     		user.setActive(rs.getBoolean("active"));
     		userList.add(user);    		
-//    		}
-//    		for (int i = 0; i< userList.size(); i ++){
-//    		System.out.println(userList.get(i).getEmail());
-//    		System.out.println(userList.get(i).getUserId());
-//     		
+    		
     		return gson.toJson(userList);
     		}} catch (Exception e) {
              e.printStackTrace();
          }
          return null;
      }
+    
+//public String getForecast() {
+//		
+//    	try {
+//    		qb = new QueryBuilder();
+//    		gson = new Gson();
+//    		    		
+//    		ResultSet rs = qb.selectFrom("forecast").all().ExecuteQuery();
+//    		
+//    		List<ForecastTest> fcast = new ArrayList<>();      		
+//    		while(rs.next()){  			
+//    		ForecastArray farray = new ForecastArray();
+//    		farray.setDesc(rs.getString("des"));
+//    		farray.setCelsius(rs.getString("cels"));
+//    		farray.setDateDate(rs.getDate("date"));
+//    		fcast.add(farray);    		
+//    		
+//    		
+//    		return gson.toJson(fcast);
+//    		}} catch (Exception e) {
+//             e.printStackTrace();
+//         }
+//         return null;
+//     }
+    
     public static void main (String[]args) throws Exception{
-    	//new CalendarMethods().export2Database();
+  
     	new CalendarMethods().export2Database();
     }
 }

@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS events
 	createdby varchar(255),
 	start datetime NOT NULL,
 	end datetime NOT NULL,
-	name varchar(100),
 	PRIMARY KEY (id)
 );
 

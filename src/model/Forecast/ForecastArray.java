@@ -15,7 +15,8 @@ public class ForecastArray {
 
     // Funktion som setter dato, grader og beskrivelse til Forecast objektet
     public ForecastArray(String date, String celsius, String desc) {
-        this.date = date;
+        super();
+    	this.date = date;
         this.celsius = celsius;
         this.desc = desc;
     }
@@ -25,6 +26,9 @@ public class ForecastArray {
         return date;
     }
 
+    public ForecastArray() {
+    	
+    }
     public void setDate(String date) {
         this.date = date;
     }

@@ -1,13 +1,6 @@
 package model.calendar;
-
-
-
-
-
 import java.util.ArrayList;
 import java.util.Date;
-
-import model.note.Note;
 
 /**
  * Created by jesperbruun on 10/10/14.
@@ -21,7 +14,7 @@ public class Event {
     private String createdby;
     private ArrayList<String> start;
     private ArrayList<String> end;
-    
+	private String name;
     private transient Date dateStart;
     private transient Date dateEnd;
     
@@ -35,15 +28,29 @@ public class Event {
 
   // Settere og gettere for Event objektet 
     
-    
+    public Event(){
+    	
+    }
     public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	private String name;
+	}	
+    public String getStrDateStart() {
+        return strDateStart;
+    }
 
+    public void setStrDateStart(String strDateStart) {
+        this.strDateStart = strDateStart;
+    }
+    public String getStrDateEnd() {
+        return strDateEnd;
+    }
+
+    public void setStrDateEnd(String strDateEnd) {
+        this.strDateEnd = strDateEnd;
+    }
     public void setType(String type){
         this.type = type;
     }
