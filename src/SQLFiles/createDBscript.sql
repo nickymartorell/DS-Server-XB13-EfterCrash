@@ -2,11 +2,15 @@ CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
+DROP TABLE events;
+
 CREATE TABLE IF NOT EXISTS events
 (
 	id int NOT NULL AUTO_INCREMENT,
 	type VARCHAR(100) NOT NULL,
+	activityid varchar(255) NOT NULL,
 	location VARCHAR (100),
+	createdby varchar(255) NOT NULL,
 	start datetime NOT NULL,
 	end datetime NOT NULL,
 	name varchar(100) NOT NULL,
@@ -34,8 +38,7 @@ CREATE TABLE forecast (
   cels varchar(20) NOT NULL
 
 ) 
-
---Forecast
+--QOTD
 CREATE TABLE IF NOT EXISTS quote
 (
 	quote varchar(300) NOT NULL,
@@ -43,13 +46,30 @@ CREATE TABLE IF NOT EXISTS quote
 	topic varchar(100) NOT NULL
 );
 
-/* Create Tables */
+CREATE TABLE IF NOT EXISTS notes
+(
+	noteid int NOT NULL AUTO_INCREMENT,
+	eventid int NOT NULL,
+	text text,
+	created datetime NOT NULL,
+	PRIMARY KEY (noteid)
+);
+
+
+CREATE TABLE IF NOT EXISTS roles
+(
+	roleid int NOT NULL AUTO_INCREMENT,
+	userid int NOT NULL,
+	type varchar(200) NOT NULL,
+	PRIMARY KEY (roleid)
+);
+
+/* Create calendar */
 CREATE TABLE IF NOT EXISTS Calender
 (
 	CalenderID int NOT NULL AUTO_INCREMENT,
 	Name varchar(255) NOT NULL,
 	Active tinyint,
-	CreatedBy varchar(255) NOT NULL,
 	-- 1 = public
 	-- 2 = private
 	PrivatePublic tinyint NOT NULL COMMENT '1 = public
