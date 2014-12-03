@@ -29,7 +29,7 @@ import java.awt.Dimension;
 
 
 	@SuppressWarnings({ "unused", "serial" })
-	public class AddCourse extends JPanel {
+	public class AddEvent extends JPanel {
 		private JTable table;
 		private final JButton btnAdd = new JButton("Add");
 		private final JButton btnDelete = new JButton("Delete");
@@ -40,7 +40,7 @@ import java.awt.Dimension;
 		 * Create the panel.
 		 */
 		
-		public AddCourse() {
+		public AddEvent() {
 			setAlignmentY(Component.BOTTOM_ALIGNMENT);
 			setSize(new Dimension(1366, 768));
 			setLayout(null);
@@ -121,7 +121,7 @@ import java.awt.Dimension;
 			add(btnLogout);
 			
 			JLabel label_1 = new JLabel("");
-			label_1.setIcon(new ImageIcon(AddCourse.class.getResource("/Images/MetalBackground.jpg")));
+			label_1.setIcon(new ImageIcon(AddEvent.class.getResource("/Images/MetalBackground.jpg")));
 			label_1.setBounds(0, 0, 1366, 768);
 			add(label_1);
 			
