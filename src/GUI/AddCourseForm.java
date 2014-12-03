@@ -125,7 +125,7 @@ public class AddCourseForm extends JPanel {
 				btnMainMenu.setBounds(586, 591, 164, 44);
 				add(btnMainMenu);
 				
-				lblUserInfo = new JLabel("Create course");
+				lblUserInfo = new JLabel("Create event");
 				lblUserInfo.setForeground(Color.WHITE);
 				lblUserInfo.setFont(new Font("Arial", Font.BOLD, 78));
 				lblUserInfo.setBounds(428, 89, 523, 91);

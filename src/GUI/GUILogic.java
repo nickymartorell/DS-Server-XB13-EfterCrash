@@ -34,7 +34,7 @@ public class GUILogic {
 		//screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
 		//screen.getUserList().addActionListener(new UserListActionListener());
-		//screen.getEventlist().addActionListener(new EventListActionListener());
+		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddCourse().addActionListener(new AddCourseActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddCourseForm().addActionListener(new AddCouseFormActionListener());
@@ -64,6 +64,7 @@ public class GUILogic {
 		UserList.lukNed();
 		
 	}
+	/**
 	public void runMenuEventList() {
 
 		screen.show(Screen.MAINMENU);
@@ -78,6 +79,7 @@ public class GUILogic {
 		EventList.lukNed();
 		
 	}
+	*/
 	public void runAddUser() {
 
 		screen.show(Screen.ADDUSER);
@@ -128,9 +130,7 @@ public class GUILogic {
 				screen.show(Screen.NOTELIST);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnEventlist()){
-				EventList.ShowGUI();
-				screen.setVisible(false);
-				screen.dispose();
+				screen.show(Screen.EVENTLIST);
 			}
 			if (e.getSource() == screen.getMainMenu().getAddCourse()){
 				screen.show(Screen.ADDCOURSE);
@@ -179,6 +179,23 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getAddCourseForm().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+		}
+	}
+	private class EventListActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			if (e.getSource() == screen.getEventlist().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getEventlist().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getEventlist().getBtnAdd()){
+				screen.show(Screen.ADDCOURSEFORM);
+			}
+			if (e.getSource() == screen.getEventlist().getBtnDelete()){
 				screen.show(Screen.MAINMENU);
 			}
 		}

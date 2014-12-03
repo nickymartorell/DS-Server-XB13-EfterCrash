@@ -48,12 +48,9 @@ import java.sql.SQLException;
 		private JButton btnMainMenu;
 		private ResultSet rs;
 		public static JFrame frame;
-		private GUILogic gl;
 		
 		
 		public EventList() {
-			
-			gl = new GUILogic();
 			
 			setSize(new Dimension(1366, 768));
 			setLayout(null);
@@ -123,12 +120,7 @@ import java.sql.SQLException;
 			// Add the scroll pane to this panel.
 			add(scrollPane);
 			
-			JButton btnMainMenu = new JButton("Main Menu");
-			btnMainMenu.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent arg0) {
-	        		  gl.runMenuEventList();
-	        	}
-	        });
+			btnMainMenu = new JButton("Main Menu");
 			btnMainMenu.setForeground(Color.WHITE);
 			btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
 			btnMainMenu.setContentAreaFilled(false);
@@ -136,12 +128,7 @@ import java.sql.SQLException;
 			btnMainMenu.setBounds(601, 612, 163, 43);
 			add(btnMainMenu);
 			
-			JButton btnLogout = new JButton("Log out");
-			btnLogout.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent arg0) {
-	        		  gl.runLoginEventList();
-	        	}
-			 });
+			btnLogout = new JButton("Log out");
 			btnLogout.setForeground(Color.WHITE);
 			btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
 			btnLogout.setContentAreaFilled(false);
@@ -149,14 +136,14 @@ import java.sql.SQLException;
 			btnLogout.setBounds(624, 667, 117, 43);
 			add(btnLogout);
 						
-			JButton btnDelete = new JButton("Delete");
+			btnDelete = new JButton("Delete");
 			btnDelete.setOpaque(true);
 			btnDelete.setForeground(new Color(0, 0, 205));
 			btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 			btnDelete.setBounds(988, 194, 118, 29);
 			add(btnDelete);
 						
-			JButton btnAdd = new JButton("Add");
+			btnAdd = new JButton("Add");
 			btnAdd.setOpaque(true);
 			btnAdd.setForeground(new Color(0, 0, 205));
 			btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
@@ -185,21 +172,6 @@ import java.sql.SQLException;
 	        }
 	        System.out.println("--------------------------");
 	    }
-	    public static void lukNed(){
-	    	frame.dispose(); 	
-	    }
-		 public static void ShowGUI() {
-		        //Create and set up the window.
-		        frame = new JFrame("CBS-Calendar-Eventlist");
-		        frame.setSize(1366, 768);
-		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		        //Create and set up the content pane.
-		        EventList newContentPane = new EventList();
-		        newContentPane.setOpaque(true); //content panes must be opaque
-		        frame.setContentPane(newContentPane);
-		        frame.setVisible(true);
-		    }
-		
 		public void addActionListener(ActionListener x) {
 			btnAdd.addActionListener(x);
 			btnDelete.addActionListener(x);

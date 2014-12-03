@@ -259,9 +259,7 @@ table.addMouseListener(new MouseAdapter() {
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);	
 	}
-//    public static ActionListener getActionlistener() {
-//		return ActionListener;
-//	}
+
 	public JButton getBtnAdd() {
 		return btnAdd;
 	}
