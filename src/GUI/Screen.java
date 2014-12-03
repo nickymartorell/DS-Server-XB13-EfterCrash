@@ -86,8 +86,8 @@ public class Screen extends JFrame {
 		//userList = new UserList();
 		//contentPane.add(userList, USERLIST);
 	
-		eventList = new EventList();
-		contentPane.add(eventList, EVENTLIST);
+        //eventList = new EventList();
+        //contentPane.add(eventList, EVENTLIST);
 		
 		addEventGUI = new AddEventGUI();
 		contentPane.add(addEventGUI, ADDEVENTGUI);

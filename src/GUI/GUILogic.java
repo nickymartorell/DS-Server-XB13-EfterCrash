@@ -34,7 +34,7 @@ public class GUILogic {
 		//screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
 		//screen.getUserList().addActionListener(new UserListActionListener());
-		screen.getEventlist().addActionListener(new EventListActionListener());
+		//screen.getEventlist().addActionListener(new EventListActionListener());
 		//screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		//screen.getAddUser().addActionListener(new AddUserActionListener());
 		
@@ -61,6 +61,20 @@ public class GUILogic {
 		screen.show(Screen.LOGIN);
 		screen.setVisible(true);
 		UserList.lukNed();
+		
+	}
+	public void runMenuEventList() {
+
+		screen.show(Screen.MAINMENU);
+		screen.setVisible(true);
+		EventList.lukNed();
+		
+	}
+	public void runLoginEventList() {
+
+		screen.show(Screen.LOGIN);
+		screen.setVisible(true);
+		EventList.lukNed();
 		
 	}
 	private class LoginActionListener implements ActionListener {
@@ -104,29 +118,14 @@ public class GUILogic {
 				screen.show(Screen.NOTELIST);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnEventlist()){
-				screen.show(Screen.EVENTLIST);
+				EventList.ShowGUI();
+				screen.setVisible(false);
+				screen.dispose();
 			}
 		}
 	}
 
 
-	private class EventListActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-
-			if (e.getSource() == screen.getEventlist().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getEventlist().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getEventlist().getBtnAdd()){
-				screen.show(Screen.ADDEVENTGUI);
-			}
-			if (e.getSource() == screen.getEventlist().getBtnDelete()){
-				screen.show(Screen.MAINMENU);
-			}
-		}
-	}
 	private class NoteListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 

@@ -48,8 +48,13 @@ import java.sql.SQLException;
 		private JButton btnMainMenu;
 		private ResultSet rs;
 		public static JFrame frame;
+		private GUILogic gl;
+		
 		
 		public EventList() {
+			
+			gl = new GUILogic();
+			
 			setSize(new Dimension(1366, 768));
 			setLayout(null);
 
@@ -119,6 +124,11 @@ import java.sql.SQLException;
 			add(scrollPane);
 			
 			JButton btnMainMenu = new JButton("Main Menu");
+			btnMainMenu.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent arg0) {
+	        		  gl.runMenuEventList();
+	        	}
+	        });
 			btnMainMenu.setForeground(Color.WHITE);
 			btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
 			btnMainMenu.setContentAreaFilled(false);
@@ -127,6 +137,11 @@ import java.sql.SQLException;
 			add(btnMainMenu);
 			
 			JButton btnLogout = new JButton("Log out");
+			btnLogout.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent arg0) {
+	        		  gl.runLoginEventList();
+	        	}
+			 });
 			btnLogout.setForeground(Color.WHITE);
 			btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
 			btnLogout.setContentAreaFilled(false);
@@ -173,13 +188,13 @@ import java.sql.SQLException;
 	    public static void lukNed(){
 	    	frame.dispose(); 	
 	    }
-		 public static void createAndShowGUI() {
+		 public static void ShowGUI() {
 		        //Create and set up the window.
 		        frame = new JFrame("CBS-Calendar-Eventlist");
 		        frame.setSize(1366, 768);
 		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		        //Create and set up the content pane.
-		        UserList newContentPane = new UserList();
+		        EventList newContentPane = new EventList();
 		        newContentPane.setOpaque(true); //content panes must be opaque
 		        frame.setContentPane(newContentPane);
 		        frame.setVisible(true);
