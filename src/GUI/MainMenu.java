@@ -33,6 +33,7 @@ public class MainMenu extends JPanel {
 	private JButton btnEventlist;
 	private JButton btnNotelist;
 	private JLabel lblCBSlogo;
+	private JButton btnAddCourse;
 	
 
 	//Sync
@@ -53,7 +54,7 @@ public class MainMenu extends JPanel {
 		btnUserlist.setFont(new Font("Arial", Font.BOLD, 30));
 		btnUserlist.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
 		btnUserlist.setBackground(Color.WHITE);
-		btnUserlist.setBounds(610, 330, 145, 50);
+		btnUserlist.setBounds(610, 284, 145, 50);
 		add(btnUserlist);
 		
 		btnEventlist = new JButton("Eventlist");
@@ -62,7 +63,7 @@ public class MainMenu extends JPanel {
 		btnEventlist.setFont(new Font("Arial", Font.BOLD, 30));
 		btnEventlist.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
 		btnEventlist.setBackground(Color.WHITE);
-		btnEventlist.setBounds(610, 422, 145, 50);
+		btnEventlist.setBounds(610, 345, 145, 50);
 		add(btnEventlist);
 		
 		btnNotelist = new JButton("Notelist");
@@ -71,7 +72,7 @@ public class MainMenu extends JPanel {
 		btnNotelist.setFont(new Font("Arial", Font.BOLD, 30));
 		btnNotelist.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
 		btnNotelist.setBackground(Color.WHITE);
-		btnNotelist.setBounds(610, 243, 145, 50);
+		btnNotelist.setBounds(610, 223, 145, 50);
 		add(btnNotelist);
 		
 		btnLogOut = new JButton("Log Out");
@@ -82,6 +83,15 @@ public class MainMenu extends JPanel {
 		btnLogOut.setBackground(Color.WHITE);
 		btnLogOut.setBounds(610, 541, 145, 50);
 		add(btnLogOut);
+		
+		btnAddCourse = new JButton("Add Course");
+		btnAddCourse.setForeground(Color.WHITE);
+		btnAddCourse.setFont(new Font("Arial", Font.BOLD, 23));
+		btnAddCourse.setContentAreaFilled(false);
+		btnAddCourse.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
+		btnAddCourse.setBackground(Color.WHITE);
+		btnAddCourse.setBounds(610, 406, 145, 50);
+		add(btnAddCourse);
 		
 		lblCBSlogo = new JLabel("");
 		lblCBSlogo.setIcon(new ImageIcon(MainMenu.class.getResource("/Images/CBSLogo3.png")));
@@ -96,7 +106,7 @@ public class MainMenu extends JPanel {
 	}
 	public void addActionListener(ActionListener X) {
 		btnLogOut.addActionListener(X);
-		
+		btnAddCourse.addActionListener(X);
 		btnEventlist.addActionListener(X);
 	
 		btnNotelist.addActionListener(X);
@@ -117,5 +127,7 @@ public class MainMenu extends JPanel {
 	public JButton getBtnLogOut() {
 		return btnLogOut;
 	}
-	
+	public JButton getAddCourse() {
+		return btnAddCourse;
+	}
 }

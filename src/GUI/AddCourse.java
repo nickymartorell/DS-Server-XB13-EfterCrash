@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
 
 @SuppressWarnings({ "unused", "serial" })
-public class AddEventGUI extends JPanel {
+public class AddCourse extends JPanel {
 	private JTextField textField_Location;
 	private JTextField textField_Createdby;
 	private JTextField textField_Start;
@@ -44,7 +44,7 @@ public class AddEventGUI extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AddEventGUI() {
+	public AddCourse() {
 		setPreferredSize(new Dimension(1366, 768));
 		setSize(new Dimension(1366, 768));
 		setLayout(null);

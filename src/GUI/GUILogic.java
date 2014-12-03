@@ -131,6 +131,9 @@ public class GUILogic {
 				screen.setVisible(false);
 				screen.dispose();
 			}
+			if (e.getSource() == screen.getMainMenu().getAddCourse()){
+				screen.show(Screen.ADDCOURSE);
+			}
 		}
 	}
 	private class AddUserActionListener implements ActionListener {
