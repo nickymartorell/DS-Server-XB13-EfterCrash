@@ -61,13 +61,6 @@ import java.sql.SQLException;
 			lblEvents.setBounds(521, 90, 323, 90);
 			add(lblEvents);
 
-			JLabel lblUpcomingEvent = new JLabel("Upcomming Events:");
-			lblUpcomingEvent.setFont(new Font("Arial", Font.BOLD, 27));
-			lblUpcomingEvent.setForeground(Color.WHITE);
-			lblUpcomingEvent.setBounds(51, 140, 309, 33);
-			add(lblUpcomingEvent);
-
-			
 			//Laver tabellen inde i Eventlisten.
 			String[] columnNames = { "Type", "Location", "Start", "End", "Name" };
 
@@ -149,7 +142,7 @@ import java.sql.SQLException;
 			btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 			btnAdd.setBounds(988, 234, 118, 29);
 			add(btnAdd);
-						//btnAdd.addActionListener();
+						
 			JLabel label = new JLabel("");
 			label.setIcon(new ImageIcon(EventList.class
 								.getResource("/Images/MetalBackground.jpg")));

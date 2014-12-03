@@ -1,8 +1,5 @@
 package model.calendar;
 
-
-
-
 import model.calendar.EventCreator;
 import model.Forecast.ForecastArray;
 import model.Forecast.ForecastTest;
@@ -30,11 +27,8 @@ import model.Model;
 
 public class CalendarMethods extends Model {
 	
-	
 	   private static Gson gson;
 	   private static QueryBuilder qb;
-	 
-	
 
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader = null;
@@ -46,7 +40,7 @@ public class CalendarMethods extends Model {
             char[] chars = new char[1024];
             while ((read = reader.read(chars)) != -1)
                 buffer.append(chars, 0, read);
-
+            
             return buffer.toString();
         } finally {
             if (reader != null)
@@ -125,7 +119,7 @@ public class CalendarMethods extends Model {
             //formatere vores datetime korrekt
             for (int i = 0; i < 120 ; i++)             
             	{
-               
+             
                String startMonthStart = events.getEvents().get(i).getStart().get(1);
                String startMonthEnd = events.getEvents().get(i).getEnd().get(1);
                int realMonthStart = Integer.parseInt(startMonthStart)+1;
