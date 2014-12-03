@@ -64,22 +64,6 @@ public class GUILogic {
 		UserList.lukNed();
 		
 	}
-	/**
-	public void runMenuEventList() {
-
-		screen.show(Screen.MAINMENU);
-		screen.setVisible(true);
-		EventList.lukNed();
-		
-	}
-	public void runLoginEventList() {
-
-		screen.show(Screen.LOGIN);
-		screen.setVisible(true);
-		EventList.lukNed();
-		
-	}
-	*/
 	public void runAddUser() {
 
 		screen.show(Screen.ADDUSER);
@@ -168,7 +152,10 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getAddCourse().getBtnAdd()){
-				screen.show(Screen.ADDCOURSEFORM);
+				//Metode til activiate
+			}
+			if (e.getSource() == screen.getAddCourse().getBtnDelete()){
+				//Metode til deactiviate
 			}
 			
 		}

@@ -33,8 +33,8 @@ import javax.swing.JTextPane;
 	@SuppressWarnings({ "unused", "serial" })
 	public class AddCourse extends JPanel {
 		private JTable table;
-		private final JButton btnAdd = new JButton("Add");
-		private final JButton btnDelete = new JButton("Delete");
+		private final JButton btnAdd = new JButton("Activate");
+		private final JButton btnDelete = new JButton("Deactivate");
 		private final JButton btnMainMenu = new JButton("Main Menu");
 		private final JButton btnLogout = new JButton("Log out");
 
