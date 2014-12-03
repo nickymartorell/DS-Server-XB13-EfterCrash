@@ -99,6 +99,13 @@ public class UserList extends JPanel {
         		  gl.runAddUser();
         	}
         });	  
+        
+        JButton btnActivate = new JButton("Activate");
+        btnActivate.setOpaque(true);
+        btnActivate.setForeground(new Color(0, 0, 205));
+        btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+        btnActivate.setBounds(1019, 475, 118, 29);
+        add(btnActivate);
         btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
