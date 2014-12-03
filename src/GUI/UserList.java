@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -13,14 +15,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
+import databaseMethods.SwitchMethods;
 import model.QueryBuild.QueryBuilder;
  
 public class UserList extends JPanel {
@@ -31,15 +39,17 @@ public class UserList extends JPanel {
 	public static final String ADD = "add";
 	private boolean DEBUG = false;
 	private JButton btnAdd;
-	private JButton btnDelete;
+	private JButton btnDelete; 
 	private JButton btnLogout;
 	private JButton btnMainMenu;
 	private ResultSet rs;
 	private GUILogic gl;
 	public static JFrame frame;
+	public  String urObjctInCell;
+	SwitchMethods sm = new SwitchMethods();
 	
     public UserList() {
-    	
+    	setLayout(null);
     	gl = new GUILogic();
     	setSize(new Dimension(1366, 768));
  
@@ -72,15 +82,54 @@ public class UserList extends JPanel {
         table.setPreferredScrollableViewportSize(new Dimension(500, 70));
         table.setFillsViewportHeight(true);
         table.setRowSelectionAllowed(true);
-        
+        table.addMouseListener(new MouseAdapter() {     
+            public void mouseClicked(final MouseEvent e) {
+            	final JTable target = (JTable)e.getSource();
+                int row = target.getSelectedRow();
+            	final int column = target.getSelectedColumn();
+                if (column == 1) {
+                    // Cast             
+                    if(column == 1){                   	
+                    urObjctInCell = (String)target.getValueAt(row, column);
+                    System.out.println(urObjctInCell);                 
+                    }
+                }
+            }
+        });      
         if (DEBUG) {
             table.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
                     printDebugData(table);
                 }
             });
-        }
-        setLayout(null);
+        }     
+
+
+        
+        
+        JButton btnDelete = new JButton("Delete");
+        btnDelete.setOpaque(true);
+        btnDelete.setForeground(new Color(0, 0, 205));
+        btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+        btnDelete.setBounds(1019, 515, 118, 29);
+        add(btnDelete);
+        btnDelete.addActionListener(new ActionListener() {
+        	
+        		public void actionPerformed(ActionEvent arg0) {
+        		
+        	       try {   	    	  
+        							sm.deleteUser(urObjctInCell);
+        							frame.repaint();
+        						} catch (SQLException e1) {
+        					
+        							e1.printStackTrace();
+        			             }
+        			            };
+        			        } ); 
+    
+
+
+       
  
         //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(table);
@@ -109,10 +158,7 @@ public class UserList extends JPanel {
         btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
-        
-
-      
-        
+    
         btnAdd.setBounds(1019, 556, 118, 29);
         add(btnAdd);
         
@@ -153,13 +199,7 @@ public class UserList extends JPanel {
 
         add(lblUserlist);
         
-        JButton btnDelete = new JButton("Delete");
-        btnDelete.setOpaque(true);
-        btnDelete.setForeground(new Color(0, 0, 205));
-        btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-        btnDelete.setBounds(1019, 515, 118, 29);
-        add(btnDelete);
-        
+
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setIcon(new ImageIcon(UserList.class.getResource("/Images/CBSLogo3.png")));
         lblNewLabel.setBounds(36, 695, 223, 67);

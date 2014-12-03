@@ -34,6 +34,22 @@ public class SwitchMethods extends Model
 		qb.insertInto("users", field).values(values).Execute();
 		return true;
 	}
+	
+	public boolean deleteUser(String eMail) throws SQLException {
+		
+		String [] keys = {"active"};
+		String [] values = {"0"};
+		
+		
+//		qb.selectFrom(values, tableName)
+//		resultSet= qb.selectFrom("cbscalendar").where("name", "=", newCalendarName).ExecuteQuery();
+		
+		qb.update("users", keys, values).where("email", "=", eMail).Execute();
+		
+		System.out.println("Succesfully removed: "+ eMail);
+	
+		return true;
+	}
 
 	public String createNewCalendar (String userName, String calendarName, int privatePublic) throws SQLException
 	{
@@ -47,14 +63,10 @@ public class SwitchMethods extends Model
 		else
 		{
 			stringToBeReturned = "The new calender has not been created!";
-		}
-		
-		
+		}	
 		return stringToBeReturned;
 	}
-	
-	
-	
+
 	public boolean authenticateNewCalendar(String newCalendarName) throws SQLException
 	{
 		getConn();
@@ -117,12 +129,8 @@ public class SwitchMethods extends Model
 		while(resultSet.next()){
 			stringToBeReturned += resultSet.toString();
 		}
-		
-		
 		return stringToBeReturned;
 	}
-
-	
 	public String GetNote(String eventId) throws SQLException
 	{
 		String stringToBeReturned ="";
@@ -174,13 +182,9 @@ public class SwitchMethods extends Model
 		{
 			stringToBeReturned = "The calender you are trying to delete, does not exists.";
 		}
-		
-		
-		
 		return stringToBeReturned;
 	}
-	
-	
+
 	// Metoden faar email og password fra switchen (udtrukket fra en json) samt en boolean der skal saettes til true hvis det er serveren der logger paa, og false hvis det er en klient
 	/**
 	 * Allows the client to log in
@@ -231,9 +235,7 @@ public class SwitchMethods extends Model
 			return "1"; // returnerer fejlkoden "1" hvis email ikke findes
 		}
 	}
-	
 
-	
 	public String createEvents(String createdBy, String startTime, String endTime, String name, String text, int active) throws SQLException{
 		String stringToBeReturned = "";
 		testConnection();
@@ -247,9 +249,6 @@ public class SwitchMethods extends Model
 		}
 		return stringToBeReturned;
 	}
-
-//IKKE SIKKER PÅ AT DET ER KORREKT DET HER, tjek databasen!! 
-
 	private void addNewEvent(String createdBy, String startTime, String endTime, String name, String text, int active) throws SQLException {
 		String [] keys = {"Name", "title", "type", "description", "location","createdby","activityID"};
 		String [] values = {name, startTime, endTime, text, createdBy};
@@ -257,7 +256,7 @@ public class SwitchMethods extends Model
 		
 	}
 
-//IKKE SIKKER PÅ AT DET ER KORREKT
+
 
 	private boolean autenticateNewEvent(String eventName) throws SQLException {
 		getConn();
