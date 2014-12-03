@@ -38,12 +38,9 @@ public class GUILogic {
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddCourse().addActionListener(new AddCourseActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
-<<<<<<< HEAD
-		screen.getAddCourseForm().addActionListener(new AddCouseFormActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
-=======
-		screen.getAddEvent().addActionListener(new AddCouseFormActionListener());
->>>>>>> origin/master
+		screen.getAddEvent().addActionListener(new AddEventActionListener());
+
 		
 
 		
@@ -169,7 +166,7 @@ public class GUILogic {
 			
 		}
 	}
-	private class AddCouseFormActionListener implements ActionListener {
+	private class AddEventActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddEvent().getBtnLogout()){
 				screen.show(Screen.LOGIN);
@@ -205,7 +202,7 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getEventlist().getBtnAdd()){
-				screen.show(Screen.ADDCOURSEFORM);
+				screen.show(Screen.ADDEVENT);
 			}
 			if (e.getSource() == screen.getEventlist().getBtnDelete()){
 				screen.show(Screen.MAINMENU);
