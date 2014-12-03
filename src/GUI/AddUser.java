@@ -151,7 +151,7 @@ public class AddUser extends JPanel {
 	}
 
 	public JTextField getTextField_Type() {
-		return textField_Type;
+		return getTextField_Type();
 	}
 
 	public JTextField getTextField_Password() {

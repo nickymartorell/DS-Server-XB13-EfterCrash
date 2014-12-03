@@ -13,6 +13,7 @@ public class SwitchMethods extends Model
 	QOTDModel qm = new QOTDModel();
 	Gson gson = new Gson();
 	
+	
 
 	
 	/**
@@ -38,19 +39,21 @@ public class SwitchMethods extends Model
 	public boolean deleteUser(String eMail) throws SQLException {
 		
 		String [] keys = {"active"};
-		String [] values = {"0"};
-		
-		
-//		qb.selectFrom(values, tableName)
-//		resultSet= qb.selectFrom("cbscalendar").where("name", "=", newCalendarName).ExecuteQuery();
-		
-		qb.update("users", keys, values).where("email", "=", eMail).Execute();
-		
-		System.out.println("Succesfully removed: "+ eMail);
+		String [] values = {"0"};	
+		qb.update("users", keys, values).where("email", "=", eMail).Execute();	
+		System.out.println("Succesfully deactivated: "+ eMail);
+		return true;
+	}	
 	
+	public boolean activateUser(String eMail) throws SQLException {
+		
+		String [] keys = {"active"};
+		String [] values = {"1"};	
+		qb.update("users", keys, values).where("email", "=", eMail).Execute();	
+		System.out.println("Succesfully activated: "+ eMail);
 		return true;
 	}
-
+	
 	public String createNewCalendar (String userName, String calendarName, int privatePublic) throws SQLException
 	{
 		String stringToBeReturned ="";

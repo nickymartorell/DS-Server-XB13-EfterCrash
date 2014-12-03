@@ -52,61 +52,55 @@ public class UserList extends JPanel {
     	setLayout(null);
     	gl = new GUILogic();
     	setSize(new Dimension(1366, 768));
- 
-        String[] columnNames = {"UserID",
-                                "Email",
-                                "Active",
-                                "Created datetime",
-                                "Password"};
+    	buildTable();
+    }
+        public void buildTable() {
+        	String[] columnNames = {"UserID",
+                    "Email",
+                    "Active",
+                    "Created datetime",
+                    "Password"};
 
-        	Object[][] data = new Object[200][200];
+Object[][] data = new Object[200][200];
 
-        try {
-			QueryBuilder qb = new QueryBuilder();
-			rs = qb.selectFrom("users").all().ExecuteQuery();
-			
-	        int count = 0;
-	        while (rs.next()) {
-	        	data[count][0] = rs.getInt("userid");
-	        	data[count][1] = rs.getString("email");
-	        	data[count][4] = rs.getString("password");
-	        	data[count][2] = rs.getBoolean("active");
-	        	data[count][3] = rs.getBoolean("admin");
-	        	count++;
-	        }
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+try {
+QueryBuilder qb = new QueryBuilder();
+rs = qb.selectFrom("users").all().ExecuteQuery();
 
-        final JTable table = new JTable(data, columnNames);
-        table.setPreferredScrollableViewportSize(new Dimension(500, 70));
-        table.setFillsViewportHeight(true);
-        table.setRowSelectionAllowed(true);
-        table.addMouseListener(new MouseAdapter() {     
-            public void mouseClicked(final MouseEvent e) {
-            	final JTable target = (JTable)e.getSource();
-                int row = target.getSelectedRow();
-            	final int column = target.getSelectedColumn();
-                if (column == 1) {
-                    // Cast             
-                    if(column == 1){                   	
-                    urObjctInCell = (String)target.getValueAt(row, column);
-                    System.out.println(urObjctInCell);                 
-                    }
-                }
-            }
-        });      
-        if (DEBUG) {
-            table.addMouseListener(new MouseAdapter() {
-                public void mouseClicked(MouseEvent e) {
-                    printDebugData(table);
-                }
-            });
-        }     
+int count = 0;
+while (rs.next()) {
+	data[count][0] = rs.getInt("userid");
+	data[count][1] = rs.getString("email");
+	data[count][4] = rs.getString("password");
+	data[count][2] = rs.getBoolean("active");
+	data[count][3] = rs.getBoolean("admin");
+	count++;
+}
+} catch (SQLException e1) {
+e1.printStackTrace();
+}
 
+final JTable table = new JTable(data, columnNames);
+table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+table.setFillsViewportHeight(true);
+table.setRowSelectionAllowed(true);
+table.addMouseListener(new MouseAdapter() {     
+public void mouseClicked(final MouseEvent e) {
+	final JTable target = (JTable)e.getSource();
+    int row = target.getSelectedRow();
+    //column sat til 1 for altid at bruge email
+     urObjctInCell = (String)target.getValueAt(row, 1);
+     System.out.println(urObjctInCell);                         
+}
+});      
+if (DEBUG) {
+table.addMouseListener(new MouseAdapter() {
+    public void mouseClicked(MouseEvent e) {
+        printDebugData(table);
+    }
+});
+}     
 
-        
-        
         JButton btnDelete = new JButton("Delete");
         btnDelete.setOpaque(true);
         btnDelete.setForeground(new Color(0, 0, 205));
@@ -119,7 +113,7 @@ public class UserList extends JPanel {
         		
         	       try {   	    	  
         							sm.deleteUser(urObjctInCell);
-        							frame.repaint();
+        						
         						} catch (SQLException e1) {
         					
         							e1.printStackTrace();
@@ -127,10 +121,6 @@ public class UserList extends JPanel {
         			            };
         			        } ); 
     
-
-
-       
- 
         //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255, 255), new Color(0, 0, 205), new Color(255, 255, 255)), new MatteBorder(1, 1, 1, 1, (Color) new Color(255, 255, 255))));
@@ -155,10 +145,23 @@ public class UserList extends JPanel {
         btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
         btnActivate.setBounds(1019, 475, 118, 29);
         add(btnActivate);
+        btnActivate.addActionListener(new ActionListener() { 	
+    		public void actionPerformed(ActionEvent arg0) {
+    		
+    	       try {   	    	  
+    							sm.activateUser(urObjctInCell);  							
+    						} catch (SQLException e1) {
+    					
+    							e1.printStackTrace();
+    			             }
+    			            };
+    			        } ); 
+        
+        
+        
         btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
-    
         btnAdd.setBounds(1019, 556, 118, 29);
         add(btnAdd);
         
