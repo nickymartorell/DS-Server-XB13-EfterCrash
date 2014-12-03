@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
 
 @SuppressWarnings({ "unused", "serial" })
-public class AddCourseForm extends JPanel {
+public class AddEvent extends JPanel {
 	private JTextField textField_Location;
 	private JTextField textField_Createdby;
 	private JTextField textField_Start;
@@ -44,7 +44,7 @@ public class AddCourseForm extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AddCourseForm() {
+	public AddEvent() {
 		setPreferredSize(new Dimension(1366, 768));
 		setSize(new Dimension(1366, 768));
 		setLayout(null);
@@ -178,9 +178,7 @@ public class AddCourseForm extends JPanel {
 								lblType.setFont(new Font("Arial", Font.BOLD, 26));
 								lblType.setBounds(483, 471, 159, 31);
 								add(lblType);
-						//=======
-						
-						//>>>>>>> FETCH_HEAD
+				
 								
 								JLabel lblBackground = new JLabel("");
 								lblBackground.setSize(new Dimension(1366, 768));

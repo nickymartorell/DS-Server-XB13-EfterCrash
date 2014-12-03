@@ -83,7 +83,7 @@ import java.sql.SQLException;
 		        	data[count][1] = rs.getString("location");
 		        	data[count][4] = rs.getDate("start");
 		        	data[count][2] = rs.getDate("end");
-		        	data[count][3] = rs.getString("name");
+		        	data[count][3] = rs.getString("description");
 		        	count++;
 		        }
 			} catch (SQLException e1) {

@@ -58,7 +58,7 @@ public class UserList extends JPanel {
         	String[] columnNames = {"UserID",
                     "Email",
                     "Active",
-                    "Created datetime",
+                    "Admin",
                     "Password"};
 
 Object[][] data = new Object[200][200];

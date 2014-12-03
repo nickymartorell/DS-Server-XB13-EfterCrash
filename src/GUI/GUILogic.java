@@ -22,6 +22,7 @@ public class GUILogic {
 	private Screen screen;
 	private boolean u;
 	private boolean full = false;
+	SwitchMethods sm = new SwitchMethods();
 
 	
 
@@ -37,8 +38,12 @@ public class GUILogic {
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddCourse().addActionListener(new AddCourseActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
+<<<<<<< HEAD
 		screen.getAddCourseForm().addActionListener(new AddCouseFormActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
+=======
+		screen.getAddEvent().addActionListener(new AddCouseFormActionListener());
+>>>>>>> origin/master
 		
 
 		
@@ -166,10 +171,26 @@ public class GUILogic {
 	}
 	private class AddCouseFormActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == screen.getAddCourseForm().getBtnLogout()){
+			if (e.getSource() == screen.getAddEvent().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
-			if (e.getSource() == screen.getAddCourseForm().getBtnMainMenu()){
+			if (e.getSource() == screen.getAddEvent().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getAddEvent().getBtnSubmit()){
+				System.out.println("fritter");
+				String location = screen.getAddEvent().getTextField_Location().getText();
+				String cb = screen.getAddEvent().getTextField_Createdby().getText();
+				String start = screen.getAddEvent().getTextField_Start().getText();
+				String end = screen.getAddEvent().getTextField_End().getText();
+				String name = screen.getAddEvent().getTextField_Name().getText();
+				String type = screen.getAddEvent().getTextField_Type().getText();
+				try {
+					sm.addNewEvent(cb,type , start, end, name,location );
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				screen.show(Screen.MAINMENU);
 			}
 		}
