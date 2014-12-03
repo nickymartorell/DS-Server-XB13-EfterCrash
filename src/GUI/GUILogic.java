@@ -35,7 +35,7 @@ public class GUILogic {
 		screen.getNoteList().addActionListener(new NoteListActionListener());
 		//screen.getUserList().addActionListener(new UserListActionListener());
 		//screen.getEventlist().addActionListener(new EventListActionListener());
-		//screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
+		screen.getAddCourse().addActionListener(new AddCourseActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		
 
@@ -158,7 +158,17 @@ public class GUILogic {
 		
 			}
 		}
-	
-	
+	private class AddCourseActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getAddCourse().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getAddCourse().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+		}
+	}
 }
+	
+
 
