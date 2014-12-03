@@ -369,33 +369,4 @@ public class SwitchMethods extends Model
 		
 		return stringToBeReturned; //tjekke om event ID 
 	}
-
-
-
-	
 	}
-
-
-
-	
-	
-
-
-	
-		
-	
-
-
-	
-	
-
-	
-
-
-	
-	
-	
-
-
-	
-

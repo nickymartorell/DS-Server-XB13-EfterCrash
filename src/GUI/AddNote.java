@@ -156,23 +156,6 @@ public class AddNote extends JPanel {
 		return textField_Start;
 	}
 
-	public JTextField getTextField_End() {
-		return textField_End;
-	}
-
-	public JTextField getTextField_Name() {
-		return textField_Name;
-	}
-
-	public JTextField getTextField_Text() {
-		return textField_Text;
-	}
-	
-
-	public JTextField getTextField_Type() {
-		return textField_Type;
-	}
-
 	public JButton getBtnSubmit() {
 		return btnSubmit;
 	}
