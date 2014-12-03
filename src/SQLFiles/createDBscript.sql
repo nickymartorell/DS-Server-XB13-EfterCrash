@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS quote
 );
 
 DROP TABLE notes;
-
+--created datetime NOT NULL,
 CREATE TABLE IF NOT EXISTS notes
 (
 	noteid int NOT NULL AUTO_INCREMENT,
 	eventid int NOT NULL,
 	text text,
-	--created datetime NOT NULL,
+	
 	createdby VARCHAR(100),
 	isActive boolean,
 	PRIMARY KEY (noteid)

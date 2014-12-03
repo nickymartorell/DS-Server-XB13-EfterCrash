@@ -18,9 +18,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 
+import databaseMethods.SwitchMethods;
+
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
+import java.sql.SQLException;
 
 @SuppressWarnings("unused")
 public class AddUser extends JPanel {
@@ -36,6 +39,7 @@ public class AddUser extends JPanel {
 	private JLabel lblCBSlogo;
 	private JButton btnMainMenu;
 	private JLabel lblUserInfo;
+	SwitchMethods sm = new SwitchMethods();
 	
 
 	/**
@@ -105,8 +109,16 @@ public class AddUser extends JPanel {
 		btnSubmit.setFont(new Font("Arial", Font.BOLD, 30));
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			//Submit changes to databases
-			//hvad sker der n�r �ndringer ved en bruger submittes
+		
+				String eMail = getTextField_Email().getText();
+				String password =getTextField_Password().getText();
+				
+				try {
+					sm.newUser(eMail,password);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		);
@@ -134,20 +146,12 @@ public class AddUser extends JPanel {
 				lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
 				lblBackground.setBounds(0, 0, 1366, 768);
 				add(lblBackground);
-		
-		
-
-	}
-	
-	
+	}	
 	public void addActionListener(ActionListener l) {
 		btnSubmit.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 	}
-
-	
-
 	public JTextField getTextField_Email() {
 		return textField_Email;
 	}
