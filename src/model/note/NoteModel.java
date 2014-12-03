@@ -19,7 +19,7 @@ public class NoteModel {
 	private int isActive;
 	private int eventID;
 	
-	public NoteModel(int noteID, String text, String dateTime, String createdBy, int isActive, int eventID) {
+	public NoteModel(int noteID, String text, String dateTime, int isActive, int eventID, String createdBy) {
 		super();
 		this.noteID = noteID;
 		this.text = text;
@@ -27,10 +27,7 @@ public class NoteModel {
 		this.createdBy = createdBy;
 		this.isActive = isActive;
 		this.eventID = eventID;
-		
-		
 	}
-	
 	public int getEventID() {
 		return eventID;
 	}
