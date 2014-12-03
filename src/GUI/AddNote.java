@@ -33,12 +33,6 @@ public class AddNote extends JPanel {
 	private JButton btnMainMenu;
 	private JLabel lblUserInfo;
 	private JLabel lblName;
-	private JLabel lblText;
-	private JTextField textField_End;
-	private JTextField textField_Name;
-	private JTextField textField_Text;
-	private JLabel lblType;
-	private JTextField textField_Type;
 
 	/**
 	 * Create the panel.
@@ -59,37 +53,37 @@ public class AddNote extends JPanel {
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(599, 637, 143, 59);
+		btnLogout.setBounds(594, 540, 185, 59);
 		add(btnLogout);
 
 		textField_Location = new JTextField();
 		textField_Location.setForeground(new Color(105, 105, 105));
 		textField_Location.setColumns(10);
-		textField_Location.setBounds(755, 191, 120, 34);
+		textField_Location.setBounds(594, 191, 281, 34);
 		add(textField_Location);
 
-		JLabel lblEmail = new JLabel("Text");
+		JLabel lblEmail = new JLabel("Text:");
 		lblEmail.setForeground(new Color(255, 255, 255));
-		lblEmail.setFont(new Font("Arial", Font.BOLD, 26));
-		lblEmail.setBounds(483, 195, 131, 30);
+		lblEmail.setFont(new Font("Arial", Font.BOLD, 35));
+		lblEmail.setBounds(473, 281, 131, 30);
 		add(lblEmail);
 
 		textField_Createdby = new JTextField();
 		textField_Createdby.setForeground(new Color(105, 105, 105));
 		textField_Createdby.setColumns(10);
-		textField_Createdby.setBounds(755, 236, 120, 34);
+		textField_Createdby.setBounds(594, 236, 281, 34);
 		add(textField_Createdby);
 
-		JLabel lblTeam = new JLabel("Created by:");
-		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
+		JLabel lblTeam = new JLabel("Title:");
+		lblTeam.setFont(new Font("Arial", Font.BOLD, 35));
 		lblTeam.setForeground(new Color(255, 255, 255));
-		lblTeam.setBounds(483, 242, 159, 31);
+		lblTeam.setBounds(473, 236, 90, 31);
 		add(lblTeam);
 
 		textField_Start = new JTextField();
 		textField_Start.setForeground(new Color(105, 105, 105));
 		textField_Start.setColumns(10);
-		textField_Start.setBounds(755, 285, 120, 34);
+		textField_Start.setBounds(594, 285, 281, 100);
 		add(textField_Start);
 
 		btnSubmit = new JButton("Create note");
@@ -105,7 +99,7 @@ public class AddNote extends JPanel {
 			}
 		}
 		);
-		btnSubmit.setBounds(553, 544, 239, 43);
+		btnSubmit.setBounds(594, 396, 185, 43);
 		add(btnSubmit);
 
 		
@@ -115,7 +109,7 @@ public class AddNote extends JPanel {
 				btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
 				btnMainMenu.setContentAreaFilled(false);
 				btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-				btnMainMenu.setBounds(586, 591, 164, 44);
+				btnMainMenu.setBounds(594, 450, 185, 44);
 				add(btnMainMenu);
 				
 				lblUserInfo = new JLabel("Create note");
@@ -126,45 +120,9 @@ public class AddNote extends JPanel {
 						
 						lblName = new JLabel("Name:");
 						lblName.setForeground(Color.WHITE);
-						lblName.setFont(new Font("Arial", Font.BOLD, 26));
-						lblName.setBounds(483, 379, 159, 31);
+						lblName.setFont(new Font("Arial", Font.BOLD, 35));
+						lblName.setBounds(474, 191, 110, 31);
 						add(lblName);
-								
-								lblText = new JLabel("Text:");
-								lblText.setForeground(Color.WHITE);
-								lblText.setFont(new Font("Arial", Font.BOLD, 26));
-								lblText.setBounds(483, 429, 159, 31);
-								add(lblText);
-								
-								textField_End = new JTextField();
-								textField_End.setForeground(SystemColor.controlDkShadow);
-								textField_End.setColumns(10);
-								textField_End.setBounds(755, 332, 120, 34);
-								add(textField_End);
-								
-								textField_Name = new JTextField();
-								textField_Name.setForeground(SystemColor.controlDkShadow);
-								textField_Name.setColumns(10);
-								textField_Name.setBounds(755, 379, 120, 34);
-								add(textField_Name);
-								
-								textField_Text = new JTextField();
-								textField_Text.setForeground(SystemColor.controlDkShadow);
-								textField_Text.setColumns(10);
-								textField_Text.setBounds(755, 426, 120, 34);
-								add(textField_Text);
-								
-								textField_Type = new JTextField();
-								textField_Type.setForeground(SystemColor.controlDkShadow);
-								textField_Type.setColumns(10);
-								textField_Type.setBounds(755, 473, 120, 34);
-								add(textField_Type);
-								
-								lblType = new JLabel("Type:");
-								lblType.setForeground(Color.WHITE);
-								lblType.setFont(new Font("Arial", Font.BOLD, 26));
-								lblType.setBounds(483, 471, 159, 31);
-								add(lblType);
 						//=======
 						
 						//>>>>>>> FETCH_HEAD
