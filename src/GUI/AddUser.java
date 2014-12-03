@@ -36,6 +36,7 @@ public class AddUser extends JPanel {
 	private JLabel lblCBSlogo;
 	private JButton btnMainMenu;
 	private JLabel lblUserInfo;
+	
 
 	/**
 	 * Create the panel.
@@ -137,6 +138,7 @@ public class AddUser extends JPanel {
 		
 
 	}
+	
 	
 	public void addActionListener(ActionListener l) {
 		btnSubmit.addActionListener(l);

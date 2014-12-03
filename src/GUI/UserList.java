@@ -94,6 +94,11 @@ public class UserList extends JPanel {
         add(scrollPane);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		  gl.runAddUser();
+        	}
+        });	  
         btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
