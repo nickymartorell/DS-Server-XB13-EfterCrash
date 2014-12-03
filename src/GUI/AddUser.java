@@ -1,5 +1,7 @@
 package GUI;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -38,6 +40,9 @@ public class AddUser extends JPanel {
 	private JLabel lblCBSlogo;
 	private JButton btnMainMenu;
 	private JLabel lblUserInfo;
+	public static JFrame frame;
+
+	
 	SwitchMethods sm = new SwitchMethods();
 	
 
@@ -85,7 +90,7 @@ public class AddUser extends JPanel {
 		JLabel lblTeam = new JLabel("Password:");
 		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
 		lblTeam.setForeground(new Color(255, 255, 255));
-		lblTeam.setBounds(479, 264, 127, 30);
+		lblTeam.setBounds(479, 264, 139, 30);
 		add(lblTeam);
 
 		btnSubmit = new JButton("Create User");
@@ -102,6 +107,8 @@ public class AddUser extends JPanel {
 				
 				try {
 					sm.newUser(eMail,password);
+					JOptionPane.showMessageDialog(frame,
+						    "User created!");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
