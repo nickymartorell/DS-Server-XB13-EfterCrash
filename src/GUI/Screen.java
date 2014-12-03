@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -30,6 +31,7 @@ public class Screen extends JFrame {
 	public static final String EVENTLIST = "EVENTLIST";
 	public static final String ADDCOURSE = "ADDCOURSE";
 	public static final String ADDUSER = "ADDUSER";
+	public static final String ADDCOURSEFORM = "ADDCOURSEFORM";
 	
 	private JPanel contentPane;
 	public Login login;
@@ -40,6 +42,8 @@ public class Screen extends JFrame {
 	private  EventList eventList;
 	private AddCourse addCourse;
 	private  AddUser addUser; 
+	private AddCourseForm addCourseForm;
+	
 	CardLayout c;
 
 
@@ -95,6 +99,9 @@ public class Screen extends JFrame {
 		addUser = new AddUser();
 		contentPane.add(addUser, ADDUSER);
 		
+		addCourseForm = new AddCourseForm();
+		contentPane.add(addCourseForm, ADDCOURSEFORM);
+		
 		c = (CardLayout) getContentPane().getLayout();
 		
 		
@@ -130,5 +137,8 @@ public class Screen extends JFrame {
 	}
 	public AddUser getAddUser() {
 		return addUser;
+	}
+	public AddCourseForm getAddCourseForm() {
+		return addCourseForm;
 	}
 }
