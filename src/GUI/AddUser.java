@@ -32,7 +32,6 @@ public class AddUser extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField textField_Email;
-	private JTextField textField_Type;
 	private JTextField textField_Password;
 	private JButton btnSubmit;
 	private JButton btnLogout;
@@ -61,7 +60,7 @@ public class AddUser extends JPanel {
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(630, 506, 117, 43);
+		btnLogout.setBounds(634, 522, 117, 43);
 		add(btnLogout);
 
 		textField_Email = new JTextField();
@@ -71,34 +70,22 @@ public class AddUser extends JPanel {
 		add(textField_Email);
 		textField_Email.setColumns(10);
 
-		JLabel lblUserID = new JLabel("Email");
+		JLabel lblUserID = new JLabel("Email:");
 		lblUserID.setForeground(new Color(255, 255, 255));
 		lblUserID.setFont(new Font("Arial", Font.BOLD, 26));
-		lblUserID.setBounds(483, 211, 104, 30);
+		lblUserID.setBounds(479, 211, 104, 30);
 		add(lblUserID);
-
-		textField_Type = new JTextField();
-		textField_Type.setForeground(new Color(105, 105, 105));
-		textField_Type.setColumns(10);
-		textField_Type.setBounds(723, 260, 218, 34);
-		add(textField_Type);
-
-		JLabel lblEmail = new JLabel("Type");
-		lblEmail.setForeground(new Color(255, 255, 255));
-		lblEmail.setFont(new Font("Arial", Font.BOLD, 26));
-		lblEmail.setBounds(483, 257, 109, 30);
-		add(lblEmail);
 
 		textField_Password = new JTextField();
 		textField_Password.setForeground(new Color(105, 105, 105));
 		textField_Password.setColumns(10);
-		textField_Password.setBounds(723, 306, 218, 34);
+		textField_Password.setBounds(723, 259, 218, 34);
 		add(textField_Password);
 
-		JLabel lblTeam = new JLabel("Password");
+		JLabel lblTeam = new JLabel("Password:");
 		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
 		lblTeam.setForeground(new Color(255, 255, 255));
-		lblTeam.setBounds(483, 303, 127, 30);
+		lblTeam.setBounds(479, 264, 127, 30);
 		add(lblTeam);
 
 		btnSubmit = new JButton("Create User");
@@ -122,7 +109,7 @@ public class AddUser extends JPanel {
 			}
 		}
 		);
-		btnSubmit.setBounds(570, 425, 239, 43);
+		btnSubmit.setBounds(573, 413, 239, 43);
 		add(btnSubmit);
 
 		
@@ -138,7 +125,7 @@ public class AddUser extends JPanel {
 				lblUserInfo = new JLabel("Create user");
 				lblUserInfo.setForeground(Color.WHITE);
 				lblUserInfo.setFont(new Font("Arial", Font.BOLD, 78));
-				lblUserInfo.setBounds(451, 90, 464, 90);
+				lblUserInfo.setBounds(479, 94, 464, 90);
 				add(lblUserInfo);
 								
 				JLabel lblBackground = new JLabel("");
