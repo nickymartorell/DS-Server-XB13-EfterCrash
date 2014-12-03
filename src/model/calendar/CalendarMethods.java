@@ -52,6 +52,59 @@ public class CalendarMethods extends Model {
             if (reader != null)
                 reader.close();
         }
+    }   
+    
+    //Switch som sortere fagene under besmemte ID'er
+    public int sortCalendarId (String activityid)
+    {
+    	int sel = 0;
+    	
+    	switch(activityid) {
+    	
+    			//Makrooekonomi (LA)
+    			case "BINTO1035U_LA_E14":
+    			sel = 1;
+    			break;
+    			
+    			//Makrooekonomi (XB)
+    			case "BINTO1035U_XB_E14":
+    			sel = 2;
+    			break;
+    			
+    			//Makrooekonomi (XA)
+    			case "BINTO1035U_XA_E14":
+    			sel = 3;
+    			break;
+    			
+    			//Distribuerede systemer (LA)
+    			case "BINTO1067U_LA_E14":
+    			sel = 4;
+    			break;
+    			
+    			//Virksomhedens oekonomiske styring (3) (LA)
+    			case "BINTO1051U_LA_E14":
+    			sel = 5;
+    			break;
+    			
+    			//Ledelse af IS - forandring, innovation og viden (LA)
+    			case "BINTO1056U_LA_E14":
+    			sel = 6;
+    			break;
+    			
+    			//Ledelse af IS - forandring, innovation og viden (XB)
+    			case "BINTO1056U_XB_E14":
+    			sel = 7;
+    			break;
+    			
+    			//Ledelse af IS - forandring, innovation og viden (XA)
+    			case "BINTO1056U_XA_E14":
+    			sel = 8;
+    			break;
+		
+    			default:
+    			sel = 0;
+    	}
+    			return sel;
     }
     
     public void export2Database () {
@@ -62,7 +115,7 @@ public class CalendarMethods extends Model {
             qb = new QueryBuilder();
             
             //Field i data
-            String[] fields = {"id","location","start","end","type","activityid","createdby"};
+            String[] fields = {"id","type","activityid","location","createdby","start","end","description","calendarid"};
             
             //formatering af datetime
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -98,15 +151,20 @@ public class CalendarMethods extends Model {
                 
                 Date endDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(end);
                 String strEnd = sdf.format(endDate);
-
+                
+               //deler fagene op i id'er
+               int x = sortCalendarId(events.getEvents().get(i).getActivityid());
+               String calid = Integer.toString(x);
 
                String[] values = {  events.getEvents().get(i).getId(), //INT
-            		   				events.getEvents().get(i).getLocation(), //VARCHAR
-            		   				strStart, //DATETIME
-            		   				strEnd, //DATETIME
-            		   				events.getEvents().get(i).getCreatedby(),//VARCHAR
             		   				events.getEvents().get(i).getType(), //VARCHAR 
             		   				events.getEvents().get(i).getActivityid(), //VARCHAR
+            		   				events.getEvents().get(i).getLocation(), //VARCHAR
+            		   				events.getEvents().get(i).getCreatedby(),//VARCHAR
+            		   				strStart, //DATETIME
+            		   				strEnd, //DATETIME
+            		   				events.getEvents().get(i).getDescription(), //VARCHAR  
+            		   				calid //VARCHAR
             		   				
             };
                qb.insertInto("events", fields).values(values).Execute();	             		       

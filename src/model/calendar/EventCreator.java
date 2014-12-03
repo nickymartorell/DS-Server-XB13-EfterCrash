@@ -29,22 +29,23 @@ public class EventCreator extends Model {
 				//String values from SQL database (must be created)
 				int id = rs.getInt("id");
 				String type = rs.getString("type");
+				String ai = rs.getString("activityid");
 				String location = rs.getString("location");
+				String cb = rs.getString("createdby");
 				Date startDate = rs.getDate("start");
 				Time startTime = rs.getTime("start");			
 				Date endDate = rs.getDate("end");
-				Time endTime = rs.getTime("end");
-				String ai = rs.getString("activityid");
-				String cb = rs.getString("createdby");
-				String name = rs.getString("name");
+				Time endTime = rs.getTime("end");				
+				String desc = rs.getString("description");
+				int calendarId = rs.getInt("calendarid");
 				
 				
 				String stringEventID = String.valueOf(id);
 				String stringType = String.valueOf(type);
-				String stringLocation = String.valueOf(location);
-				String stringAi = String.valueOf(ai);
+				String StringaId = String.valueOf(ai);
+				String stringLocation = String.valueOf(location);				
 				String StringCb = String.valueOf(cb);
-				String StringName = String.valueOf(name);
+					
 				
 				String stringStartDate = String.valueOf(startDate);
 				String stringStartTime = String.valueOf(startTime);				
@@ -56,11 +57,12 @@ public class EventCreator extends Model {
 				
 				ArrayList<String> alEnd = new ArrayList<String>();
 				alEnd.add(stringEndDate + "" + stringEndTime);
+		
+				String Stringdesc = String.valueOf(desc);
 				
-				
-				System.out.println(String.valueOf(startDate.getTime()));
-				
-				events.add(new Event(StringName,stringEventID,stringType,stringLocation,stringAi,StringCb, alStart,alEnd));				
+				String Stringcalid = String.valueOf(calendarId);
+						
+				events.add(new Event(stringEventID,stringType,StringaId,stringLocation,StringCb,alStart,alEnd,Stringdesc,Stringcalid));				
 			}
 			
 		} catch (SQLException e) {

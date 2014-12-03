@@ -7,16 +7,20 @@ DROP TABLE events;
 CREATE TABLE IF NOT EXISTS events
 (
 	id int NOT NULL AUTO_INCREMENT,
-	type VARCHAR(100) NOT NULL,
-	activityid varchar(255) NOT NULL,
+	type VARCHAR(100),
+	activityid varchar(255),
 	location VARCHAR (100),
 	createdby varchar(255),
-	start datetime NOT NULL,
-	end datetime NOT NULL,
+	start datetime,
+	end datetime,
+	description VARCHAR (200),
+	calendarid VARCHAR (200),
 	PRIMARY KEY (id)
 );
-
 set global max_connections = 2000000000;
+
+
+
 CREATE TABLE users (
   userid int(11) NOT NULL AUTO_INCREMENT,
   email varchar(40) NOT NULL,
