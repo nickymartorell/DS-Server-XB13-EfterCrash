@@ -42,7 +42,7 @@ public class Screen extends JFrame {
 	private  EventList eventList;
 	private AddCourse addCourse;
 	private  AddUser addUser; 
-	private AddCourseForm addCourseForm;
+	private AddEvent addCourseForm;
 	
 	CardLayout c;
 
@@ -99,7 +99,7 @@ public class Screen extends JFrame {
 		addUser = new AddUser();
 		contentPane.add(addUser, ADDUSER);
 		
-		addCourseForm = new AddCourseForm();
+		addCourseForm = new AddEvent();
 		contentPane.add(addCourseForm, ADDCOURSEFORM);
 		
 		c = (CardLayout) getContentPane().getLayout();
@@ -138,7 +138,7 @@ public class Screen extends JFrame {
 	public AddUser getAddUser() {
 		return addUser;
 	}
-	public AddCourseForm getAddCourseForm() {
+	public AddEvent getAddEvent() {
 		return addCourseForm;
 	}
 }

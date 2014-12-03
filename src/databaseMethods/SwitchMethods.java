@@ -239,12 +239,12 @@ public class SwitchMethods extends Model
 		}
 	}
 
-	public String createEvents(String createdBy, String startTime, String endTime, String name, String text, int active) throws SQLException{
+	public String createEvents(String location,String  cb,String  start,String  end,String  name,String  type) throws SQLException{
 		String stringToBeReturned = "";
 		testConnection();
 		
 		if(autenticateNewEvent(name) ==false){
-			addNewEvent(name, startTime, endTime, text, createdBy, active);
+			addNewEvent(location, cb, start, start, name, type);
 			stringToBeReturned = "The new event has been created!!";
 		}
 		else{
@@ -252,10 +252,10 @@ public class SwitchMethods extends Model
 		}
 		return stringToBeReturned;
 	}
-	private void addNewEvent(String createdBy, String startTime, String endTime, String name, String text, int active) throws SQLException {
-		String [] keys = {"Name", "title", "type", "description", "location","createdby","activityID"};
-		String [] values = {name, startTime, endTime, text, createdBy};
-		qb.insertInto("cbsCalendar", keys).values(values).Execute();
+	public void addNewEvent(String location,String  cb,String  start,String  end,String  name,String  type) throws SQLException {
+		String [] keys = {"location", "createdby", "type", "description", "start","end"};
+		String [] values = {type,location,cb,name, start, start};
+		qb.insertInto("events", keys).values(values).Execute();
 		
 	}
 
