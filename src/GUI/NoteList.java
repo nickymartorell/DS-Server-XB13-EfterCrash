@@ -126,6 +126,7 @@ public class NoteList extends JPanel {
 		btnDelete.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
+		btnAdd.addActionListener(l);
 	}
 
 	public JButton getBtnDelete() {

@@ -32,6 +32,7 @@ public class Screen extends JFrame {
 	public static final String ADDCOURSE = "ADDCOURSE";
 	public static final String ADDUSER = "ADDUSER";
 	public static final String ADDCOURSEFORM = "ADDCOURSEFORM";
+	static final String ADDNOTE = "ADDNOTE";
 	
 	private JPanel contentPane;
 	public Login login;
@@ -43,6 +44,7 @@ public class Screen extends JFrame {
 	private AddCourse addCourse;
 	private  AddUser addUser; 
 	private AddCourseForm addCourseForm;
+	private AddNote addNote;
 	
 	CardLayout c;
 
@@ -102,6 +104,9 @@ public class Screen extends JFrame {
 		addCourseForm = new AddCourseForm();
 		contentPane.add(addCourseForm, ADDCOURSEFORM);
 		
+		addNote = new AddNote();
+		contentPane.add(addNote, ADDNOTE);
+		
 		c = (CardLayout) getContentPane().getLayout();
 		
 		
@@ -140,5 +145,8 @@ public class Screen extends JFrame {
 	}
 	public AddCourseForm getAddCourseForm() {
 		return addCourseForm;
+	}
+	public AddNote getAddNote() {
+		return addNote;
 	}
 }
