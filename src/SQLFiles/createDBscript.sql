@@ -56,12 +56,15 @@ CREATE TABLE IF NOT EXISTS notes
 (
 	noteid int NOT NULL AUTO_INCREMENT,
 	eventid int NOT NULL,
-	text text,
-	
+  	note varchar(200) NOT NULL,
 	createdby VARCHAR(100),
 	isActive boolean,
 	PRIMARY KEY (noteid)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO notes (noteid, eventid, note, createdby, isActive)
+VALUES
+  (10,11,'Hej med dig','Stefan', 1),
+;
 
 
 CREATE TABLE IF NOT EXISTS roles

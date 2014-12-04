@@ -13,12 +13,21 @@ import javax.swing.ImageIcon;
 
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+
+import model.QueryBuild.QueryBuilder;
+import databaseMethods.SwitchMethods;
+
 
 @SuppressWarnings("unused")
 public class NoteList extends JPanel {
@@ -27,6 +36,7 @@ public class NoteList extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
+	private boolean DEBUG = false;
 	private final JLabel lblBackground = new JLabel("");
 	private JLabel lblHeader;
 	private JButton btnDelete;
@@ -34,7 +44,9 @@ public class NoteList extends JPanel {
 	private JButton btnMainMenu;
 	private JButton btnLogout;
 	private JLabel label;
-	
+	public  String urObjctInCell;
+	private ResultSet rs;
+	SwitchMethods sm = new SwitchMethods();
 
 	/**
 	 * Create the panel.
@@ -42,7 +54,56 @@ public class NoteList extends JPanel {
 	public NoteList() {
 		setSize(new Dimension(1366, 768));
 		setLayout(null);
+		buildTable();
+	}
+	public void buildTable() {
+		String[] columnNames = {"NoteID", "EventID", "Text", "Created by", "Active"};
 		
+		Object[][] data = new Object[200][200];
+		
+		try {
+			QueryBuilder qb = new QueryBuilder();
+			rs = qb.selectFrom("notes").all().ExecuteQuery();
+			
+		int count = 0;
+		while (rs.next()) {
+			data[count][0] = rs.getInt("noteid");
+			data[count][1] = rs.getInt("eventid");
+			data[count][2] = rs.getString("note");
+			data[count][3] = rs.getString("createdby");
+			data[count][4] = rs.getBoolean("isActive");
+			count++;
+		}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		final JTable table = new JTable(data, columnNames);
+		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		table.setFillsViewportHeight(true);
+		table.setRowSelectionAllowed(true);
+		table.addMouseListener(new MouseAdapter() {     
+		public void mouseClicked(final MouseEvent e) {
+			final JTable target = (JTable)e.getSource();
+		    int row = target.getSelectedRow();
+		    //column sat til 1 for altid at bruge email
+		     urObjctInCell = (String)target.getValueAt(row, 1);
+		     System.out.println(urObjctInCell);                         
+		}
+		});      
+		if (DEBUG) {
+		table.addMouseListener(new MouseAdapter() {
+		    public void mouseClicked(MouseEvent e) {
+		        printDebugData(table);
+		    }
+		});
+		}     
+	
+	
+
+		
+		
+		
+		/**
 		//Laver tabellen inde i Eventlisten.
 		String[] columnNames = { "Note", "Event", "Date", "Numbers of Notes" };
 
@@ -60,8 +121,8 @@ public class NoteList extends JPanel {
 		table.setPreferredScrollableViewportSize(new Dimension(500, 100));
 		table.setFillsViewportHeight(true);
 		table.setRowSelectionAllowed(true);
-
-		// Create the scroll pane and add the table to it.
+*/
+		 //Create the scroll pane and add the table to it.
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBorder(new CompoundBorder(new BevelBorder(
 				BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255,
@@ -76,6 +137,8 @@ public class NoteList extends JPanel {
 		// Add the scroll pane to this panel.
 		add(scrollPane);
 		
+
+
 		lblHeader = new JLabel("NoteList");
 		lblHeader.setForeground(Color.WHITE);
 		lblHeader.setFont(new Font("Arial", Font.BOLD, 78));
@@ -87,6 +150,19 @@ public class NoteList extends JPanel {
 		btnDelete.setForeground(new Color(0, 0, 205));
 		btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 		btnDelete.setBounds(1222, 227, 118, 29);
+		btnDelete.addActionListener(new ActionListener() {
+	        	
+     		public void actionPerformed(ActionEvent arg0) {
+     		
+     	       try {   	    	  
+     							sm.deleteUser(urObjctInCell);
+     						
+     						} catch (SQLException e1) {
+     					
+     							e1.printStackTrace();
+     			             }
+     			            };
+     			        } ); 
 		add(btnDelete);
 		
 		btnAdd = new JButton("Add");
@@ -121,9 +197,24 @@ public class NoteList extends JPanel {
 		
 		add(lblBackground);
 	}
+private void printDebugData(JTable table) {
+    int numRows = table.getRowCount();
+    int numCols = table.getColumnCount();
+    javax.swing.table.TableModel model = table.getModel();
+
+    System.out.println("Value of data: ");
+    for (int i=0; i < numRows; i++) {
+        System.out.print("    row " + i + ":");
+        for (int j=0; j < numCols; j++) {
+            System.out.print("  " + model.getValueAt(i, j));
+        }
+        System.out.println();
+    }
+    System.out.println("--------------------------");
+}
+
 	
 	public void addActionListener(ActionListener l) {
-		btnDelete.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 		btnAdd.addActionListener(l);
