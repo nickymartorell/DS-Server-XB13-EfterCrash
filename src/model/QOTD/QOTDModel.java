@@ -3,6 +3,7 @@ package model.QOTD;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,13 +15,14 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
+import model.Model;
 import model.Forecast.ForecastArray;
 import model.QueryBuild.QueryBuilder;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class QOTDModel {
+public class QOTDModel extends Model {
 
 	private ArrayList<QOTD> qotdlist = new ArrayList<>();
 	
@@ -64,7 +66,7 @@ public class QOTDModel {
     			String topic = (String) jsonObject.get("topic");
 
     			
-    			String[] fields = {"quote","autor","topic"};
+    			String[] fields = {"quote","author","topic"};
     			
     			String[] values = { quote, author , topic };
     	
@@ -110,4 +112,15 @@ public class QOTDModel {
 	     		saveQuote();	
 	     	} 
 	     } 	
+  	 
+  	public void refreshQuote(){
+        try{
+        	//rydder gammelt data
+            PreparedStatement ps = doQuery("TRUNCATE TABLE quote;");
+            ps.execute();        
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
+

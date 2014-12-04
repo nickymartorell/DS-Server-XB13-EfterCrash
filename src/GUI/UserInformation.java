@@ -22,13 +22,7 @@ public class UserInformation
      
       setUserName ( user );
       setPassword ( pass );
-      
-
    } 
-
-
-
-
 public String getUserName() {
 	return userName;
 }

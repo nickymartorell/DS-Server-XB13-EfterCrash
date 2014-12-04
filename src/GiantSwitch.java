@@ -4,6 +4,7 @@ import model.QOTD.QOTDModel;
 import model.calendar.Event;
 import model.note.Note;
 import model.user.*;
+import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
@@ -60,6 +61,17 @@ public class GiantSwitch {
 //				e.printStackTrace();
 //			}
 //			break;
+			
+		case "logIn": // DONE
+			
+			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
+			System.out.println("Recieved logIn");
+			try {
+				answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword(), AU.getAuthUserIsAdmin());
+			} catch (Exception e) {
+				answer = "Error";
+				e.printStackTrace();
+			}
 
 		case "logOut":
 			System.out.println("Recieved logOut");
@@ -91,14 +103,15 @@ public class GiantSwitch {
 		case "getEvents":
 			getEvents GE = (getEvents)gson.fromJson(jsonString, getEvents.class);
 			System.out.println("Recieved getEvents");
-			answer = SW.getEvents(GE.Createdby());
+			answer = SW.getAllEvents(GE.getType());
+			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 
-		case "createEvent":
-			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
-			System.out.println("Recieved saveEvent");
-			answer = SW.createEvents(CE.getCreatedby(), CE.getstartTime(), CE.getendTime(), CE.getName(), CE.getText(), CE.getactive());
-			break; 
+//		case "createEvent":
+//			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
+//			System.out.println("Recieved saveEvent");
+//			answer = SW.createEvents(CE.getCreatedby(), CE.getstartTime(), CE.getendTime(), CE.getName(), CE.getText(), CE.getactive());
+//			break; 
 			
 		case "deleteEvent":
 			deleteEvent DE = (deleteEvent)gson.fromJson(jsonString, deleteEvent.class);
@@ -133,8 +146,12 @@ public class GiantSwitch {
 		 **********/
 		case "getQuote":
 
-		answer = QOTDKlasse.getQuote();
-			System.out.println(answer);
+//		AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
+//		System.out.println("Recieved logIn");
+		System.out.println("Recived getQuote");
+		System.out.println(jsonString);	
+		answer = SW.getQuote();
+		System.out.println(answer);
 			
 			break;
 
@@ -190,10 +207,7 @@ public class GiantSwitch {
 		} else if (ID.contains("createCalendar")) {
 			return "createCalendar";
 		}
-
 		else
 			return "error";
 	}
-	
-
 }

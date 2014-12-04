@@ -16,10 +16,10 @@ public class Main {
 		
 		GUILogic gl = new GUILogic();
 		gl.run();
-		/**
+	
 		//Forecast test
-		ForecastTest ft = new ForecastTest();
-		ft.refreshForecast();
+//		ForecastTest ft = new ForecastTest();
+//		ft.refreshForecast();
 			
 		//QOTD GET test 
 		QOTDModel qd = new QOTDModel();
@@ -30,12 +30,5 @@ public class Main {
 		
 		//QOTD PRINT test
 		System.out.println(quote);
-		
-		*/
-		
-		
-		
-	
 	}
-
 }

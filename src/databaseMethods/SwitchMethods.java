@@ -1,21 +1,25 @@
 package databaseMethods;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 
+import JsonClasses.Quote;
+import JsonClasses.getEvents;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
+import model.calendar.Event;
 
 public class SwitchMethods extends Model
 {
 	QueryBuilder qb = new QueryBuilder();
 	QOTDModel qm = new QOTDModel();
 	Gson gson = new Gson();
-	
-	
-
-	
+	Quote qotd = new Quote();
+	getEvents getEv = new getEvents();
 	/**
 	 * Allows the client to create a new calendar
 	 * @param userName
@@ -24,6 +28,30 @@ public class SwitchMethods extends Model
 	 * @return
 	 * @throws SQLException
 	 */
+	
+	public String getQuote() throws SQLException {
+		System.out.println("Mathias");
+		qotd = new Quote();
+		ResultSet rs;
+		String strReturn = "";	
+		//qm.refreshQuote();
+		qm.saveQuote();
+		//qm.getQuote();
+		rs = qb.selectFrom("quote").all().ExecuteQuery();	
+		System.out.println("her til1");
+
+		while(rs.next()){
+			qotd.setQuote(rs.getString("quote"));
+			qotd.setAuthor(rs.getString("author"));
+			qotd.setTopic(rs.getString("topic"));
+			System.out.println("virker2");
+		
+		}
+		System.out.println("KOM NU HER");
+		strReturn = gson.toJson(qotd);
+		System.out.println(qotd+"se nu her");
+		return strReturn;		
+	}
 	
 	//TILFOEJ NY USER
 	//nej er for doven til at lave klasse hvor admin er true.
@@ -110,9 +138,7 @@ public class SwitchMethods extends Model
 	public String getCalendar(String userName) throws SQLException
 	{
 		String stringToBeReturned ="";
-		
-		
-		
+
 		resultSet = qb.selectFrom("Calendar").where("Name", "=", userName).ExecuteQuery();
 		
 		while(resultSet.next())
@@ -121,19 +147,79 @@ public class SwitchMethods extends Model
 		}
 		return stringToBeReturned;
 	}
-
-
-	public String getEvents(String createdBy) throws SQLException{
-		String stringToBeReturned ="";
-		
-		// er det den rigtige database?
-		resultSet = qb.selectFrom("events").where("CreatedBy", "=", createdBy).ExecuteQuery();
-		
-		while(resultSet.next()){
-			stringToBeReturned += resultSet.toString();
-		}
-		return stringToBeReturned;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public String getEvents(String type) throws SQLException{
+//		ResultSet rs;
+//		String stringToBeReturned ="";
+//		
+//		try{
+//			rs = qb.selectFrom("events").where("type", "=", type).ExecuteQuery();
+//		while(rs.next())
+//		{
+//			
+//		}
+//			stringToBeReturned += rs.toString();
+//			System.out.println("PAA CLIENTEN:"+resultSet);
+//		}
+//		return stringToBeReturned;
+//	}
+	
+	public String getAllEvents(String type) {
+    	try {
+    		qb = new QueryBuilder();
+    		gson = new Gson(); 	
+    		getEv = new getEvents();
+    		ResultSet rs = qb.selectFrom("events").where("type", "=", type).ExecuteQuery();
+    	//	List<Event> eventList = new ArrayList<>();     		
+    		String eventList = "";  		
+    		while(rs.next()){
+    			//Event event = new Event();
+//    			event.setActivityid(rs.getString("id"));
+    			getEv.setType(rs.getString("type"));
+//    			event.setActivityid(rs.getString("activityid"));
+    			getEv.setLocation(rs.getString("location"));
+//    			event.setCreatedby(rs.getString("createdby"));
+//    			event.setDateStart(rs.getDate("start"));
+//    			event.setStrDateStart(rs.getString("start"));
+//    			event.setStrDateEnd(rs.getString("end")); 			
+    		    eventList += rs.toString();
+    		}
+//    		rs.close();
+    		eventList = gson.toJson(getEv);
+    		System.out.println("FRA CLIENT GET EVENTS: "+getEv+"HER ER EVENTLISTEN"+eventList);
+    		return gson.toJson(eventList);
+    		
+    	} catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String GetNote(String eventId) throws SQLException
 	{
 		String stringToBeReturned ="";
@@ -188,6 +274,8 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 
+	
+	//AUTHENTICATER
 	// Metoden faar email og password fra switchen (udtrukket fra en json) samt en boolean der skal saettes til true hvis det er serveren der logger paa, og false hvis det er en klient
 	/**
 	 * Allows the client to log in
@@ -215,19 +303,20 @@ public class SwitchMethods extends Model
 				// Hvis passwords matcher
 				if(resultSet.getString("password").equals(password))
 				{
-					int userID = resultSet.getInt("userid");
-
-					String[] key = {"type"};
-
-					resultSet = qb.selectFrom(key, "roles").where("userid", "=", new Integer(userID).toString()).ExecuteQuery();
-
-					// Hvis brugeren baade logger ind og er registreret som admin, eller hvis brugeren baade logger ind og er registreret som bruger
-					if((resultSet.getString("type").equals("admin") && isAdmin) || (resultSet.getString("type").equals("user") && !isAdmin))
-					{
-						return "0"; // returnerer "0" hvis bruger/admin er godkendt
-					} else {
-						return "4"; // returnerer fejlkoden "4" hvis brugertype ikke stemmer overens med loginplatform
-					}
+					return resultSet.getString("userid");
+//					int userID = resultSet.getInt("userid");
+//
+//					String[] key = {"type"};
+//
+//					resultSet = qb.selectFrom(key, "roles").where("userid", "=", new Integer(userID).toString()).ExecuteQuery();
+//
+//					// Hvis brugeren baade logger ind og er registreret som admin, eller hvis brugeren baade logger ind og er registreret som bruger
+//					if((resultSet.getString("type").equals("admin") && isAdmin) || (resultSet.getString("type").equals("user") && !isAdmin))
+//					{
+//						return "0"; // returnerer "0" hvis bruger/admin er godkendt
+//					} else {
+//						return "4"; // returnerer fejlkoden "4" hvis brugertype ikke stemmer overens med loginplatform
+//					}
 				} else {
 					return "3"; // returnerer fejlkoden "3" hvis password ikke matcher
 				}
@@ -251,6 +340,20 @@ public class SwitchMethods extends Model
 			stringToBeReturned = "The new event has not been created :( ";
 		}
 		return stringToBeReturned;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//EVENT TING
+		
+		
 	}
 	public void addNewEvent(String location,String  cb,String  start,String  end,String  name,String  type) throws SQLException {
 		String [] keys = {"location", "createdby", "type", "description", "start","end"};
@@ -320,6 +423,10 @@ public class SwitchMethods extends Model
 	}
 	
 	
+	
+	
+	
+	//NOTE TING
 	//denne her skal dobbelttjekkes!!!!! 
 	public String removeNote (String noteID, String UserName) throws SQLException{
 		String stringToBeReturned ="";

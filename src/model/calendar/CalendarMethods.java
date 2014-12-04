@@ -181,8 +181,8 @@ public class CalendarMethods extends Model {
     			event.setType(rs.getString("type"));
     			event.setActivityid(rs.getString("activityid"));
     			event.setLocation(rs.getString("location"));
-    			event.setCreatedby(rs.getString("createdby"));
-    		  //event.setDateStart(rs.getDate("start"));
+    			//event.setCreatedby(rs.getString("createdby"));
+    			//event.setDateStart(rs.getDate("start"));
     			event.setStrDateStart(rs.getString("start"));
     			event.setStrDateEnd(rs.getString("end"));
     			
