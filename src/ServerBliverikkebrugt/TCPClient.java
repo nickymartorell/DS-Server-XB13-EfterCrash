@@ -1,3 +1,4 @@
+package ServerBliverikkebrugt;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -12,7 +13,7 @@ public class TCPClient {
 		Gson gson = new GsonBuilder().create();
 		CreateCalendar CC = new CreateCalendar();
 		CC.setCalendarName("Din mors kalender2");
-		CC.setPublicOrPrivate(1);
+		//CC.setPublicOrPrivate(1);
 		CC.setUserName("John");
 		String gsonString = gson.toJson(CC);
 		System.out.println(CC);

@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 
 import JsonClasses.Quote;
 import JsonClasses.getEvents;
+import JsonClasses.getForecast;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
@@ -29,8 +30,8 @@ public class SwitchMethods extends Model
 	 * @throws SQLException
 	 */
 	
+	//VIRKER
 	public String getQuote() throws SQLException {
-		System.out.println("Mathias");
 		qotd = new Quote();
 		ResultSet rs;
 		String strReturn = "";	
@@ -38,24 +39,18 @@ public class SwitchMethods extends Model
 		qm.saveQuote();
 		//qm.getQuote();
 		rs = qb.selectFrom("quote").all().ExecuteQuery();	
-		System.out.println("her til1");
 
 		while(rs.next()){
 			qotd.setQuote(rs.getString("quote"));
 			qotd.setAuthor(rs.getString("author"));
-			qotd.setTopic(rs.getString("topic"));
-			System.out.println("virker2");
-		
+			qotd.setTopic(rs.getString("topic"));		
 		}
-		System.out.println("KOM NU HER");
 		strReturn = gson.toJson(qotd);
-		System.out.println(qotd+"se nu her");
 		return strReturn;		
 	}
 	
 	//TILFOEJ NY USER
-	//nej er for doven til at lave klasse hvor admin er true.
-	//Vi skal kun have 1 admin
+	//VIRKER
 	public boolean newUser(String eMail, String password) throws SQLException 
 	{
 		String[] field = {"email", "active", "password","admin"};
@@ -64,6 +59,7 @@ public class SwitchMethods extends Model
 		return true;
 	}
 	
+	//VIRKER
 	public boolean deleteUser(String eMail) throws SQLException {
 		
 		String [] keys = {"active"};
@@ -73,6 +69,7 @@ public class SwitchMethods extends Model
 		return true;
 	}	
 	
+	//VIRKER
 	public boolean activateUser(String eMail) throws SQLException {
 		
 		String [] keys = {"active"};
@@ -119,12 +116,7 @@ public class SwitchMethods extends Model
 			qb.insertInto("cbscalendar", keys).values(values).Execute();
 //		doUpdate("insert into test.calender (Name, Active, CreatedBy, PrivatePublic) VALUES ('"+newCalenderName+"', '1', '"+userName+"', '"+publicOrPrivate+"');");
 	}
-	/**
-	 * Allows the client to delete a calendar 
-	 * @param userName
-	 * @param calenderName
-	 * @return
-	 */
+
 	public String deleteCalendar (String userName, String calendarName) throws SQLException
 	{
 		String stringToBeReturned ="";
@@ -134,7 +126,7 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 	
-	
+	//SAET DEN HER LIGE MED USERID
 	public String getCalendar(String userName) throws SQLException
 	{
 		String stringToBeReturned ="";
@@ -147,31 +139,6 @@ public class SwitchMethods extends Model
 		}
 		return stringToBeReturned;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	public String getEvents(String type) throws SQLException{
-//		ResultSet rs;
-//		String stringToBeReturned ="";
-//		
-//		try{
-//			rs = qb.selectFrom("events").where("type", "=", type).ExecuteQuery();
-//		while(rs.next())
-//		{
-//			
-//		}
-//			stringToBeReturned += rs.toString();
-//			System.out.println("PAA CLIENTEN:"+resultSet);
-//		}
-//		return stringToBeReturned;
-//	}
 	
 	public String getAllEvents(String type) {
     	try {
@@ -204,22 +171,89 @@ public class SwitchMethods extends Model
         return null;
     } 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	 public ArrayList<Event> getEvents() {
+	    	try {
+	    		qb = new QueryBuilder();
+	    		gson = new Gson();
+	    		    		
+	    		ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
+	    		ArrayList<Event> eventList = new ArrayList<Event>();  
+	    		
+	    		while(rs.next()){
+	    			Event event = new Event();
+	    			event.setActivityid(rs.getString("id"));
+	    			event.setType(rs.getString("type"));
+	    			
+	    			//HUSK RET 2X ACTIVITY ID
+	    			event.setActivityid(rs.getString("activityid"));
+	    			event.setLocation(rs.getString("location"));
+	    			//event.setCreatedby(rs.getString("createdby"));
+	    			//event.setDateStart(rs.getDate("start"));
+	    			event.setStrDateStart(rs.getString("start"));
+	    			event.setStrDateEnd(rs.getString("end"));			
+	    		    eventList.add(event);
+	    		}
+	    		rs.close();
+	    		return eventList;
+	    		
+	    	} catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    } 
+	 //VIRKER
+	 public ArrayList<getEvents> getCustomEvents() {
+	    	try {
+	    		qb = new QueryBuilder();
+	    		gson = new Gson();
+	    	
+	    		ResultSet rs = qb.selectFrom("events").where("customevent", "=", "1").ExecuteQuery();
+	    		ArrayList<getEvents> eventList = new ArrayList<getEvents>();  	    	
+	    		while(rs.next()){
+	    			getEvents cusevent = new getEvents();
+	    			cusevent.setId(rs.getString("id"));
+	    			cusevent.setType(rs.getString("type"));    		
+	    			cusevent.setLocation(rs.getString("location"));
+	    			cusevent.setStart(rs.getString("start"));
+	    			cusevent.setEnd(rs.getString("end"));
+	    			cusevent.setCreatedby(rs.getString("createdby"));
+	    			cusevent.setCustomevent(rs.getString("customevent"));
+	    		    eventList.add(cusevent);
+	    		}
+	    		rs.close();
+	    		return eventList;
+	    		
+	    	} catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    } 
+	 //VIRKER
+	 public ArrayList<getForecast> getForecast() {
+	    	try {
+	    		qb = new QueryBuilder();
+	    		gson = new Gson();
+	    	
+	    		ResultSet rs = qb.selectFrom("forecast").all().ExecuteQuery();
+	    		ArrayList<getForecast> fca = new ArrayList<getForecast>();  	    	
+	    		while(rs.next()){
+	    			getForecast gfc = new getForecast();
+	    			gfc.setDate(rs.getString("date"));
+	    			gfc.setCels(rs.getString("des"));
+	    			gfc.setDesc(rs.getString("cels"));
+	    			fca.add(gfc);
+	    			System.out.println(gfc);
+	    		}
+	    		rs.close();
+	    		return fca;
+	    		
+	    	} catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    } 
+
+	 //VIRKER MEN BRUGER IKKE ENDNU
 	public String GetNote(String eventId) throws SQLException
 	{
 		String stringToBeReturned ="";
@@ -233,14 +267,13 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 	
-	public String removeCalendar (String userName, String calendarName) throws SQLException
+	public String removeCalendar (String email, String calendarName) throws SQLException
 	{
 		String stringToBeReturned = "";
 		String usernameOfCreator ="";
 		String calendarExists = "";
 		resultSet = qb.selectFrom("Calender").where("Name", "=", calendarName).ExecuteQuery();
-				
-//				("select * from calender where Name = '"+calenderName+"';");
+
 		while(resultSet.next())
 		{
 			calendarExists = resultSet.toString();
@@ -254,14 +287,14 @@ public class SwitchMethods extends Model
 				usernameOfCreator = resultSet.toString();
 				System.out.println(usernameOfCreator);
 			}
-			if(!usernameOfCreator.equals(userName))
+			if(!usernameOfCreator.equals(email))
 			{
 				stringToBeReturned = "Only the creator of the calender is able to delete it.";
 			}
 			else
 			{
 				String [] keys = {"Active"};
-				String [] values = {"2"};
+				String [] values = {"0"};
 				qb.update("Calendar", keys, values).where("Name", "=", calendarName).Execute();
 				stringToBeReturned = "Calender has been set inactive";
 			}
@@ -285,6 +318,7 @@ public class SwitchMethods extends Model
 	 * @return
 	 * @throws Exception
 	 */
+	//VIRKER
 	public String authenticate(String email, String password, boolean isAdmin) throws Exception {
 
 		String[] keys = {"userid", "email", "active", "password"};
@@ -304,19 +338,6 @@ public class SwitchMethods extends Model
 				if(resultSet.getString("password").equals(password))
 				{
 					return resultSet.getString("userid");
-//					int userID = resultSet.getInt("userid");
-//
-//					String[] key = {"type"};
-//
-//					resultSet = qb.selectFrom(key, "roles").where("userid", "=", new Integer(userID).toString()).ExecuteQuery();
-//
-//					// Hvis brugeren baade logger ind og er registreret som admin, eller hvis brugeren baade logger ind og er registreret som bruger
-//					if((resultSet.getString("type").equals("admin") && isAdmin) || (resultSet.getString("type").equals("user") && !isAdmin))
-//					{
-//						return "0"; // returnerer "0" hvis bruger/admin er godkendt
-//					} else {
-//						return "4"; // returnerer fejlkoden "4" hvis brugertype ikke stemmer overens med loginplatform
-//					}
 				} else {
 					return "3"; // returnerer fejlkoden "3" hvis password ikke matcher
 				}
@@ -328,102 +349,51 @@ public class SwitchMethods extends Model
 		}
 	}
 
-	public String createEvents(String location,String  cb,String  start,String  end,String  name,String  type) throws SQLException{
+	//EVENT TING
+	//VIRKER
+	public String createEvents(String location, String  cb, String  start, String  end, String  description, String  type, String customevent,String aktiv) throws SQLException{
 		String stringToBeReturned = "";
 		testConnection();
-		
-		if(autenticateNewEvent(name) ==false){
-			addNewEvent(location, cb, start, start, name, type);
+//		String active = "1";
+		System.out.println("MORS LUDER"+aktiv);
+		if(autenticateNewEvent(description) ==false){
+			addNewEvent(location, cb, start, start, description, type, customevent,aktiv);
 			stringToBeReturned = "The new event has been created!!";
 		}
 		else{
 			stringToBeReturned = "The new event has not been created :( ";
 		}
-		return stringToBeReturned;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//EVENT TING
-		
-		
+		return stringToBeReturned;		
 	}
-	public void addNewEvent(String location,String  cb,String  start,String  end,String  name,String  type) throws SQLException {
-		String [] keys = {"location", "createdby", "type", "description", "start","end"};
-		String [] values = {type,location,cb,name, start, start};
+	//VIRKER
+	public String addNewEvent(String location,String  cb,String  start,String  end,String  description,String  type, String customevent,String aktiv) throws SQLException {
+		String hehe = "";
+		String [] keys = {"location", "createdby", "type", "description", "start","end","customevent","aktiv"};
+		String [] values = {location,cb,type,description, start, end,customevent,aktiv};
 		qb.insertInto("events", keys).values(values).Execute();
-		
+		return hehe;
 	}
-
-
-
-	private boolean autenticateNewEvent(String eventName) throws SQLException {
+	//VIRKER
+	private boolean autenticateNewEvent(String desription) throws SQLException {
 		getConn();
 		boolean authenticate = false;
-		resultSet = qb.selectFrom("cbscalendar").where("name","=", eventName).ExecuteQuery();
+		resultSet = qb.selectFrom("events").where("description","=", desription).ExecuteQuery();
 		
 		while(resultSet.next()){
 			authenticate = true;
-		}
-		
+		}	
 		return authenticate;
 	}
-	
-	
-	public String removeEvent (String name, String createdBy) throws SQLException{
+	//VIRKER
+	public String removeEvent (String description) throws SQLException{
 		String stringToBeReturned ="";
-		String userNameOfCreator ="";
-		String EventExists = "";
-		resultSet = qb.selectFrom("events").where("title", "=", name).ExecuteQuery();
-		
-		while(resultSet.next()){
-			EventExists = resultSet.toString();
-		}
-		if(!EventExists.equals("")){
-			String [] value = {"createdBy"};
-			resultSet = qb.selectFrom(value, "events").where("name", "=", name).ExecuteQuery();
-			while(resultSet.next()){
-				userNameOfCreator = resultSet.toString();
-				System.out.println(userNameOfCreator);
-			}
-			
-			//så hvis IKKE brugernavnet er lig med brugernavnet på creator, bliver denne besked printet
-			
-			if(!userNameOfCreator.equals(createdBy)){
-				stringToBeReturned = "Only the creator of the event is able to delete it!";
-			}
-			else{
-				String [] keys = {"Active"};
-				String [] values ={"2"};
-				qb.update("Events", keys, values).where("Title", "=", name).Execute();
-				stringToBeReturned = "The event has been set inactive"; //overvej omformulering
-			}
-			stringToBeReturned = resultSet.toString();
-		}
-		else{
-			stringToBeReturned = "The event you are trying to delete does not exist!";
-		}
+		String [] keys = {"aktiv"};
+		String [] values ={"0"};
+		System.out.println(description+"S�DAN HER SER DESCRIPTION UD");
+		qb.update("Events", keys, values).where("description", "=", description).Execute();
+		stringToBeReturned = "The event has been set inactive"; //overvej omformulering
 		return stringToBeReturned;
 	}
-	
-	
-	public String deleteEvent(String Name) throws SQLException{
-		String stringToBeReturned="";
-		testConnection();
-		stringToBeReturned = deleteEvent(Name);
-		
-		return stringToBeReturned;
-	}
-	
-	
-	
 	
 	
 	//NOTE TING
@@ -436,7 +406,6 @@ public class SwitchMethods extends Model
 		
 		while(resultSet.next()){
 			NoteExists = resultSet.toString();
-		
 			
 			if(!NoteExists.equals("")){
 				String [] value = {"CreatedBy"};
@@ -445,8 +414,6 @@ public class SwitchMethods extends Model
 					userNameOfCreator = resultSet.toString();
 					System.out.println(userNameOfCreator);
 				}
-				
-				
 				if(!userNameOfCreator.equals(UserName)){
 					stringToBeReturned = "Only the creator of the note is able to delete it!";
 				}
@@ -461,19 +428,41 @@ public class SwitchMethods extends Model
 			else{
 				stringToBeReturned = "The note you are trying to delete does not exist!";
 			}
-
-		}
-		
+		}	
 		return stringToBeReturned;
 	}
 	
-	public String deleteNote(String userName, String noteID) throws SQLException{
-		String stringToBeReturned="";
-		testConnection();
-		
-		//String 
-		stringToBeReturned = deleteNote(userName, noteID);
-		
-		return stringToBeReturned; //tjekke om event ID 
-	}
+//	public String removeEvent (String description) throws SQLException{
+//		String stringToBeReturned ="";
+//		String userNameOfCreator ="";
+//		String EventExists = "";
+//		resultSet = qb.selectFrom("events").where("description", "=", description).ExecuteQuery();
+//		
+//		while(resultSet.next()){
+//			EventExists = resultSet.toString();
+//		}
+//		if(!EventExists.equals("")){
+//			String [] value = {"createdBy"};
+//			resultSet = qb.selectFrom(value, "events").where("name", "=", name).ExecuteQuery();
+//			while(resultSet.next()){
+//				userNameOfCreator = resultSet.toString();
+//				System.out.println(userNameOfCreator);
+//			}
+//			
+//			if(!userNameOfCreator.equals(createdBy)){
+//				stringToBeReturned = "Only the creator of the event is able to delete it!";
+//			}
+//			else{
+//				String [] keys = {"Active"};
+//				String [] values ={"2"};
+//				qb.update("Events", keys, values).where("Title", "=", name).Execute();
+//				stringToBeReturned = "The event has been set inactive"; //overvej omformulering
+//			}
+//			stringToBeReturned = resultSet.toString();
+//		}
+//		else{
+//			stringToBeReturned = "The event you are trying to delete does not exist!";
+//		}
+//		return stringToBeReturned;
+//	}
 	}

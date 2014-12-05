@@ -40,6 +40,7 @@ public class EventCreator extends Model {
 				int calendarId = rs.getInt("calendarid");
 				
 				
+				
 				String stringEventID = String.valueOf(id);
 				String stringType = String.valueOf(type);
 				String StringaId = String.valueOf(ai);
@@ -75,36 +76,6 @@ public class EventCreator extends Model {
     public void setEvents(ArrayList<Event> event) {
         this.events = event;
     }
-
-//    public ArrayList<Users> getUsers() {
-//    
-//    	QueryBuilder qb = new QueryBuilder();
-//    	try {
-//			ResultSet rs = qb.selectFrom("users").all().ExecuteQuery();
-//			while (rs.next())
-//			{
-//				int id = rs.getInt("userid");
-//				String email = rs.getString("email");
-//				String password = rs.getString("password");		
-//				boolean isAdmin = rs.getBoolean("admin");
-//				boolean isActive = rs.getBoolean("active");	
-//				
-//				
-//				String stringID = String.valueOf(id);
-//				String stringEmail = String.valueOf(email);
-//				String stringPassword = String.valueOf(password);
-//				String StringIsAdmin = String.valueOf(isAdmin);
-//				String StringActive = String.valueOf(isActive);
-//				
-//				users.add(new Users(stringID, stringEmail, stringPassword, StringIsAdmin, StringActive));				
-//			}
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//    	
-//    	return users;
-//    }
 		
     public void setUsers(ArrayList<Users> users) {
         this.users = users;
@@ -118,12 +89,4 @@ public class EventCreator extends Model {
     public String toStringUsers() {
         return Arrays.toString(users.toArray());
     }
-				
-	
-//    public static void main(String []args){
-//    	EventCreator Hej = new EventCreator();
-//    	
-//    	Hej.getUsers();
-//    	System.out.println(Hej.toStringUsers());
-//    }
 }

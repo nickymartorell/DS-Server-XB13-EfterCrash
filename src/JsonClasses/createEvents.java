@@ -1,89 +1,84 @@
 package JsonClasses;
 
-public class createEvents {
-
+public class createEvents implements java.io.Serializable
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String overallID = "createEvents";
-	private int Type;
-	private String Location;
-	private String Createdby;
-	private String startTime;
-	private String endTime;
-	private String Name;
-	private String Text;
-	private int active;
+	private String id;
+	private String type;
+	private String location;
+	private String start;
+	private String end;
+	private String description;
+	private String createdby;
+	private String customevent;
+	private String aktiv;
 	
-	public int getactive(){
-		return active;
-	}
-	
-	public void setactive(int active){
-		this.active = active;
-	}
-	
-	public String getendTime(){
-		return endTime;
-	}
-	public void setendTime(String endTime){
-		this.endTime = endTime;
-	}
-	
-	public String getstartTime(){
-		return startTime;
-	}
-	public void setstartTime(String startTime){
-		this.startTime = startTime;
-	}
-	
-	public String getoverallID(){
+	public String getOverallID() {
 		return overallID;
 	}
-	public void setoverallID(String overallID){
+	public void setOverallID(String overallID) {
 		this.overallID = overallID;
 	}
-	
-	public String getText(){
-	return Text;
+	public String getId() {
+		return id;
 	}
-	
-	public void setText(String Text){
-		this.Text = Text;
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	public String getName(){
-		return Name;
+	public String getType() {
+		return type;
 	}
-	
-	public void setName(String Name){
-		this.Name = Name;
+	public void setType(String type) {
+		this.type = type;
 	}
-	
-	
-	public int getType(){
-		return Type;
+	public String getLocation() {
+		return location;
 	}
-	
-	public void setType(int Type){
-		this.Type = Type;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	
-	
-	public String getLocation(){
-		return Location;
+	public String getStart() {
+		return start;
 	}
-	
-	public void setLocation(String Location){
-		this.Location = Location;
+	public void setStart(String start) {
+		this.start = start;
 	}
-	
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+	public String getCustomevent() {
+		return customevent;
+	}
+	public void setCustomevent(String customevent) {
+		this.customevent = customevent;
+	}
+	public String getCreatedby() {
+		return createdby;
+	}
+	public void setCreatedby(String createdby) {
+		this.createdby = createdby;
+	}
+	public String getAktiv() {
+		return aktiv;
+	}
+	public void setAktiv(String aktiv) {
+		this.aktiv = aktiv;
+	}
 
-	
-	public String getCreatedby(){
-		return Createdby;
-	}
-	
-	public void setCreatedby(String Createdby){
-		this.Createdby = Createdby;
 }
-
-}
-

@@ -1,8 +1,6 @@
 package JsonClasses;
 
-import java.util.ArrayList;
-
-public class getEvents implements java.io.Serializable
+public class removeEvent implements java.io.Serializable
 {
 	/**
 	 * 
@@ -17,26 +15,7 @@ public class getEvents implements java.io.Serializable
 	private String description;
 	private String createdby;
 	private String customevent;
-	private String aktiv;
-	
-	public getEvents(){
-		
-	}
-	
-	public getEvents(String eventId,String type,String activityId,String location, String createdby,
-			 String start,
-			String end,String description,String customevent) {
-		super();
-		//this.name = name;
-		this.id = eventId;
-		this.type = type;	
-		this.location = location;		
-		this.createdby = createdby;		
-		this.start = start;
-		this.end = end;
-		this.description = description;
-		this.customevent =customevent;
-	}
+	private String active;
 	
 	public String getOverallID() {
 		return overallID;
@@ -95,13 +74,10 @@ public class getEvents implements java.io.Serializable
 	public void setCreatedby(String createdby) {
 		this.createdby = createdby;
 	}
-
-	public String getAktiv() {
-		return aktiv;
+	public String getActive() {
+		return active;
 	}
-
-	public void setAktiv(String aktiv) {
-		this.aktiv = aktiv;
-	}
-
+	public void setActive(String active) {
+		this.active = active;
+	}	
 }

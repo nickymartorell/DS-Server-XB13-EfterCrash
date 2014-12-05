@@ -18,8 +18,12 @@ public class Main {
 		gl.run();
 	
 		//Forecast test
-//		ForecastTest ft = new ForecastTest();
-//		ft.refreshForecast();
+		ForecastTest ft = new ForecastTest();
+		ft.refreshForecast();
+		
+		ForecastModel fm = new ForecastModel();
+		
+		System.out.println(fm.getForecast().get(0));
 			
 		//QOTD GET test 
 		QOTDModel qd = new QOTDModel();

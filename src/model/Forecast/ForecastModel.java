@@ -35,9 +35,7 @@ public class ForecastModel {
 	         BufferedReader rd;
 	         String line;
 	         String result = "";
-
-	         try {
-	        	 
+	         try {        	 
 	             url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?lat=55.681589&lon=12.529092&cnt=14&mode=json&units=metric");
 	             conn = (HttpURLConnection) url.openConnection();
 	             conn.setRequestMethod("GET");
@@ -49,7 +47,6 @@ public class ForecastModel {
 	         } catch (IOException e) {
 	             e.printStackTrace();
 	         } 
-
 	         try {
 	             JSONParser jsonParser = new JSONParser();
 	             JSONObject jsonObject = (JSONObject) jsonParser.parse(result);

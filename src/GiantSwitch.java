@@ -1,5 +1,8 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import model.Forecast.ForecastModel;
+import model.Forecast.ForecastTest;
 import model.QOTD.QOTDModel;
 import model.calendar.Event;
 import model.note.Note;
@@ -9,10 +12,11 @@ import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
 import JsonClasses.createEvents;
-import JsonClasses.deleteEvent;
+import JsonClasses.removeEvent;
 import JsonClasses.deleteNote;
 import JsonClasses.getCalendar;
 import JsonClasses.getEvents;
+import JsonClasses.getForecast;
 import JsonClasses.getNote;
 import JsonClasses.saveNote;
 
@@ -27,11 +31,12 @@ public class GiantSwitch {
 	
 	public String GiantSwitchMethod(String jsonString) throws Exception {
 
-		//Events eventsKlasse = new Events(0, 0, 0, jsonString, jsonString, jsonString, jsonString, jsonString);
-
+		ForecastTest ft = new ForecastTest();
+		ForecastModel fm = new ForecastModel();
+		
+		
 		Note noteKlasse = new Note();
-		//ForecastModel forecastKlasse = new ForecastModel();
-		QOTDModel QOTDKlasse = new QOTDModel();
+		QOTDModel qm = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();
 		
 		Gson gson = new GsonBuilder().create();
@@ -100,25 +105,35 @@ public class GiantSwitch {
 			answer = SW.getCalendar(GC.getUserName());
 			break;
 
+		//VIRKER 
 		case "getEvents":
-			getEvents GE = (getEvents)gson.fromJson(jsonString, getEvents.class);
-			System.out.println("Recieved getEvents");
-			answer = SW.getAllEvents(GE.getType());
+//			getEvents GE = (getEvents)gson.fromJson(jsonString, getEvents.class);
+			ArrayList<Event> events = SW.getEvents();			
+			answer = gson.toJson(events);
+			System.out.println("ANSWER FRA CLIENT:"+answer);
+			break;
+			
+		//VIRKER 	
+		case "getCustomEvents":
+//			getEvents GE = (getEvents)gson.fromJson(jsonString, getEvents.class);
+			ArrayList<getEvents> cusevents = SW.getCustomEvents();			
+			answer = gson.toJson(cusevents);
 			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 
-//		case "createEvent":
-//			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
-//			System.out.println("Recieved saveEvent");
-//			answer = SW.createEvents(CE.getCreatedby(), CE.getstartTime(), CE.getendTime(), CE.getName(), CE.getText(), CE.getactive());
-//			break; 
+		//VIRKER
+		case "createEvents":
+			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
+			System.out.println("Recieved saveEvent @@@@@@@@@@@@@@@@@@@@@");
+			System.out.println(CE.getAktiv());
+			answer = SW.addNewEvent(CE.getLocation(),CE.getCreatedby(), CE.getStart(),CE.getEnd(), CE.getDescription(), CE.getType(), CE.getCustomevent(),CE.getAktiv());
+			break; 
 			
-		case "deleteEvent":
-			deleteEvent DE = (deleteEvent)gson.fromJson(jsonString, deleteEvent.class);
-			System.out.println("Recieved deleteEvent");
-			answer = SW.deleteEvent(DE.getName());
-			//tjekke op på metode
-			
+		//TESTER
+		case "removeEvent":
+			removeEvent DE = (removeEvent)gson.fromJson(jsonString, removeEvent.class);
+			System.out.println("Recieved removeEvent");
+			answer = SW.removeEvent(DE.getDescription());		
 			break;
 		
 		case "saveNote":
@@ -144,31 +159,29 @@ public class GiantSwitch {
 		/**********
 		 ** QUOTE **
 		 **********/
+			
+		//VIRKER
 		case "getQuote":
-
-//		AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
-//		System.out.println("Recieved logIn");
 		System.out.println("Recived getQuote");
 		System.out.println(jsonString);	
 		answer = SW.getQuote();
 		System.out.println(answer);
-			
-			break;
+		break;
 
 		/************
 		 ** WEATHER **
 		 ************/
-
-		case "getClientForecast":
-			System.out.println("Recieved getClientForecast");
-			break;
-		
+		case "getForecast":
+			//Sletter og henter ny
+			ft.refreshForecast();
+			//Ligger som arraylist
+			ArrayList<getForecast> gfc = SW.getForecast();	
+			answer = gson.toJson(gfc);
 		default:
 			System.out.println("Error");
 			break;
 		}
-		return answer;
-		
+		return answer;	
 	}
 
 	//Creates a long else if statement, which checks the JSon string which keyword it contains, and returns the following 
@@ -176,6 +189,8 @@ public class GiantSwitch {
 	public String Determine(String ID) {
 		if (ID.contains("getEvents")) {
 			return "getEvents"; 
+		} else if (ID.contains("getCustomEvents")) {
+			return "getCustomEvents";
 		} else if (ID.contains("saveNote")) {
 			return "saveNote";
 		} else if (ID.contains("getNote")) {
@@ -184,8 +199,8 @@ public class GiantSwitch {
 			return "deleteNote";
 		}else if  (ID.contains("deleteCalendar")){
 			return "deleteCalendar";
-		} else if (ID.contains("getClientForecast")) {
-			return "getClientForecast";
+		} else if (ID.contains("getForecast")) {
+			return "getForecast";
 		} else if (ID.contains("saveImportedCalendar")) {
 			return "saveImportedCalendar";
 		}else if (ID.contains("importCourse")) {
@@ -200,10 +215,10 @@ public class GiantSwitch {
 			return "logOut";
 		} else if (ID.contains("getCalendar")) {
 			return "getCalendar";
-		} else if (ID.contains("createEvent")) {
-			return "createEvent";
-		} else if (ID.contains("deleteEvent")) {
-			return "deleteEvent"; 
+		} else if (ID.contains("createEvents")) {
+			return "createEvents";
+		} else if (ID.contains("removeEvent")) {
+			return "removeEvent"; 
 		} else if (ID.contains("createCalendar")) {
 			return "createCalendar";
 		}

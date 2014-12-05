@@ -7,20 +7,20 @@ DROP TABLE events;
 CREATE TABLE IF NOT EXISTS events
 (
 	id int NOT NULL AUTO_INCREMENT,
-	type VARCHAR(100) NOT NULL,
-	activityid varchar(255) NOT NULL,
-	location VARCHAR (100) NOT NULL,
+	type VARCHAR(100),
+	activityid varchar(255),
+	location VARCHAR (100),
 	createdby varchar(255),
-	start datetime NOT NULL,
-	end datetime NOT NULL,
-	description VARCHAR (200) NOT NULL,
-	calendarid VARCHAR (200) NOT NULL,
+	start datetime,
+	end datetime,
+	description VARCHAR (200),
+	calendarid VARCHAR (200),
+	customevent boolean,
+	aktiv boolean,
 	PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 set global max_connections = 2000000000;
-
-
 
 CREATE TABLE users (
   userid int(11) NOT NULL AUTO_INCREMENT,
@@ -66,9 +66,7 @@ CREATE TABLE IF NOT EXISTS notes
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO notes (noteid, eventid, note, createdby, isActive)
-VALUES
-  (10,11,'Hej med dig','Stefan', 1),
-;
+VALUES             (1,11,'Hej med dig','Stefan', 1);
 
 ALTER TABLE notes
 	ADD FOREIGN KEY (createdby)
@@ -135,11 +133,15 @@ CREATE TABLE IF NOT EXISTS locationdata
 	PRIMARY KEY (locationdataid)
 );
 
-INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (XA)', 'admin@cbs.dk');
-INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (XB)', 'admin@cbs.dk');
+DROP TABLE calendar;
+
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (LA)', 'admin@cbs.dk');
+INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (XB)', 'admin@cbs.dk');
+INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (XA)', 'admin@cbs.dk');
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Distribuerede Systemer (LA)', 'admin@cbs.dk');
+INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Virksomhedens oekonomiske styring(3)(LA)', 'admin@cbs.dk');
+INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (LA)', 'admin@cbs.dk');
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (XB)', 'admin@cbs.dk');
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (XA)', 'admin@cbs.dk');
-INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (LA)', 'admin@cbs.dk');
-INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Virksomhedens oekonomiske styring(3)(LA)', 'admin@cbs.dk');
+
+

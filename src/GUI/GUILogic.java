@@ -183,10 +183,12 @@ public class GUILogic {
 				String end = screen.getAddEvent().getTextField_End().getText();
 				String name = screen.getAddEvent().getTextField_Name().getText();
 				String type = screen.getAddEvent().getTextField_Type().getText();
+				String customevent = "1";
+				String aktiv = "1";
 				try {
-					sm.addNewEvent(cb,type , start, end, name,location );
+					sm.addNewEvent(cb,type , start, end, name,location,customevent,aktiv);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+				
 					e1.printStackTrace();
 				}
 				screen.show(Screen.MAINMENU);

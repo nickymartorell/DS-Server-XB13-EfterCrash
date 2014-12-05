@@ -109,13 +109,12 @@ public class CalendarMethods extends Model {
             qb = new QueryBuilder();
             
             //Field i data
-            String[] fields = {"id","type","activityid","location","createdby","start","end","description","calendarid"};
+            String[] fields = {"id","type","activityid","location","createdby","start","end","description","calendarid","customevent","aktiv"};
             
             //formatering af datetime
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          
-            //Simpelt svar på index 1 size 1 error med 120
-            
+            //Simpelt svar på index 1 size 1 error med 120           
             //formatere vores datetime korrekt
             for (int i = 0; i < 120 ; i++)             
             	{
@@ -158,7 +157,9 @@ public class CalendarMethods extends Model {
             		   				strStart, //DATETIME
             		   				strEnd, //DATETIME
             		   				events.getEvents().get(i).getDescription(), //VARCHAR  
-            		   				calid //VARCHAR
+            		   				calid, //VARCHAR
+            		   				"0", //BOOLEAN
+            		   				"1" //BOOLEAN
             		   				
             };
                qb.insertInto("events", fields).values(values).Execute();	             		       
@@ -167,13 +168,13 @@ public class CalendarMethods extends Model {
             e.printStackTrace();
         }
     }     
-    public String getEvents() {
+    public ArrayList<Event> getEvents() {
     	try {
     		qb = new QueryBuilder();
     		gson = new Gson();
     		    		
     		ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
-    		List<Event> eventList = new ArrayList<>();  
+    		ArrayList<Event> eventList = new ArrayList<Event>();  
     		
     		while(rs.next()){
     			Event event = new Event();
@@ -184,12 +185,11 @@ public class CalendarMethods extends Model {
     			//event.setCreatedby(rs.getString("createdby"));
     			//event.setDateStart(rs.getDate("start"));
     			event.setStrDateStart(rs.getString("start"));
-    			event.setStrDateEnd(rs.getString("end"));
-    			
+    			event.setStrDateEnd(rs.getString("end"));			
     		    eventList.add(event);
     		}
     		rs.close();
-    		return gson.toJson(eventList);
+    		return eventList;
     		
     	} catch (Exception e) {
             e.printStackTrace();
@@ -203,7 +203,7 @@ public class CalendarMethods extends Model {
     		gson = new Gson();
     		    		
     		ResultSet rs = qb.selectFrom("users").all().ExecuteQuery();
-    		List<Users> userList = new ArrayList<>();      		
+    		ArrayList<Users> userList = new ArrayList<>();      		
     		while(rs.next()){  			
     		Users user = new Users();
     		user.setUserId(rs.getInt("userid"));
