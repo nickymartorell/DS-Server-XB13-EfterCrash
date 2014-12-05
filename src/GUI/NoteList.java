@@ -154,7 +154,7 @@ public class NoteList extends JPanel {
      		public void actionPerformed(ActionEvent arg0) {
      		
      	       try {   	    	  
-     							sm.deleteUser(urObjctInCell);
+     							sm.deleteNote(urObjctInCell);
      						
      						} catch (SQLException e1) {
      					
@@ -208,6 +208,7 @@ private void printDebugData(JTable table) {
 
 	
 	public void addActionListener(ActionListener l) {
+		//btnDelete.addActionListener(1);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 
