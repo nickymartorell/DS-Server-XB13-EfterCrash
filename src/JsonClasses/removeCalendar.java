@@ -1,16 +1,15 @@
 package JsonClasses;
 
-public class CreateCalendar implements java.io.Serializable
+public class removeCalendar implements java.io.Serializable 
 {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String overallID = "createCalendar";
+	private String overallID = "removeCalendar";
 	private String Name;
 	private String CreatedBy;
-	private String publicOrPrivate;
 	
 	//Getters and setters for everything
 	public String getOverallID() {
@@ -31,12 +30,5 @@ public class CreateCalendar implements java.io.Serializable
 	public void setCreatedBy(String createdBy) {
 		CreatedBy = createdBy;
 	}
-	public String getPublicOrPrivate() {
-		return publicOrPrivate;
-	}
-	public void setPublicOrPrivate(String publicOrPrivate) {
-		this.publicOrPrivate = publicOrPrivate;
-	}
 
-	
 }

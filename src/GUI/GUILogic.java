@@ -222,7 +222,16 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getCreateCalendar().getBtnSubmit()){
-				//Metode til submit 
+				
+			String Name =screen.getCreateCalendar().getTextField_Name().getText();
+			String CreatedBy = screen.getCreateCalendar().getTextField_CreatedBy().getText();
+			String privatePublic =	screen.getCreateCalendar().getTextField_pubpriv().getText();
+				try {
+					sm.createNewCalendar(Name, CreatedBy, privatePublic);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			screen.show(Screen.MAINMENU);
 			}
 	}
 	}

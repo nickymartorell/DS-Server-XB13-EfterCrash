@@ -34,8 +34,10 @@ public class CreateCalendar extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField textField_Name;
+	private JTextField txtForPublic;
 	private JTextField textField_CreatedBy;
 	private JButton btnSubmit;
+	private JButton btnRemove;
 	private JButton btnLogout;
 	private JLabel lblCBSlogo;
 	private JButton btnMainMenu;
@@ -71,26 +73,40 @@ public class CreateCalendar extends JPanel {
 		textField_Name = new JTextField();
 		textField_Name.setForeground(new Color(105, 105, 105));
 		textField_Name.setName("");
-		textField_Name.setBounds(723, 214, 218, 34);
+		textField_Name.setBounds(723, 229, 218, 34);
 		add(textField_Name);
 		textField_Name.setColumns(10);
 
 		JLabel lblUserID = new JLabel("Name:");
 		lblUserID.setForeground(new Color(255, 255, 255));
 		lblUserID.setFont(new Font("Arial", Font.BOLD, 26));
-		lblUserID.setBounds(479, 211, 104, 30);
+		lblUserID.setBounds(479, 226, 104, 30);
 		add(lblUserID);
+		
+		txtForPublic = new JTextField();
+		txtForPublic.setText("1 for public. 0 for private");
+		txtForPublic.setForeground(new Color(105, 105, 105));
+		txtForPublic.setName("");
+		txtForPublic.setBounds(723, 319, 218, 34);
+		add(txtForPublic);
+		txtForPublic.setColumns(10);
+		
+		JLabel lblpubpriv = new JLabel("Public or private:");
+		lblpubpriv.setFont(new Font("Arial", Font.BOLD, 20));
+		lblpubpriv.setForeground(new Color(255, 255, 255));
+		lblpubpriv.setBounds(479, 330, 164, 30);
+		add(lblpubpriv);
 
 		textField_CreatedBy = new JTextField();
 		textField_CreatedBy.setForeground(new Color(105, 105, 105));
 		textField_CreatedBy.setColumns(10);
-		textField_CreatedBy.setBounds(723, 259, 218, 34);
+		textField_CreatedBy.setBounds(723, 274, 218, 34);
 		add(textField_CreatedBy);
 
 		JLabel lblTeam = new JLabel("Created By:");
 		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
 		lblTeam.setForeground(new Color(255, 255, 255));
-		lblTeam.setBounds(479, 264, 164, 30);
+		lblTeam.setBounds(479, 274, 164, 30);
 		add(lblTeam);
 
 		btnSubmit = new JButton("Create Calendar");
@@ -123,25 +139,17 @@ public class CreateCalendar extends JPanel {
 				lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
 				lblBackground.setBounds(0, 0, 1366, 768);
 				add(lblBackground);
+				
 	}	
 	public void addActionListener(ActionListener l) {
 		btnSubmit.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 	}
-	public JTextField getTextField_Name() {
-		return textField_Name;
-	}
-
-	public JTextField getTextField_Type() {
-		return getTextField_Type();
-	}
 
 	public JTextField getTextField_CreatedBy() {
 		return textField_CreatedBy;
 	}
-
-	
 	public JButton getBtnSubmit() {
 		return btnSubmit;
 	}
@@ -151,5 +159,23 @@ public class CreateCalendar extends JPanel {
 	
 	public JButton getBtnLogout() {
 		return btnLogout;
+	}
+	public JTextField getTextField_pubpriv() {
+		return txtForPublic;
+	}
+	public void setTextField_pubpriv(JTextField textField_pubpriv) {
+		this.txtForPublic = textField_pubpriv;
+	}
+	public void setTextField_Name(JTextField textField_Name) {
+		this.textField_Name = textField_Name;
+	}
+	public void setTextField_CreatedBy(JTextField textField_CreatedBy) {
+		this.textField_CreatedBy = textField_CreatedBy;
+	}
+	public JTextField getTextField_Name() {
+		return textField_Name;
+	}
+	public void setBtnSubmit(JButton btnSubmit) {
+		this.btnSubmit = btnSubmit;
 	}
 }
