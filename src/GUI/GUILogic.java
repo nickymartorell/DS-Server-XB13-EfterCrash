@@ -39,6 +39,8 @@ public class GUILogic {
 		screen.getAddCourse().addActionListener(new AddCourseActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddEvent().addActionListener(new AddEventActionListener());
+		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
+		
 
 		
 
@@ -120,6 +122,9 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getMainMenu().getAddCourse()){
 				screen.show(Screen.ADDCOURSE);
+			}
+			if (e.getSource() == screen.getMainMenu().getBtnCreateCalendar()){
+				screen.show(Screen.CREATECALENDAR);
 			}
 		}
 	}
@@ -205,7 +210,20 @@ public class GUILogic {
 			}
 		}
 	}
-	
+	private class CreateCalendarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			if (e.getSource() == screen.getCreateCalendar().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnSubmit()){
+				//Metode til submit 
+			}
+	}
+	}
 	
 }
 	
