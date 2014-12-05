@@ -97,30 +97,6 @@ public class NoteList extends JPanel {
 		});
 		}     
 	
-	
-
-		
-		
-		
-		/**
-		//Laver tabellen inde i Eventlisten.
-		String[] columnNames = { "Note", "Event", "Date", "Numbers of Notes" };
-
-		Object[][] data = {
-
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3"},
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3"},
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3"},
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3" },
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3" } 
-				};
-
-		final JTable table = new JTable(data, columnNames);
-		table.setSurrendersFocusOnKeystroke(true);
-		table.setPreferredScrollableViewportSize(new Dimension(500, 100));
-		table.setFillsViewportHeight(true);
-		table.setRowSelectionAllowed(true);
-*/
 		 //Create the scroll pane and add the table to it.
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBorder(new CompoundBorder(new BevelBorder(

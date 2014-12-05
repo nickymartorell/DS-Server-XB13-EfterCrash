@@ -205,16 +205,8 @@ public class GUILogic {
 			}
 		}
 	}
-	private class AddNoteActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == screen.getAddNote().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getAddNote().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-		}
-	}
+	
+	
 }
 	
 
