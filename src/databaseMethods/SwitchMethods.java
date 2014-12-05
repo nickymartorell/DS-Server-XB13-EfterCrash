@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import JsonClasses.Quote;
 import JsonClasses.getEvents;
 import JsonClasses.getForecast;
+import JsonClasses.createEvents;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
@@ -21,6 +22,7 @@ public class SwitchMethods extends Model
 	Gson gson = new Gson();
 	Quote qotd = new Quote();
 	getEvents getEv = new getEvents();
+	createEvents ev = new createEvents();
 	/**
 	 * Allows the client to create a new calendar
 	 * @param userName
@@ -49,7 +51,6 @@ public class SwitchMethods extends Model
 		return strReturn;		
 	}
 	
-	//TILFOEJ NY USER
 	//VIRKER
 	public boolean newUser(String eMail, String password) throws SQLException 
 	{
@@ -60,8 +61,8 @@ public class SwitchMethods extends Model
 	}
 	
 	//VIRKER
-	public boolean deleteUser(String eMail) throws SQLException {
-		
+	public boolean deleteUser(String eMail) throws SQLException 
+	{
 		String [] keys = {"active"};
 		String [] values = {"0"};	
 		qb.update("users", keys, values).where("email", "=", eMail).Execute();	
@@ -155,6 +156,56 @@ public class SwitchMethods extends Model
 		{
 			stringToBeReturned = "The calender you are trying to delete, does not exists.";
 		}
+		return stringToBeReturned;
+	}
+	
+	//VIRKER KUN TIL ADMIN
+	public String removeEventAdmin(String description) throws SQLException{
+		createEvents ev = new createEvents();
+		String stringToBeReturned ="";
+		String x = "1";
+		
+		resultSet = qb.selectFrom("events").where("description", "=", description).ExecuteQuery();	
+		if(resultSet.next()){
+		System.out.println(resultSet.getString("customevent"));
+		ev.setCustomevent(resultSet.getString("customevent"));	
+		String y = resultSet.getString("customevent");	
+		if(y.equals(x)){
+		System.out.println("se mig mor og far");
+		String [] keys = {"aktiv"};
+		String [] values ={"0"};
+		qb.update("Events", keys, values).where("description", "=", description).Execute();
+		}
+		}
+		else
+		{
+			System.out.println("Only delete your own! and custom events!!!");
+		}
+		stringToBeReturned = "The event has been set inactive";
+		return stringToBeReturned;
+	}
+	
+	//VIRKER KUN TIL ADMIN
+	public String activateEventAdmin(String description) throws SQLException{
+		createEvents ev = new createEvents();
+		String stringToBeReturned ="";
+		String x = "1";
+		
+		resultSet = qb.selectFrom("events").where("description", "=", description).ExecuteQuery();	
+		if(resultSet.next()){
+		ev.setCustomevent(resultSet.getString("customevent"));	
+		String y = resultSet.getString("customevent");	
+		if(y.equals(x)){
+		String [] keys = {"aktiv"};
+		String [] values ={"1"};
+		qb.update("Events", keys, values).where("description", "=", description).Execute();
+		}
+		}
+		else
+		{
+			System.out.println("Only activate your own! and custom events!!!");
+		}
+		stringToBeReturned = "The event has been set active";
 		return stringToBeReturned;
 	}
 	
@@ -299,9 +350,7 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 
-	//AUTHENTICATER
-	// Metoden faar email og password fra switchen (udtrukket fra en json) samt en boolean der skal saettes til true hvis det er serveren der logger paa, og false hvis det er en klient
-	/**
+	 /**
 	 * Allows the client to log in
 	 * @param email
 	 * @param password
@@ -345,8 +394,6 @@ public class SwitchMethods extends Model
 	public String createEvents(String location, String  cb, String  start, String  end, String  description, String  type, String customevent,String aktiv) throws SQLException{
 		String stringToBeReturned = "";
 		testConnection();
-//		String active = "1";
-		System.out.println("MORS LUDER"+aktiv);
 		if(autenticateNewEvent(description) ==false){
 			addNewEvent(location, cb, start, start, description, type, customevent,aktiv);
 			stringToBeReturned = "The new event has been created!!";
@@ -375,17 +422,15 @@ public class SwitchMethods extends Model
 		}	
 		return authenticate;
 	}
-	//VIRKER
+	//VIRKER lav med createdby for safety
 	public String removeEvent (String description) throws SQLException{
 		String stringToBeReturned ="";
 		String [] keys = {"aktiv"};
 		String [] values ={"0"};
-		System.out.println(description+"SÅDAN HER SER DESCRIPTION UD");
 		qb.update("Events", keys, values).where("description", "=", description).Execute();
-		stringToBeReturned = "The event has been set inactive"; //overvej omformulering
+		stringToBeReturned = "The event has been set inactive";
 		return stringToBeReturned;
 	}
-	
 	
 	//NOTE TING
 	//denne her skal dobbelttjekkes!!!!! 

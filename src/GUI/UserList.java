@@ -45,7 +45,7 @@ public class UserList extends JPanel {
 	private ResultSet rs;
 	private GUILogic gl;
 	public static JFrame frame;
-	public  String urObjctInCell;
+	public String urObjctInCell;
 	SwitchMethods sm = new SwitchMethods();
 	
     public UserList() {
@@ -89,6 +89,7 @@ public void mouseClicked(final MouseEvent e) {
 	final JTable target = (JTable)e.getSource();
     int row = target.getSelectedRow();
     //column sat til 1 for altid at bruge email
+    System.out.println("SKER DER NOGET HER");
      urObjctInCell = (String)target.getValueAt(row, 1);
      System.out.println(urObjctInCell);                         
 }
@@ -111,13 +112,14 @@ table.addMouseListener(new MouseAdapter() {
         	
         		public void actionPerformed(ActionEvent arg0) {
         		
-        	       try {   	    	  
-        							sm.deleteUser(urObjctInCell);
+        	       try {   	    
+        	    	   System.out.println("mutter!");
+        				sm.deleteUser(urObjctInCell);
         						
-        						} catch (SQLException e1) {
+        			} catch (SQLException e1) {
         					
-        							e1.printStackTrace();
-        			             }
+        				e1.printStackTrace();
+        			            }
         			            };
         			        } ); 
     

@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 
+import databaseMethods.SwitchMethods;
 import model.QueryBuild.QueryBuilder;
 
 import java.awt.Dimension;
@@ -46,8 +47,12 @@ import java.sql.SQLException;
 		private JButton btnDelete;
 		private JButton btnLogout;
 		private JButton btnMainMenu;
+		private JButton btnActivate;
 		private ResultSet rs;
 		public static JFrame frame;
+		public String urObjctInCell;
+		SwitchMethods sm = new SwitchMethods();
+		private JButton button;
 		
 		
 		public EventList() {
@@ -62,7 +67,7 @@ import java.sql.SQLException;
 			add(lblEvents);
 
 			//Laver tabellen inde i Eventlisten.
-			String[] columnNames = { "Type", "Location", "Start", "End", "Name" };
+			String[] columnNames = { "Type", "Location", "Start", "End", "description" };
 
 			Object[][] data = new Object[300][300];
 
@@ -89,6 +94,15 @@ import java.sql.SQLException;
 			table.setPreferredScrollableViewportSize(new Dimension(500, 100));
 			table.setFillsViewportHeight(true);
 			table.setRowSelectionAllowed(true);
+			table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(final MouseEvent e) {
+				final JTable target = (JTable)e.getSource();
+			    int row = target.getSelectedRow();
+			    //column sat til 4 for altid at bruge description
+			     urObjctInCell = (String)target.getValueAt(row, 3);
+			     System.out.println(urObjctInCell);                         
+			}
+			}); 
 			
 			if (DEBUG) {
 	            table.addMouseListener(new MouseAdapter() {
@@ -135,12 +149,26 @@ import java.sql.SQLException;
 			btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 			btnDelete.setBounds(988, 194, 118, 29);
 			add(btnDelete);
+			btnDelete.addActionListener(new ActionListener() {
+	        	
+        		public void actionPerformed(ActionEvent arg0) {
+        		
+        	       try {   	        
+  
+        				sm.removeEventAdmin(urObjctInCell);
+        						
+        			} catch (SQLException e1) {
+        					
+        				e1.printStackTrace();
+        			            }
+        			            };
+        			        } ); 
 						
 			btnAdd = new JButton("Add");
 			btnAdd.setOpaque(true);
 			btnAdd.setForeground(new Color(0, 0, 205));
 			btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-			btnAdd.setBounds(988, 234, 118, 29);
+			btnAdd.setBounds(988, 283, 118, 29);
 			add(btnAdd);
 						
 			JLabel label = new JLabel("");
@@ -148,6 +176,29 @@ import java.sql.SQLException;
 								.getResource("/Images/MetalBackground.jpg")));
 			label.setBounds(-26, -28, 1366, 768);
 			add(label);
+			
+			btnActivate = new JButton("Activate");
+			btnActivate.setBackground(Color.WHITE);
+			btnActivate.setOpaque(true);
+			btnActivate.setForeground(new Color(0, 0, 205));
+			btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+			btnActivate.setBounds(988, 234, 118, 29);
+			add(btnActivate);
+			btnActivate.addActionListener(new ActionListener() {
+	        	
+        		public void actionPerformed(ActionEvent arg0) {
+        		
+        	       try {   	        
+  
+        				sm.activateEventAdmin(urObjctInCell);
+        						
+        			} catch (SQLException e1) {
+        					
+        				e1.printStackTrace();
+        			            }
+        			            };
+        			        } ); 
+		
 
 		}
 		private void printDebugData(JTable table) {
@@ -170,6 +221,7 @@ import java.sql.SQLException;
 			btnDelete.addActionListener(x);
 			btnLogout.addActionListener(x);
 			btnMainMenu.addActionListener(x);
+			btnActivate.addActionListener(x);
 		}
 
 		public JButton getBtnAdd() {
@@ -187,7 +239,5 @@ import java.sql.SQLException;
 		public JButton getBtnMainMenu() {
 			return btnMainMenu;
 		}
-		
-		
 	}
 
