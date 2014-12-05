@@ -125,20 +125,20 @@ public class NoteList extends JPanel {
 		btnDelete.setForeground(new Color(0, 0, 205));
 		btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 		btnDelete.setBounds(1222, 227, 118, 29);
-		btnDelete.addActionListener(new ActionListener() {
-	        	
-     		public void actionPerformed(ActionEvent arg0) {
-     		
-     	       try {   	    	  
-     							sm.deleteNote(urObjctInCell);
-     						
-     						} catch (SQLException e1) {
-     					
-     							e1.printStackTrace();
-     			             }
-     			            };
-     			        } ); 
-		add(btnDelete);
+//		btnDelete.addActionListener(new ActionListener() {
+//	        	
+//     		public void actionPerformed(ActionEvent arg0) {
+//     		
+//     	       try {   	    	  
+//     							sm.deleteNote(urObjctInCell);
+//     						
+//     						} catch (SQLException e1) {
+//     					
+//     							e1.printStackTrace();
+//     			             }
+//     			            };
+//     			        } ); 
+//		add(btnDelete);
 		
 		
 		btnMainMenu = new JButton("Main Menu");

@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class ClientWorker implements  Runnable{
 	private Socket connectionSocketConected;
-	private CalendarInfo CI = new CalendarInfo();
+	//private CalendarInfo CI = new CalendarInfo();
 	private GiantSwitch GS = new GiantSwitch();
 	private encryption cryp = new encryption();
 	private String incomingJson;
