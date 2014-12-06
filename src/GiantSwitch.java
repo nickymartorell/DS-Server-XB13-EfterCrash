@@ -122,7 +122,8 @@ public class GiantSwitch {
 		//VIRKER
 		case "createEvents":
 			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
-			answer = SW.addNewEvent(CE.getLocation(),CE.getCreatedby(), CE.getStart(),CE.getEnd(), CE.getDescription(), CE.getType(), CE.getCustomevent(),CE.getAktiv());
+			answer = SW.addNewEvent(CE.getLocation(),CE.getCreatedby(), CE.getStart(),CE.getEnd(), CE.getDescription(),
+					                CE.getType(), CE.getCustomevent(),CE.getAktiv(),CE.getCalendarid());
 			break; 
 			
 		//TESTER

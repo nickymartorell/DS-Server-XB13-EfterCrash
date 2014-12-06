@@ -2,9 +2,11 @@ package databaseMethods;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
+
 
 import com.google.gson.Gson;
+import com.sun.org.apache.xml.internal.resolver.readers.XCatalogReader;
 
 import JsonClasses.getCalendar;
 import JsonClasses.Quote;
@@ -25,14 +27,7 @@ public class SwitchMethods extends Model
 	getEvents getEv = new getEvents();
 	getCalendar gc = new getCalendar();
 	createEvents ev = new createEvents();
-	/**
-	 * Allows the client to create a new calendar
-	 * @param userName
-	 * @param calenderName
-	 * @param privatePublic
-	 * @return
-	 * @throws SQLException
-	 */
+
 	
 	//VIRKER!
 	public String subscribeCalendars(String email,String Name) throws SQLException{
@@ -97,7 +92,8 @@ public class SwitchMethods extends Model
 		return true;
 	}
 	
-	//VIRKER
+	//VIRKER KUN ADMIN
+	//LAV LIGE IF SAA ADMIN IKKE SAETTER SIG SELV INAKTIV
 	public boolean deleteUser(String eMail) throws SQLException 
 	{
 		String [] keys = {"active"};
@@ -107,7 +103,7 @@ public class SwitchMethods extends Model
 		return true;
 	}	
 	
-	//VIRKER
+	//VIRKER KUN ADMIN
 	public boolean activateUser(String eMail) throws SQLException {
 		
 		String [] keys = {"active"};
@@ -208,7 +204,6 @@ public class SwitchMethods extends Model
 		ev.setCustomevent(resultSet.getString("customevent"));	
 		String y = resultSet.getString("customevent");	
 		if(y.equals(x)){
-		System.out.println("se mig mor og far");
 		String [] keys = {"aktiv"};
 		String [] values ={"0"};
 		qb.update("Events", keys, values).where("description", "=", description).Execute();
@@ -452,11 +447,11 @@ public class SwitchMethods extends Model
 
 	//EVENT TING
 	//VIRKER
-	public String createEvents(String location, String  cb, String  start, String  end, String  description, String  type, String customevent,String aktiv) throws SQLException{
+	public String createEvents(String location, String  cb, String  start, String  end, String  description, String  type, String customevent,String aktiv,String calendarid) throws SQLException{
 		String stringToBeReturned = "";
 		testConnection();
 		if(autenticateNewEvent(description) ==false){
-			addNewEvent(location, cb, start, start, description, type, customevent,aktiv);
+			addNewEvent(location, cb, start, start, description, type, customevent,aktiv,calendarid);
 			stringToBeReturned = "The new event has been created!!";
 		}
 		else{
@@ -465,10 +460,10 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;		
 	}
 	//VIRKER
-	public String addNewEvent(String location,String  cb,String  start,String  end,String  description,String  type, String customevent,String aktiv) throws SQLException {
+	public String addNewEvent(String location,String  cb,String  start,String  end,String  description,String  type, String customevent,String aktiv,String calendarid) throws SQLException {
 		String hehe = "";
-		String [] keys = {"location", "createdby", "type", "description", "start","end","customevent","aktiv"};
-		String [] values = {location,cb,type,description, start, end,customevent,aktiv};
+		String [] keys = {"location", "createdby", "type", "description", "start","end","customevent","aktiv","calendarid"};
+		String [] values = {location,cb,type,description, start, end,customevent,aktiv,calendarid};
 		qb.insertInto("events", keys).values(values).Execute();
 		return hehe;
 	}
@@ -476,10 +471,21 @@ public class SwitchMethods extends Model
 	private boolean autenticateNewEvent(String desription) throws SQLException {
 		getConn();
 		boolean authenticate = false;
-		resultSet = qb.selectFrom("events").where("description","=", desription).ExecuteQuery();
-		
+		resultSet = qb.selectFrom("events").where("description","=", desription).ExecuteQuery();	
+
 		while(resultSet.next()){
+			String x =resultSet.getString("calendarid");
+			int y = Integer.parseInt(x);
+			
+			//saa vi ikke kan add til cbs calendar
+			//kun til egen oprettede
+			if(y<=8){
 			authenticate = true;
+			}
+			else
+			{
+				System.out.println("Please do not add to Cbs official calendar");
+			}
 		}	
 		return authenticate;
 	}
