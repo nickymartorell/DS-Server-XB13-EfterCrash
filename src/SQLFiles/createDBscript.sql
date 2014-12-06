@@ -116,6 +116,7 @@ INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES
 DROP TABLE locationdata;
 
 /* Create calendar */
+/* lav lige active og privatepublic til boolean*/
 CREATE TABLE IF NOT EXISTS calendar
 (
 	calendarId int NOT NULL AUTO_INCREMENT,

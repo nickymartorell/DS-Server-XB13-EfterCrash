@@ -17,6 +17,7 @@ public class getEvents implements java.io.Serializable
 	private String description;
 	private String createdby;
 	private String customevent;
+	private String calendarid;
 	private String aktiv;
 	
 	public getEvents(){
@@ -102,6 +103,14 @@ public class getEvents implements java.io.Serializable
 
 	public void setAktiv(String aktiv) {
 		this.aktiv = aktiv;
+	}
+
+	public String getCalendarid() {
+		return calendarid;
+	}
+
+	public void setCalendarid(String calendarid) {
+		this.calendarid = calendarid;
 	}
 
 }

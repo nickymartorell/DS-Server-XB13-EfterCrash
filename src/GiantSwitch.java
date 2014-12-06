@@ -113,9 +113,16 @@ public class GiantSwitch {
 			
 		//VIRKER 	
 		case "getCustomEvents":
-//			getEvents GE = (getEvents)gson.fromJson(jsonString, getEvents.class);
 			ArrayList<getEvents> cusevents = SW.getCustomEvents();			
 			answer = gson.toJson(cusevents);
+			System.out.println("ANSWER FRA CLIENT:"+answer);
+			break;
+			
+		//VIRKER 	
+		case "getSubEvents":
+			getEvents ge = (getEvents)gson.fromJson(jsonString, getEvents.class);
+			ArrayList<getEvents> subEvents = SW.getSubEvents(ge.getId());			
+			answer = gson.toJson(subEvents);
 			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 
@@ -193,6 +200,8 @@ public class GiantSwitch {
 			return "getEvents"; 
 		} else if (ID.contains("getCustomEvents")) {
 			return "getCustomEvents";
+		} else if (ID.contains("getSubEvents")) {
+			return "getSubEvents";
 		} else if (ID.contains("getAllCalendar")) {
 			return "getAllCalendar";
 		} else if (ID.contains("saveNote")) {

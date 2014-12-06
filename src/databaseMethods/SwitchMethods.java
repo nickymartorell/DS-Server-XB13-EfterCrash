@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 
 
+
+
+
 import com.google.gson.Gson;
 import com.sun.org.apache.xml.internal.resolver.readers.XCatalogReader;
 
@@ -13,6 +16,7 @@ import JsonClasses.Quote;
 import JsonClasses.getEvents;
 import JsonClasses.getForecast;
 import JsonClasses.createEvents;
+import JsonClasses.userevents;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
@@ -27,6 +31,9 @@ public class SwitchMethods extends Model
 	getEvents getEv = new getEvents();
 	getCalendar gc = new getCalendar();
 	createEvents ev = new createEvents();
+	ArrayList<String> subEvents = new ArrayList<String>();
+	ResultSet rs;
+	
 
 	
 	//VIRKER!
@@ -64,6 +71,48 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 	
+	//VIRKER
+	public ArrayList<getEvents> getSubEvents(String email) throws SQLException{
+		
+		String who = "";
+		ArrayList<getEvents> subEventsArray = new ArrayList<getEvents>(); 
+		resultSet = qb.selectFrom("users").where("email", "=", email).ExecuteQuery();
+		while(resultSet.next())
+		{
+			who = resultSet.getString("userid");
+		}
+		if(!who.equals(""))
+		{
+			resultSet = qb.selectFrom("userevents").where("userid", "=", who).ExecuteQuery();
+		}	
+		while(resultSet.next())
+		{
+			subEvents.add(resultSet.getString("calendarid"));
+		}
+		if(!subEvents.equals(""))
+		{
+			for(int i = 0; i < subEvents.size();i++){
+				resultSet = qb.selectFrom("events").where("calendarid", "=", subEvents.get(i)).ExecuteQuery();	
+			while (resultSet.next()){
+				getEvents subEvent = new getEvents();
+				subEvent.setId(resultSet.getString("id"));
+				subEvent.setType(resultSet.getString("type"));
+				subEvent.setLocation(resultSet.getString("location"));
+				subEvent.setCreatedby(resultSet.getString("createdby"));	
+				subEvent.setStart(resultSet.getString("start"));
+				subEvent.setEnd(resultSet.getString("end"));
+				subEvent.setDescription(resultSet.getString("description"));
+	   			subEvent.setCalendarid(resultSet.getString("calendarid"));
+	   			subEvent.setCustomevent(resultSet.getString("customevent"));
+	   			subEvent.setAktiv(resultSet.getString("aktiv"));
+	   			subEventsArray.add(subEvent);
+			}
+			}			
+		}
+		resultSet.close();
+		return subEventsArray;
+	}	
+		
 	//VIRKER
 	public String getQuote() throws SQLException {
 		qotd = new Quote();
