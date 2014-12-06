@@ -40,6 +40,7 @@ public class GUILogic {
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddEvent().addActionListener(new AddEventActionListener());
 		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
+		screen.getCalendars().addActionListener(new CalendarsActionListener());
 		
 
 		
@@ -123,8 +124,8 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getAddCourse()){
 				screen.show(Screen.ADDCOURSE);
 			}
-			if (e.getSource() == screen.getMainMenu().getBtnCreateCalendar()){
-				screen.show(Screen.CREATECALENDAR);
+			if (e.getSource() == screen.getMainMenu().getBtnCalendars()){
+				screen.show(Screen.CALENDARS);
 			}
 		}
 	}
@@ -212,6 +213,7 @@ public class GUILogic {
 			}
 		}
 	}
+	
 	private class CreateCalendarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -235,8 +237,31 @@ public class GUILogic {
 			}
 	}
 	}
+	private class CalendarsActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			if (e.getSource() == screen.getCalendars().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getCalendars().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getCalendars().getBtnSubmit()){
+			screen.show(Screen.CREATECALENDAR);
+			}
+			//if (e.getSource() == screen.getCalendars().getBtnRemove()){
+				//Metode til Remove 
+			}
+		}
+	}
+
 	
-}
+	
+	
+	
+
+
+
 	
 
 

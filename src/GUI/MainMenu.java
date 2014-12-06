@@ -34,7 +34,7 @@ public class MainMenu extends JPanel {
 	private JButton btnNotelist;
 	private JLabel lblCBSlogo;
 	private JButton btnAddCourse;
-	private JButton btnCreateCalendar;
+	private JButton btnCalendars;
 	
 	
 
@@ -95,14 +95,14 @@ public class MainMenu extends JPanel {
 		btnAddCourse.setBounds(610, 403, 145, 50);
 		add(btnAddCourse);
 		
-		btnCreateCalendar = new JButton("Add Calendar");
-		btnCreateCalendar.setForeground(Color.WHITE);
-		btnCreateCalendar.setFont(new Font("Arial", Font.BOLD, 20));
-		btnCreateCalendar.setContentAreaFilled(false);
-		btnCreateCalendar.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnCreateCalendar.setBackground(Color.WHITE);
-		btnCreateCalendar.setBounds(610, 464, 145, 50);
-		add(btnCreateCalendar);
+		btnCalendars = new JButton("Calendars");
+		btnCalendars.setForeground(Color.WHITE);
+		btnCalendars.setFont(new Font("Arial", Font.BOLD, 28));
+		btnCalendars.setContentAreaFilled(false);
+		btnCalendars.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
+		btnCalendars.setBackground(Color.WHITE);
+		btnCalendars.setBounds(610, 464, 145, 50);
+		add(btnCalendars);
 		
 		lblCBSlogo = new JLabel("");
 		lblCBSlogo.setIcon(new ImageIcon(MainMenu.class.getResource("/Images/CBSLogo3.png")));
@@ -119,7 +119,7 @@ public class MainMenu extends JPanel {
 		btnLogOut.addActionListener(X);
 		btnAddCourse.addActionListener(X);
 		btnEventlist.addActionListener(X);
-		btnCreateCalendar.addActionListener(X);
+		btnCalendars.addActionListener(X);
 		btnNotelist.addActionListener(X);
 		btnUserlist.addActionListener(X);
 	
@@ -141,7 +141,7 @@ public class MainMenu extends JPanel {
 	public JButton getAddCourse() {
 		return btnAddCourse;
 	}
-	public JButton getBtnCreateCalendar() {
-		return btnCreateCalendar;
+	public JButton getBtnCalendars() {
+		return btnCalendars;
 	}
 }

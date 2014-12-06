@@ -33,7 +33,8 @@ public class Screen extends JFrame {
 	public static final String ADDUSER = "ADDUSER";
 	public static final String ADDEVENT = "ADDEVENT";
 	static final String ADDNOTE = "ADDNOTE";
-	public static final String CREATECALENDAR ="CREATECALENDAR";
+	public static final String CALENDARS ="CALENDARS";
+	public static final String CREATECALENDAR = "CREATECALENDAR";
 	
 	
 	private JPanel contentPane;
@@ -45,9 +46,10 @@ public class Screen extends JFrame {
 	private  EventList eventList;
 	private AddCourse addCourse;
 	private  AddUser addUser; 
-	private CreateCalendar createCalendar;
+	private Calendars calendars;
 	private AddEvent addEvent;
 	private AddEvent addCourseForm;
+	private CreateCalendar createCalendar;
 	
 	CardLayout c;
 
@@ -107,6 +109,9 @@ public class Screen extends JFrame {
 		addEvent = new AddEvent();
 		contentPane.add(addEvent, ADDEVENT);
 		
+		calendars = new Calendars();
+		contentPane.add(calendars, CALENDARS);
+		
 		createCalendar = new CreateCalendar();
 		contentPane.add(createCalendar, CREATECALENDAR);
 		
@@ -148,6 +153,9 @@ public class Screen extends JFrame {
 	}
 	public AddEvent getAddEvent() {
 		return addEvent;
+	}
+	public Calendars getCalendars() {
+		return calendars;
 	}
 	public CreateCalendar getCreateCalendar() {
 		return createCalendar;
