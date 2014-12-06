@@ -11,6 +11,7 @@ public class userevents implements java.io.Serializable
 	private String calendarid;
 	private String email;
 	private String Name;
+	private String receiver;
 	
 	//Getters and setters
 	public String getOverallID() {
@@ -42,6 +43,12 @@ public class userevents implements java.io.Serializable
 	}
 	public void setName(String name) {
 		Name = name;
+	}
+	public String getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
 
 }

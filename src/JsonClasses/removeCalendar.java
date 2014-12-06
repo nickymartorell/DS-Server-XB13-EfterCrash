@@ -10,8 +10,8 @@ public class removeCalendar implements java.io.Serializable
 	private String overallID = "removeCalendar";
 	private String Name;
 	private String CreatedBy;
+	private String Active;
 	
-	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
@@ -29,6 +29,12 @@ public class removeCalendar implements java.io.Serializable
 	}
 	public void setCreatedBy(String createdBy) {
 		CreatedBy = createdBy;
+	}
+	public String getActive() {
+		return Active;
+	}
+	public void setActive(String active) {
+		Active = active;
 	}
 
 }

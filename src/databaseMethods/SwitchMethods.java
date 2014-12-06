@@ -60,6 +60,38 @@ public class SwitchMethods extends Model {
 		}
 		return stringToBeReturned;
 	}
+	
+	// TESTER!
+	public String shareCalendars(String email, String Name, String receiver)
+			throws SQLException {
+
+		String stringToBeReturned = "";
+		String getCalendarId = "";
+		String getUserId = "";
+		System.out.println("fra switch methods: " + email + Name);
+		String[] key = { "calendarid", "userid" };
+		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
+				.ExecuteQuery();
+		while (resultSet.next()) {
+			getCalendarId = resultSet.getString("KalId");
+		}
+		if (!getCalendarId.equals("")) {
+			resultSet = qb.selectFrom("users").where("email", "=", email)
+					.ExecuteQuery();
+		}
+		while (resultSet.next()) {
+			getUserId = resultSet.getString("userid");
+			System.out.println("getUserId id:" + receiver);
+		}
+		if (!getUserId.equals("")) {
+			String[] values = { getCalendarId, receiver };
+			qb.insertInto("userevents", key).values(values).Execute();
+			stringToBeReturned = "You have now subscribed your friend!";
+		} else {
+			stringToBeReturned = "Please only add public or request share";
+		}
+		return stringToBeReturned;
+	}
 
 	// VIRKER
 	public ArrayList<getEvents> getSubEvents(String email) throws SQLException {
@@ -157,9 +189,9 @@ public class SwitchMethods extends Model {
 		testConnection();
 		if (authenticateNewCalendar(Name) == false) {
 			addNewCalendar(Name, CreatedBy, privatePublic);
-			stringToBeReturned = "The new calender has been created!";
+			stringToBeReturned = "The new calendar has been created!";
 		} else {
-			stringToBeReturned = "The new calender has not been created!";
+			stringToBeReturned = "The new calendar has not been created!";
 		}
 		return stringToBeReturned;
 	}
@@ -185,13 +217,14 @@ public class SwitchMethods extends Model {
 		qb.insertInto("calendar", keys).values(values).Execute();
 	}
 
-	// TESTER
+	// VIRKER
 	public String removeCalendar(String CreatedBy, String Name)
 			throws SQLException {
 		String stringToBeReturned = "";
 		String usernameOfCreator = "";
 		String calendarExists = "";
-		resultSet = qb.selectFrom("calender").where("Name", "=", Name)
+		System.out.println("DETTE ER NAME" +Name);
+		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 				.ExecuteQuery();
 		while (resultSet.next()) {
 			calendarExists = resultSet.toString();
@@ -201,25 +234,60 @@ public class SwitchMethods extends Model {
 			resultSet = qb.selectFrom(value, "calendar")
 					.where("CreatedBy", "=", CreatedBy).ExecuteQuery();
 			while (resultSet.next()) {
-				usernameOfCreator = resultSet.toString();
+				usernameOfCreator = resultSet.getString("CreatedBy");
 				System.out.println(usernameOfCreator);
 			}
 			if (!usernameOfCreator.equals(CreatedBy)) {
-				stringToBeReturned = "Only the creator of the calender is able to delete it.";
+				stringToBeReturned = "Only the creator of the calendar is able to delete it.";
 			} else {
 				String[] keys = { "Active" };
 				String[] values = { "0" };
 				qb.update("calendar", keys, values).where("Name", "=", Name)
 						.Execute();
-				stringToBeReturned = "Calender has been set inactive";
+				stringToBeReturned = "Calendar has been set inactive";
 			}
 			stringToBeReturned = resultSet.toString();
 		} else {
-			stringToBeReturned = "The calender you are trying to delete, does not exists.";
+			stringToBeReturned = "The calendar you are trying to delete, does not exists.";
 		}
 		return stringToBeReturned;
-	}
-
+		}
+	
+		// TESTER
+		public String activateCalendar(String CreatedBy, String Name)
+				throws SQLException {
+			String stringToBeReturned = "";
+			String usernameOfCreator = "";
+			String calendarExists = "";
+			System.out.println("DETTE ER NAME" +Name);
+			resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
+					.ExecuteQuery();
+			while (resultSet.next()) {
+				calendarExists = resultSet.toString();
+			}
+			if (!calendarExists.equals("")) {
+				String[] value = { "CreatedBy" };
+				resultSet = qb.selectFrom(value, "calendar")
+						.where("CreatedBy", "=", CreatedBy).ExecuteQuery();
+				while (resultSet.next()) {
+					usernameOfCreator = resultSet.getString("CreatedBy");
+					System.out.println(usernameOfCreator);
+				}
+				if (!usernameOfCreator.equals(CreatedBy)) {
+					stringToBeReturned = "Only the creator of the calendar is able to activate it.";
+				} else {
+					String[] keys = { "Active" };
+					String[] values = { "1" };
+					qb.update("calendar", keys, values).where("Name", "=", Name)
+							.Execute();
+					stringToBeReturned = "Calendar has been set active";
+				}
+				stringToBeReturned = resultSet.toString();
+			} else {
+				stringToBeReturned = "The calendar you are trying to activate, does not exists.";
+			}
+			return stringToBeReturned;
+		}
 	// KUN TIL ADMIN
 	//VIRKER
 	public String removeCalendarAdmin(String Name) throws SQLException {
