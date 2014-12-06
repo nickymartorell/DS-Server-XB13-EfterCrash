@@ -8,7 +8,6 @@ import model.calendar.Event;
 import model.note.Note;
 import model.user.*;
 import JsonClasses.AuthUser;
-
 import JsonClasses.CreateCalendar;
 import JsonClasses.removeCalendar;
 import JsonClasses.createEvents;
@@ -19,6 +18,7 @@ import JsonClasses.getEvents;
 import JsonClasses.getForecast;
 import JsonClasses.getNote;
 import JsonClasses.saveNote;
+import JsonClasses.userevents;
 
 import com.google.gson.*;
 
@@ -64,6 +64,15 @@ public class GiantSwitch {
 		/*************
 		 ** CALENDAR **
 		 *************/
+		
+	    //SKAL LIGE TESTES   - ER TIL CLIENT
+		case "subscribeCalendar":
+			userevents uevents = gson.fromJson(jsonString, userevents.class);
+			System.out.println("sofar");
+			System.out.println("hvad faar vi fra userevents: "+uevents.getEmail()+uevents.getName());
+			answer = SW.subscribeCalendars(uevents.getEmail(), uevents.getName());
+			break;
+			
 		//VIRKER på serverside
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
@@ -72,6 +81,7 @@ public class GiantSwitch {
 			break;
 		
 		//TESTER
+
 		case "removeCalendar":
 			removeCalendar rc = (removeCalendar)gson.fromJson(jsonString, removeCalendar.class);
 			System.out.println("Den har lagt det nye ind i klassen");
@@ -212,6 +222,8 @@ public class GiantSwitch {
 			return "removeEvent"; 
 		} else if (ID.contains("createCalendar")) {
 			return "createCalendar";
+		} else if (ID.contains("subscribeCalendar")) {
+			return "subscribeCalendar";
 		}
 		else
 			return "error";

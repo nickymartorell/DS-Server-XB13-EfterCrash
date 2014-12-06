@@ -34,28 +34,29 @@ public class SwitchMethods extends Model
 	 * @throws SQLException
 	 */
 	
-	//SKAL TESTES IMORGEN
-	public String subscribeCalendars(String eMail,String Name) throws SQLException{
-		ResultSet rs;
-		String empty = "";
+	//VIRKER!
+	public String subscribeCalendars(String email,String Name) throws SQLException{
+		
 		String stringToBeReturned ="";
 		String getCalendarId = "";
 		String getUserId = "";
-		String[] key = {"userid", "calendarid"};		
-		rs = qb.selectFrom("calendar").where("Name", "=", Name).ExecuteQuery();
-		while(rs.next())
+		System.out.println("fra switch methods: "+email+Name);
+		String[] key = {"calendarid","userid"};		
+		resultSet = qb.selectFrom("calendar").where("Name", "=", Name).ExecuteQuery();
+		while(resultSet.next())
 		{
-			getCalendarId = resultSet.getString("CalendarID");
+			getCalendarId = resultSet.getString("KalId");
 		}
-		if(!getCalendarId.contains(empty))
+		if(!getCalendarId.equals(""))
 		{
-			rs = qb.selectFrom("users").where("eMail", "=", eMail).ExecuteQuery();
+			resultSet = qb.selectFrom("users").where("email", "=", email).ExecuteQuery();
 		}
-		while(rs.next())
+		while(resultSet.next())
 		{
-			getUserId = rs.getString("userid");
+			getUserId = resultSet.getString("userid");
+			System.out.println("getUserId id:"+getUserId);
 		}
-		if(!getUserId.contains(empty))
+		if(!getUserId.equals(""))
 		{
 			String[] values = {getCalendarId, getUserId};
 			qb.insertInto("userevents", key).values(values).Execute();
