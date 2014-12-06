@@ -44,11 +44,9 @@ public class GiantSwitch {
 
 		/**********
 		 ** LOGIN ** 
-		 **********/
-		
+		 **********/		
 		//VIRKER
-		case "logIn": 
-			
+		case "logIn": 		
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
 			System.out.println("Recieved logIn");
 			try {
@@ -62,10 +60,10 @@ public class GiantSwitch {
 		case "logOut":
 			System.out.println("Recieved logOut");
 			break;
+			
 		/*************
 		 ** CALENDAR **
 		 *************/
-		
 		//VIRKER på serverside
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
@@ -85,10 +83,19 @@ public class GiantSwitch {
 			System.out.println("Recieved getCalendar");
 			answer = SW.getCalendar(GC.getName());
 			break;
+			
+		case "getAllCalendar":
+			//getCalendar gac = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
+			ArrayList<getCalendar> gCal = SW.getAllCalendar();
+			System.out.println("Recieved getCalendar");
+			answer = gson.toJson(gCal);
+			break;
 
-		//VIRKER 
+		/*************
+		 ** EVENTS **
+		 *************/
+		//VIRKER skal lige rettes til
 		case "getEvents":
-//			getEvents GE = (getEvents)gson.fromJson(jsonString, getEvents.class);
 			ArrayList<Event> events = SW.getEvents();			
 			answer = gson.toJson(events);
 			System.out.println("ANSWER FRA CLIENT:"+answer);
@@ -115,6 +122,10 @@ public class GiantSwitch {
 			answer = SW.removeEvent(DE.getDescription());		
 			break;
 		
+			
+		/*************
+		 ** NOTES **
+		*************/
 		case "saveNote":
 			saveNote SN = (saveNote)gson.fromJson(jsonString, saveNote.class);
 			System.out.println("Recieved saveNote");
@@ -171,6 +182,8 @@ public class GiantSwitch {
 			return "getEvents"; 
 		} else if (ID.contains("getCustomEvents")) {
 			return "getCustomEvents";
+		} else if (ID.contains("getAllCalendar")) {
+			return "getAllCalendar";
 		} else if (ID.contains("saveNote")) {
 			return "saveNote";
 		} else if (ID.contains("getNote")) {

@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import JsonClasses.getCalendar;
 import JsonClasses.Quote;
 import JsonClasses.getEvents;
 import JsonClasses.getForecast;
@@ -22,6 +23,7 @@ public class SwitchMethods extends Model
 	Gson gson = new Gson();
 	Quote qotd = new Quote();
 	getEvents getEv = new getEvents();
+	getCalendar gc = new getCalendar();
 	createEvents ev = new createEvents();
 	/**
 	 * Allows the client to create a new calendar
@@ -244,19 +246,29 @@ public class SwitchMethods extends Model
 	}
 	
 	//Hent alle kalendere til visning
-		public String getAllCalendar(String userName) throws SQLException
-		{
-			String stringToBeReturned ="";
-
-			resultSet = qb.selectFrom("calendar").all().ExecuteQuery();
-			
-			while(resultSet.next())
-			{
-				stringToBeReturned += resultSet.toString();
-			}
-			return stringToBeReturned;
-		}
-	
+		public ArrayList <getCalendar> getAllCalendar(){
+			try {
+		   		qb = new QueryBuilder();
+		   		gson = new Gson();
+		   	
+		   		ResultSet rs = qb.selectFrom("calendar").all().ExecuteQuery();
+		   		ArrayList<getCalendar> calendarList = new ArrayList<getCalendar>();  	    	
+		   		while(rs.next()){
+		   			getCalendar getCal = new getCalendar();
+		   			getCal.setName(rs.getString("Name"));
+		   			getCal.setCreatedBy(rs.getString("CreatedBy"));
+		   			getCal.setActive(rs.getString("Active"));
+		   			getCal.setPublicOrPrivate(rs.getString("PrivatePublic"));	   			
+		   			calendarList.add(getCal);
+		   		}
+		   		rs.close();
+		   		return calendarList;
+		   		
+		   	} catch (Exception e) {
+		           e.printStackTrace();
+		       }
+		       return null;
+		   } 
 	//SAET DEN HER LIGE MED USERID
 	public String getCalendar(String userName) throws SQLException
 	{

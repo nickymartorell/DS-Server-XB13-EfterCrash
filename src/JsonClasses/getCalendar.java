@@ -11,8 +11,20 @@ public class getCalendar implements java.io.Serializable
 	private String Name;
 	private String CreatedBy;
 	private String publicOrPrivate;
+	private String Active;
 	
-	//Getters and setters for everything
+	public getCalendar(){
+		
+	}
+	
+	public getCalendar(String Name, String CreatedBy, String publicOrPrivate) {
+		super();
+		//this.name = name;
+		this.Name = Name;
+		this.CreatedBy = CreatedBy;
+		this.publicOrPrivate = publicOrPrivate;
+
+	}
 	public String getOverallID() {
 		return overallID;
 	}
@@ -36,6 +48,14 @@ public class getCalendar implements java.io.Serializable
 	}
 	public void setPublicOrPrivate(String publicOrPrivate) {
 		this.publicOrPrivate = publicOrPrivate;
+	}
+
+	public String getActive() {
+		return Active;
+	}
+
+	public void setActive(String active) {
+		Active = active;
 	}
 
 	
