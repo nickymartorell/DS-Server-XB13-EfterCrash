@@ -243,6 +243,20 @@ public class SwitchMethods extends Model
 		return stringToBeReturned;
 	}
 	
+	//Hent alle kalendere til visning
+		public String getAllCalendar(String userName) throws SQLException
+		{
+			String stringToBeReturned ="";
+
+			resultSet = qb.selectFrom("calendar").all().ExecuteQuery();
+			
+			while(resultSet.next())
+			{
+				stringToBeReturned += resultSet.toString();
+			}
+			return stringToBeReturned;
+		}
+	
 	//SAET DEN HER LIGE MED USERID
 	public String getCalendar(String userName) throws SQLException
 	{

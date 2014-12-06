@@ -1,35 +1,42 @@
 package JsonClasses;
 
-public class getCalendar {
-	private String overallID = "getCalendar";
-	private String calendarName;
-	private String userName;
+public class getCalendar implements java.io.Serializable
+{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String overallID = "getCalendar";
+	private String Name;
+	private String CreatedBy;
+	private String publicOrPrivate;
 	
-	//getter og setters
-	public String getOverallID(){
+	//Getters and setters for everything
+	public String getOverallID() {
 		return overallID;
-			}
-	
-	public void setOverallID(String overallID){
+	}
+	public void setOverallID(String overallID) {
 		this.overallID = overallID;
 	}
-	
-	public String getCalendarName(){
-		return calendarName;
+	public String getName() {
+		return Name;
 	}
-	
-	public void setCalendarName(String calendarName){
-		this.calendarName = calendarName;
-		}
-	
-	public String getUserName(){
-		return userName;
+	public void setName(String name) {
+		Name = name;
 	}
-	
-	public void setUserName(String userName){
-		this.userName = userName;
+	public String getCreatedBy() {
+		return CreatedBy;
 	}
+	public void setCreatedBy(String createdBy) {
+		CreatedBy = createdBy;
+	}
+	public String getPublicOrPrivate() {
+		return publicOrPrivate;
+	}
+	public void setPublicOrPrivate(String publicOrPrivate) {
+		this.publicOrPrivate = publicOrPrivate;
+	}
+
+	
 }
-
-

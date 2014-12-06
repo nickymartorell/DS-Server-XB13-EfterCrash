@@ -8,7 +8,7 @@ import model.calendar.Event;
 import model.note.Note;
 import model.user.*;
 import JsonClasses.AuthUser;
-import JsonClasses.CalendarInfo;
+
 import JsonClasses.CreateCalendar;
 import JsonClasses.removeCalendar;
 import JsonClasses.createEvents;
@@ -41,16 +41,9 @@ public class GiantSwitch {
 		switch (Determine(jsonString)) {
 		//If the Json String contains one of the keywords below, run the relevant method.
 
-		/************
-		 ** COURSES **
-		 ************/
-
-		case "importCalendar":
-			System.out.println("Recieved importCourse");
-			break;
 
 		/**********
-		 ** LOGIN FAA DEN LIGE FIKSET ** 
+		 ** LOGIN ** 
 		 **********/
 		
 		//VIRKER
@@ -80,6 +73,7 @@ public class GiantSwitch {
 			answer = SW.createNewCalendar(CC.getName(), CC.getCreatedBy(), CC.getPublicOrPrivate());
 			break;
 		
+		//TESTER
 		case "removeCalendar":
 			removeCalendar rc = (removeCalendar)gson.fromJson(jsonString, removeCalendar.class);
 			System.out.println("Den har lagt det nye ind i klassen");
@@ -89,7 +83,7 @@ public class GiantSwitch {
 		case "getCalendar":
 			getCalendar GC = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
 			System.out.println("Recieved getCalendar");
-			answer = SW.getCalendar(GC.getUserName());
+			answer = SW.getCalendar(GC.getName());
 			break;
 
 		//VIRKER 
