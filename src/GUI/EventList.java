@@ -59,6 +59,28 @@ import java.sql.SQLException;
 			
 			setSize(new Dimension(1366, 768));
 			setLayout(null);
+			
+			btnActivate = new JButton("Activate");
+			btnActivate.setBackground(Color.WHITE);
+			btnActivate.setOpaque(true);
+			btnActivate.setForeground(new Color(0, 0, 205));
+			btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+			btnActivate.setBounds(988, 234, 118, 29);
+			add(btnActivate);
+			btnActivate.addActionListener(new ActionListener() {
+	        	
+        		public void actionPerformed(ActionEvent arg0) {
+        		
+        	       try {   	        
+  
+        				sm.activateEventAdmin(urObjctInCell);
+        						
+        			} catch (SQLException e1) {
+        					
+        				e1.printStackTrace();
+        			            }
+        			            };
+        			        } ); 
 
 			JLabel lblEvents = new JLabel("Eventlist");
 			lblEvents.setForeground(Color.WHITE);
@@ -177,28 +199,6 @@ import java.sql.SQLException;
 								.getResource("/Images/MetalBackground.jpg")));
 			label.setBounds(-26, -28, 1366, 768);
 			add(label);
-			
-			btnActivate = new JButton("Activate");
-			btnActivate.setBackground(Color.WHITE);
-			btnActivate.setOpaque(true);
-			btnActivate.setForeground(new Color(0, 0, 205));
-			btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-			btnActivate.setBounds(988, 234, 118, 29);
-			add(btnActivate);
-			btnActivate.addActionListener(new ActionListener() {
-	        	
-        		public void actionPerformed(ActionEvent arg0) {
-        		
-        	       try {   	        
-  
-        				sm.activateEventAdmin(urObjctInCell);
-        						
-        			} catch (SQLException e1) {
-        					
-        				e1.printStackTrace();
-        			            }
-        			            };
-        			        } ); 
 		
 
 		}

@@ -65,27 +65,36 @@ public class GiantSwitch {
 		 ** CALENDAR **
 		 *************/
 		
-	    //SKAL LIGE TESTES   - ER TIL CLIENT
+		//VIRKER - ER TIL CLIENT
+		case "shareCalendar":
+			userevents sa = gson.fromJson(jsonString, userevents.class);
+			answer = SW.shareCalendars(sa.getEmail(),sa.getName(),sa.getReceiver());
+			break;
+			
+	    //VIRKER - ER TIL CLIENT
 		case "subscribeCalendar":
 			userevents uevents = gson.fromJson(jsonString, userevents.class);
-			System.out.println("sofar");
-			System.out.println("hvad faar vi fra userevents: "+uevents.getEmail()+uevents.getName());
 			answer = SW.subscribeCalendars(uevents.getEmail(), uevents.getName());
 			break;
 			
-		//VIRKER på serverside
+		//VIRKER
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
-			System.out.println("Den har lagt det nye ind i klassen");
 			answer = SW.createNewCalendar(CC.getName(), CC.getCreatedBy(), CC.getPublicOrPrivate());
 			break;
 		
-		//TESTER
-
+		//VIRKER
 		case "removeCalendar":
 			removeCalendar rc = (removeCalendar)gson.fromJson(jsonString, removeCalendar.class);
-			System.out.println("Den har lagt det nye ind i klassen");
-			answer = SW.removeCalendar(rc.getCreatedBy(), rc.getName());
+			System.out.println("SERVER SIDEN" + rc.getName()+rc.getCreatedBy());
+			answer = SW.removeCalendar(rc.getCreatedBy(),rc.getName());
+			break;
+			
+		//VIRKER
+		case "activateCalendar":
+			removeCalendar ra = (removeCalendar)gson.fromJson(jsonString, removeCalendar.class);
+			System.out.println("SERVER SIDEN" + ra.getName()+ra.getCreatedBy());
+			answer = SW.activateCalendar(ra.getCreatedBy(),ra.getName());
 			break;
 				
 //		case "getCalendar":
@@ -234,6 +243,10 @@ public class GiantSwitch {
 			return "createCalendar";
 		} else if (ID.contains("subscribeCalendar")) {
 			return "subscribeCalendar";
+		} else if (ID.contains("activateCalendar")) {
+			return "activateCalendar";
+		} else if (ID.contains("shareCalendar")) {
+			return "shareCalendar";
 		}
 		else
 			return "error";
