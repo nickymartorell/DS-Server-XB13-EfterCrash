@@ -1,83 +1,47 @@
 package JsonClasses;
 
 public class getNote {
-
-
-
+private String overallID = "getNote";
 private int noteID;
-private String text;
-private String dateTime;
+private String note;
+private String createdby;
 private String eventID;
 public String geteventID;
-
-
-//getters and setters
-
-public int getnoteID(){
-return noteID;
-
-}
-
-public void setnoteID(int noteID){
-	this.noteID = noteID;
-}
-
-public String gettext(){
-	return text;
-	
-}
-
-public void settext(String text){
-	this.text = text;
-}
-
-public String getdateTime(){
-	return dateTime;
-}
-
-public void dateTime(String dateTime){
-	this.dateTime = dateTime;
-}
-
-public void setcreatedBy(String createdBy){
-}
-
-public void setisActive(int isActive){
-}
-
-@SuppressWarnings("unused")
-private String geteventID(){
-	return eventID;
-}
-
-public void seteventID(String eventID){
-	this.eventID = eventID;
-	
-}
-
-}
-/*
-
-public String getOverallID(){
+public String getOverallID() {
 	return overallID;
-		}
-
-public void setOverallID(String overallID){
+}
+public void setOverallID(String overallID) {
 	this.overallID = overallID;
 }
-
-public String getCalendarName(){
-	return calendarName;
+public int getNoteID() {
+	return noteID;
 }
+public void setNoteID(int noteID) {
+	this.noteID = noteID;
+}
+public String getNotes() {
+	return note;
+}
+public void setNote(String note) {
+	this.note = note;
+}
+public String getEventID() {
+	return eventID;
+}
+public void setEventID(String eventID) {
+	this.eventID = eventID;
+}
+public String getGeteventID() {
+	return geteventID;
+}
+public void setGeteventID(String geteventID) {
+	this.geteventID = geteventID;
 
-public void setCalendarName(String calendarName){
-	this.calendarName = calendarName;
 	}
-
-public String getUserName(){
-	return userName;
+public String getCreatedby() {
+	return createdby;
 }
-
-public void setUserName(String userName){
-	this.userName = userName;
-}*/
+public void setCreatedby(String createdby) {
+	this.createdby = createdby;
+}
+}

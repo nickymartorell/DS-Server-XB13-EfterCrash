@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS notes
 (
 	noteid int NOT NULL AUTO_INCREMENT,
 	eventid int NOT NULL,
-  	note varchar(200) NOT NULL,
+  	note varchar(500) NOT NULL,
 	createdby VARCHAR(100),
 	isActive boolean,
 	PRIMARY KEY (noteid)

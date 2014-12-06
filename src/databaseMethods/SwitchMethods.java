@@ -586,6 +586,34 @@ public class SwitchMethods extends Model {
 		}
 		return stringToBeReturned;
 	}
+	
+	// NOTE TING
+	// KUN TIL ADMIN
+	// VIRKER
+	public String removeNoteAdmin(int noteid)
+			throws SQLException {
+		String stringToBeReturned = "";
+		String NoteExists = "";
+		String id = String.valueOf(noteid);
+		resultSet = qb.selectFrom("notes").where("noteid", "=", id)
+				.ExecuteQuery();
+
+		while (resultSet.next()) {
+			NoteExists = resultSet.toString();
+
+			if (!NoteExists.equals("")) {
+				
+					String[] keys = { "isActive" };
+					String[] values = { "0" };
+					qb.update("notes", keys, values)
+							.where("noteid", "=", id).Execute();
+					stringToBeReturned = "The note has been deleted"; 	
+			} else {
+			stringToBeReturned = "The note you are trying to delete does not exist!";
+		}
+	}
+	return stringToBeReturned;
+}
 
 	// public String removeEvent (String description) throws SQLException{
 	// String stringToBeReturned ="";

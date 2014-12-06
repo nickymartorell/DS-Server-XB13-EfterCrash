@@ -43,7 +43,7 @@ public class NoteList extends JPanel {
 	private JButton btnMainMenu;
 	private JButton btnLogout;
 	private JLabel label;
-	public  String urObjctInCell;
+	public  int urObjctInCell;
 	private ResultSet rs;
 	SwitchMethods sm = new SwitchMethods();
 
@@ -85,7 +85,7 @@ public class NoteList extends JPanel {
 			final JTable target = (JTable)e.getSource();
 		    int row = target.getSelectedRow();
 		    //column sat til 1 for altid at bruge email
-		     urObjctInCell = (String)target.getValueAt(row, 1);
+		     urObjctInCell = (int)target.getValueAt(row, 0);
 		     System.out.println(urObjctInCell);                         
 		}
 		});      
@@ -125,20 +125,20 @@ public class NoteList extends JPanel {
 		btnDelete.setForeground(new Color(0, 0, 205));
 		btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
 		btnDelete.setBounds(1222, 227, 118, 29);
-//		btnDelete.addActionListener(new ActionListener() {
-//	        	
-//     		public void actionPerformed(ActionEvent arg0) {
-//     		
-//     	       try {   	    	  
-//     							sm.deleteNote(urObjctInCell);
-//     						
-//     						} catch (SQLException e1) {
-//     					
-//     							e1.printStackTrace();
-//     			             }
-//     			            };
-//     			        } ); 
-//		add(btnDelete);
+		btnDelete.addActionListener(new ActionListener() {
+	        	
+     		public void actionPerformed(ActionEvent arg0) {
+     		
+     					try {   	    	  
+     						sm.removeNoteAdmin(urObjctInCell);
+     						
+     						} catch (SQLException e1) {
+     					
+     							e1.printStackTrace();
+     			             }
+     			            };
+     			        } ); 
+		add(btnDelete);
 		
 		
 		btnMainMenu = new JButton("Main Menu");
