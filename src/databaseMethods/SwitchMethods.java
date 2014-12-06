@@ -538,7 +538,7 @@ public class SwitchMethods extends Model {
 		}
 		return authenticate;
 	}
-	// VIRKER lav med createdby for safety
+	// VIRKER KUN BRUGES AF ADMIN
 	public String removeEvent(String description) throws SQLException {
 		String stringToBeReturned = "";
 		String[] keys = { "aktiv" };
@@ -546,6 +546,40 @@ public class SwitchMethods extends Model {
 		qb.update("Events", keys, values)
 				.where("description", "=", description).Execute();
 		stringToBeReturned = "The event has been set inactive";
+		return stringToBeReturned;
+	}
+	//VIRKER
+	public String removeEventUser(String description, String createdby) throws SQLException {
+		String stringToBeReturned = "";
+		String userNameOfCreator = "";
+		String eventExist = "";
+		resultSet = qb.selectFrom("events").where("description", "=", description)
+				.ExecuteQuery();
+
+		while (resultSet.next()) {
+			eventExist = resultSet.toString();
+
+			if (!eventExist.equals("")) {
+				String[] value = { "createdby" };
+				resultSet = qb.selectFrom(value, "events")
+						.where("createdby", "=", createdby).ExecuteQuery();
+				while (resultSet.next()) {
+					userNameOfCreator = resultSet.toString();				
+				}
+				if (!userNameOfCreator.equals(createdby)) {
+					stringToBeReturned = "Only the creator of the note is able to delete it!";
+				} else {
+					String[] keys = { "aktiv" };
+					String[] values = { "0" };
+					qb.update("events", keys, values)
+							.where("description", "=", description).Execute();
+					stringToBeReturned = "The event has been deleted"; 															
+				}
+				stringToBeReturned = resultSet.toString();
+			} else {
+				stringToBeReturned = "The event you are trying to delete does not exist!";
+			}
+		}
 		return stringToBeReturned;
 	}
 	// NOTE TING
@@ -588,6 +622,8 @@ public class SwitchMethods extends Model {
 	}
 	
 	// NOTE TING
+	
+	
 	// KUN TIL ADMIN
 	// VIRKER
 	public String removeNoteAdmin(int noteid)
@@ -613,7 +649,17 @@ public class SwitchMethods extends Model {
 		}
 	}
 	return stringToBeReturned;
-}
+	}
+	
+	// VIRKER
+	// PAA CLIENT SIDE LAV EN IF DE HAR EVENTET
+	public String createNote(String eventid, String note, String createdby) throws SQLException {
+			String stringToBeReturned = "";
+			String[]keys = {"eventid","note","CreatedBy"};
+			String[] values = {eventid,note,createdby};
+			qb.insertInto("notes", keys).values(values).Execute();
+			return stringToBeReturned;
+	}
 
 	// public String removeEvent (String description) throws SQLException{
 	// String stringToBeReturned ="";
@@ -653,21 +699,6 @@ public class SwitchMethods extends Model {
 	// }
 	// return stringToBeReturned;
 	// }
-	
-
-	// SAET DEN HER LIGE MED USERID
-//	public String getCalendar(String userName) throws SQLException {
-//		String stringToBeReturned = "";
-//
-//		resultSet = qb.selectFrom("Calendar").where("Name", "=", userName)
-//				.ExecuteQuery();
-//
-//		while (resultSet.next()) {
-//			stringToBeReturned += resultSet.toString();
-//		}
-//		return stringToBeReturned;
-//	}
-//
 //	public String getAllEvents(String type) {
 //		try {
 //			qb = new QueryBuilder();

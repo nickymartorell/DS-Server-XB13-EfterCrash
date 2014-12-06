@@ -12,12 +12,12 @@ import JsonClasses.CreateCalendar;
 import JsonClasses.removeCalendar;
 import JsonClasses.createEvents;
 import JsonClasses.removeEvent;
-import JsonClasses.deleteNote;
+import JsonClasses.removeNote;
 import JsonClasses.getCalendar;
 import JsonClasses.getEvents;
 import JsonClasses.getForecast;
 import JsonClasses.getNote;
-import JsonClasses.saveNote;
+import JsonClasses.createNote;
 import JsonClasses.userevents;
 
 import com.google.gson.*;
@@ -129,8 +129,8 @@ public class GiantSwitch {
 			
 		//VIRKER 	
 		case "getSubEvents":
-			getEvents ge = (getEvents)gson.fromJson(jsonString, getEvents.class);
-			ArrayList<getEvents> subEvents = SW.getSubEvents(ge.getId());			
+			userevents ge = (userevents)gson.fromJson(jsonString, userevents.class);
+			ArrayList<getEvents> subEvents = SW.getSubEvents(ge.getEmail());			
 			answer = gson.toJson(subEvents);
 			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
@@ -142,35 +142,42 @@ public class GiantSwitch {
 					                CE.getType(), CE.getCustomevent(),CE.getAktiv(),CE.getCalendarid());
 			break; 
 			
-		//TESTER
+		//VIRKER - KUN ADMIN
 		case "removeEvent":
 			removeEvent DE = (removeEvent)gson.fromJson(jsonString, removeEvent.class);
 			System.out.println("Recieved removeEvent");
 			answer = SW.removeEvent(DE.getDescription());		
+			break;
+			
+		//TESTER
+		case "removeEventUser":
+			removeEvent eg = (removeEvent)gson.fromJson(jsonString, removeEvent.class);
+			System.out.println("Recieved removeEvent");
+			answer = SW.removeEventUser(eg.getDescription(),eg.getCreatedby());		
 			break;
 		
 			
 		/*************
 		 ** NOTES **
 		*************/
-		case "saveNote":
-			saveNote SN = (saveNote)gson.fromJson(jsonString, saveNote.class);
-			System.out.println("Recieved saveNote");
-			//mangler metode i SwitchMethods
+			
+			//MANGLER AT TESTE
+		case "createNote":
+			createNote SN = (createNote)gson.fromJson(jsonString, createNote.class);
+			answer = SW.createNote(SN.getEventid(), SN.getNote(), SN.getCreatedby());
 			break;
 			
-
+			//IKKE IBRUG ENDNU
 		case "getNote":
 			getNote GN =(getNote)gson.fromJson(jsonString, getNote.class);
-			System.out.println("Recieved getNote");
 			answer = SW.GetNote(GN.geteventID);
 			break;
 			
 			
-		case "deleteNote":
-			deleteNote DN = (deleteNote)gson.fromJson(jsonString, deleteNote.class);
-			System.out.println("Recieved deleteNote");
-			//tjekke metode i SwitchMethods
+			//MANGLER AT TESTE
+		case "removeNote":
+			removeNote DN = (removeNote)gson.fromJson(jsonString, removeNote.class);
+			answer = SW.removeNote(DN.geteventID, DN.getCreatedby());
 			break;
 
 		/**********
@@ -213,12 +220,10 @@ public class GiantSwitch {
 			return "getSubEvents";
 		} else if (ID.contains("getAllCalendar")) {
 			return "getAllCalendar";
-		} else if (ID.contains("saveNote")) {
-			return "saveNote";
+		} else if (ID.contains("createNote")) {
+			return "createNote";
 		} else if (ID.contains("getNote")) {
 			return "getNote";
-		} else if (ID.contains("deleteNote")){
-			return "deleteNote";
 		}else if  (ID.contains("removeCalendar")){
 			return "removeCalendar";
 		} else if (ID.contains("getForecast")) {
@@ -247,6 +252,10 @@ public class GiantSwitch {
 			return "activateCalendar";
 		} else if (ID.contains("shareCalendar")) {
 			return "shareCalendar";
+		} else if (ID.contains("removeEventUser")) {
+			return "removeEventUser";
+		} else if (ID.contains("removeNote")) {
+			return "removeNote";
 		}
 		else
 			return "error";
