@@ -67,7 +67,7 @@ import java.sql.SQLException;
 			add(lblEvents);
 
 			//Laver tabellen inde i Eventlisten.
-			String[] columnNames = { "Type", "Location", "Start", "End", "description" };
+			String[] columnNames = { "id","Type", "Location", "Start", "End", "description" };
 
 			Object[][] data = new Object[300][300];
 
@@ -77,11 +77,12 @@ import java.sql.SQLException;
 				
 		        int count = 0;
 		        while (rs.next()) {
-		        	data[count][0] = rs.getString("type");
-		        	data[count][1] = rs.getString("location");
-		        	data[count][4] = rs.getDate("start");
-		        	data[count][2] = rs.getDate("end");
-		        	data[count][3] = rs.getString("description");
+		        	data[count][0] = rs.getString("id");
+		        	data[count][1] = rs.getString("type");
+		        	data[count][2] = rs.getString("location");
+		        	data[count][3] = rs.getDate("start");
+		        	data[count][4] = rs.getDate("end");
+		        	data[count][5] = rs.getString("description");
 		        	count++;
 		        }
 			} catch (SQLException e1) {
@@ -98,8 +99,8 @@ import java.sql.SQLException;
 			public void mouseClicked(final MouseEvent e) {
 				final JTable target = (JTable)e.getSource();
 			    int row = target.getSelectedRow();
-			    //column sat til 4 for altid at bruge description
-			     urObjctInCell = (String)target.getValueAt(row, 3);
+			    //column sat til 0 for altid at bruge id
+			     urObjctInCell = (String)target.getValueAt(row, 0);
 			     System.out.println(urObjctInCell);                         
 			}
 			}); 

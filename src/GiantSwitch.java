@@ -88,11 +88,11 @@ public class GiantSwitch {
 			answer = SW.removeCalendar(rc.getCreatedBy(), rc.getName());
 			break;
 				
-		case "getCalendar":
-			getCalendar GC = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
-			System.out.println("Recieved getCalendar");
-			answer = SW.getCalendar(GC.getName());
-			break;
+//		case "getCalendar":
+//			getCalendar GC = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
+//			System.out.println("Recieved getCalendar");
+//			answer = SW.getCalendar(GC.getName());
+//			break;
 			
 		case "getAllCalendar":
 			//getCalendar gac = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
@@ -105,11 +105,11 @@ public class GiantSwitch {
 		 ** EVENTS **
 		 *************/
 		//VIRKER skal lige rettes til
-		case "getEvents":
-			ArrayList<Event> events = SW.getEvents();			
-			answer = gson.toJson(events);
-			System.out.println("ANSWER FRA CLIENT:"+answer);
-			break;
+//		case "getEvents":
+//			ArrayList<Event> events = SW.getEvents();			
+//			answer = gson.toJson(events);
+//			System.out.println("ANSWER FRA CLIENT:"+answer);
+//			break;
 			
 		//VIRKER 	
 		case "getCustomEvents":

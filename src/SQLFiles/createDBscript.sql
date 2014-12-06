@@ -17,12 +17,15 @@ CREATE TABLE IF NOT EXISTS events
 	calendarid VARCHAR (200),
 	customevent boolean,
 	aktiv boolean,
-	PRIMARY KEY (id),
+	PRIMARY KEY (id)
+
+	)
+	ENGINE=InnoDB DEFAULT CHARSET=latin1;
+set global max_connections = 2000000000;
+
+
 	ADD FOREIGN KEY (calendarid),
 	REFERENCES calendar (calendarId)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-set global max_connections = 2000000000;
 
 CREATE TABLE users (
   userid int(11) NOT NULL AUTO_INCREMENT,

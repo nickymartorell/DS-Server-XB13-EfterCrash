@@ -243,25 +243,18 @@ public class SwitchMethods extends Model {
 	}
 
 	// VIRKER KUN TIL ADMIN
-	public String removeEventAdmin(String description) throws SQLException {
-		createEvents ev = new createEvents();
+	public String removeEventAdmin(String uid) throws SQLException {
 		String stringToBeReturned = "";
-		String x = "1";
 
 		resultSet = qb.selectFrom("events")
-				.where("description", "=", description).ExecuteQuery();
-		if (resultSet.next()) {
-			System.out.println(resultSet.getString("customevent"));
-			ev.setCustomevent(resultSet.getString("customevent"));
-			String y = resultSet.getString("customevent");
-			if (y.equals(x)) {
+				.where("id", "=", uid).ExecuteQuery();
+		while (resultSet.next()) {
+			
+			String y = resultSet.getString("id");
 				String[] keys = { "aktiv" };
 				String[] values = { "0" };
-				qb.update("Events", keys, values)
-						.where("description", "=", description).Execute();
-			}
-		} else {
-			System.out.println("Only delete your own! and custom events!!!");
+				System.out.println(y);
+				qb.update("Events", keys, values).where("id", "=", y).Execute();
 		}
 		stringToBeReturned = "The event has been set inactive";
 		return stringToBeReturned;
@@ -292,6 +285,7 @@ public class SwitchMethods extends Model {
 	}
 
 	// Hent alle kalendere til visning
+	//VIRKER
 	public ArrayList<getCalendar> getAllCalendar() {
 		try {
 			qb = new QueryBuilder();
@@ -309,83 +303,6 @@ public class SwitchMethods extends Model {
 			}
 			rs.close();
 			return calendarList;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	// SAET DEN HER LIGE MED USERID
-	public String getCalendar(String userName) throws SQLException {
-		String stringToBeReturned = "";
-
-		resultSet = qb.selectFrom("Calendar").where("Name", "=", userName)
-				.ExecuteQuery();
-
-		while (resultSet.next()) {
-			stringToBeReturned += resultSet.toString();
-		}
-		return stringToBeReturned;
-	}
-
-	public String getAllEvents(String type) {
-		try {
-			qb = new QueryBuilder();
-			gson = new Gson();
-			getEv = new getEvents();
-			ResultSet rs = qb.selectFrom("events").where("type", "=", type)
-					.ExecuteQuery();
-			// List<Event> eventList = new ArrayList<>();
-			String eventList = "";
-			while (rs.next()) {
-				// Event event = new Event();
-				// event.setActivityid(rs.getString("id"));
-				getEv.setType(rs.getString("type"));
-				// event.setActivityid(rs.getString("activityid"));
-				getEv.setLocation(rs.getString("location"));
-				// event.setCreatedby(rs.getString("createdby"));
-				// event.setDateStart(rs.getDate("start"));
-				// event.setStrDateStart(rs.getString("start"));
-				// event.setStrDateEnd(rs.getString("end"));
-				eventList += rs.toString();
-			}
-			// rs.close();
-			eventList = gson.toJson(getEv);
-			System.out.println("FRA CLIENT GET EVENTS: " + getEv
-					+ "HER ER EVENTLISTEN" + eventList);
-			return gson.toJson(eventList);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public ArrayList<Event> getEvents() {
-		try {
-			qb = new QueryBuilder();
-			gson = new Gson();
-
-			ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
-			ArrayList<Event> eventList = new ArrayList<Event>();
-
-			while (rs.next()) {
-				Event event = new Event();
-				event.setActivityid(rs.getString("id"));
-				event.setType(rs.getString("type"));
-
-				// HUSK RET 2X ACTIVITY ID
-				event.setActivityid(rs.getString("activityid"));
-				event.setLocation(rs.getString("location"));
-				// event.setCreatedby(rs.getString("createdby"));
-				// event.setDateStart(rs.getDate("start"));
-				event.setStrDateStart(rs.getString("start"));
-				event.setStrDateEnd(rs.getString("end"));
-				eventList.add(event);
-			}
-			rs.close();
-			return eventList;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -542,10 +459,9 @@ public class SwitchMethods extends Model {
 		while (resultSet.next()) {
 			String x = resultSet.getString("calendarid");
 			int y = Integer.parseInt(x);
-
 			// saa vi ikke kan add til cbs calendar
 			// kun til egen oprettede
-			if (y <= 8) {
+			if (y <= 9) {
 				authenticate = true;
 			} else {
 				System.out
@@ -554,7 +470,6 @@ public class SwitchMethods extends Model {
 		}
 		return authenticate;
 	}
-
 	// VIRKER lav med createdby for safety
 	public String removeEvent(String description) throws SQLException {
 		String stringToBeReturned = "";
@@ -565,7 +480,6 @@ public class SwitchMethods extends Model {
 		stringToBeReturned = "The event has been set inactive";
 		return stringToBeReturned;
 	}
-
 	// NOTE TING
 	// denne her skal dobbelttjekkes!!!!!
 	public String removeNote(String noteID, String UserName)
@@ -643,4 +557,82 @@ public class SwitchMethods extends Model {
 	// }
 	// return stringToBeReturned;
 	// }
+	
+
+	// SAET DEN HER LIGE MED USERID
+//	public String getCalendar(String userName) throws SQLException {
+//		String stringToBeReturned = "";
+//
+//		resultSet = qb.selectFrom("Calendar").where("Name", "=", userName)
+//				.ExecuteQuery();
+//
+//		while (resultSet.next()) {
+//			stringToBeReturned += resultSet.toString();
+//		}
+//		return stringToBeReturned;
+//	}
+//
+//	public String getAllEvents(String type) {
+//		try {
+//			qb = new QueryBuilder();
+//			gson = new Gson();
+//			getEv = new getEvents();
+//			ResultSet rs = qb.selectFrom("events").where("type", "=", type)
+//					.ExecuteQuery();
+//			// List<Event> eventList = new ArrayList<>();
+//			String eventList = "";
+//			while (rs.next()) {
+//				// Event event = new Event();
+//				// event.setActivityid(rs.getString("id"));
+//				getEv.setType(rs.getString("type"));
+//				// event.setActivityid(rs.getString("activityid"));
+//				getEv.setLocation(rs.getString("location"));
+//				// event.setCreatedby(rs.getString("createdby"));
+//				// event.setDateStart(rs.getDate("start"));
+//				// event.setStrDateStart(rs.getString("start"));
+//				// event.setStrDateEnd(rs.getString("end"));
+//				eventList += rs.toString();
+//			}
+//			// rs.close();
+//			eventList = gson.toJson(getEv);
+//			System.out.println("FRA CLIENT GET EVENTS: " + getEv
+//					+ "HER ER EVENTLISTEN" + eventList);
+//			return gson.toJson(eventList);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
+//
+//	public ArrayList<Event> getEvents() {
+//		try {
+//			qb = new QueryBuilder();
+//			gson = new Gson();
+//
+//			ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
+//			ArrayList<Event> eventList = new ArrayList<Event>();
+//
+//			while (rs.next()) {
+//				Event event = new Event();
+//				event.setActivityid(rs.getString("id"));
+//				event.setType(rs.getString("type"));
+//
+//				// HUSK RET 2X ACTIVITY ID
+//				event.setActivityid(rs.getString("activityid"));
+//				event.setLocation(rs.getString("location"));
+//				// event.setCreatedby(rs.getString("createdby"));
+//				// event.setDateStart(rs.getDate("start"));
+//				event.setStrDateStart(rs.getString("start"));
+//				event.setStrDateEnd(rs.getString("end"));
+//				eventList.add(event);
+//			}
+//			rs.close();
+//			return eventList;
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 }
