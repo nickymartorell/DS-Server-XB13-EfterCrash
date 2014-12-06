@@ -67,7 +67,7 @@ import java.sql.SQLException;
 			add(lblEvents);
 
 			//Laver tabellen inde i Eventlisten.
-			String[] columnNames = { "id","Type", "Location", "Start", "End", "description" };
+			String[] columnNames = { "id","Type", "Location", "Start", "End", "description", "aktiv" };
 
 			Object[][] data = new Object[300][300];
 
@@ -83,6 +83,7 @@ import java.sql.SQLException;
 		        	data[count][3] = rs.getDate("start");
 		        	data[count][4] = rs.getDate("end");
 		        	data[count][5] = rs.getString("description");
+		        	data[count][5] = rs.getBoolean("aktiv");
 		        	count++;
 		        }
 			} catch (SQLException e1) {
@@ -112,6 +113,28 @@ import java.sql.SQLException;
 	                }
 	            });
 	        }
+			
+			btnActivate = new JButton("Activate");
+			btnActivate.setBackground(Color.WHITE);
+			btnActivate.setOpaque(true);
+			btnActivate.setForeground(new Color(0, 0, 205));
+			btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+			btnActivate.setBounds(988, 234, 118, 29);
+			add(btnActivate);
+			btnActivate.addActionListener(new ActionListener() {
+	        	
+        		public void actionPerformed(ActionEvent arg0) {
+        		
+        	       try {   	        
+  
+        				sm.activateEventAdmin(urObjctInCell);
+        						
+        			} catch (SQLException e1) {
+        					
+        				e1.printStackTrace();
+        			            }
+        			            };
+        			        } ); 
 
 			// Create the scroll pane and add the table to it.
 			JScrollPane scrollPane = new JScrollPane(table);
@@ -177,28 +200,6 @@ import java.sql.SQLException;
 								.getResource("/Images/MetalBackground.jpg")));
 			label.setBounds(-26, -28, 1366, 768);
 			add(label);
-			
-			btnActivate = new JButton("Activate");
-			btnActivate.setBackground(Color.WHITE);
-			btnActivate.setOpaque(true);
-			btnActivate.setForeground(new Color(0, 0, 205));
-			btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-			btnActivate.setBounds(988, 234, 118, 29);
-			add(btnActivate);
-			btnActivate.addActionListener(new ActionListener() {
-	        	
-        		public void actionPerformed(ActionEvent arg0) {
-        		
-        	       try {   	        
-  
-        				sm.activateEventAdmin(urObjctInCell);
-        						
-        			} catch (SQLException e1) {
-        					
-        				e1.printStackTrace();
-        			            }
-        			            };
-        			        } ); 
 		
 
 		}
