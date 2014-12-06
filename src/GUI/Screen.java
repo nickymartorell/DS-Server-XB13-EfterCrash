@@ -46,7 +46,7 @@ public class Screen extends JFrame {
 	private  EventList eventList;
 	private AddCourse addCourse;
 	private  AddUser addUser; 
-	private Calendars calendars;
+	private showCalendar calendars;
 	private AddEvent addEvent;
 	private AddEvent addCourseForm;
 	private CreateCalendar createCalendar;
@@ -109,7 +109,7 @@ public class Screen extends JFrame {
 		addEvent = new AddEvent();
 		contentPane.add(addEvent, ADDEVENT);
 		
-		calendars = new Calendars();
+		calendars = new showCalendar();
 		contentPane.add(calendars, CALENDARS);
 		
 		createCalendar = new CreateCalendar();
@@ -154,7 +154,7 @@ public class Screen extends JFrame {
 	public AddEvent getAddEvent() {
 		return addEvent;
 	}
-	public Calendars getCalendars() {
+	public showCalendar getCalendars() {
 		return calendars;
 	}
 	public CreateCalendar getCreateCalendar() {

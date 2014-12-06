@@ -17,22 +17,22 @@ public class Main {
 		GUILogic gl = new GUILogic();
 		gl.run();
 	
-		//Forecast test
-		ForecastTest ft = new ForecastTest();
-		ft.refreshForecast();
-		
-		ForecastModel fm = new ForecastModel();
-		
-		System.out.println(fm.getForecast().get(0));
-			
-		//QOTD GET test 
-		QOTDModel qd = new QOTDModel();
-		String quote = qd.getQuote();
-		
-		//QOTD SAVE test 
-		qd.saveQuote();
-		
-		//QOTD PRINT test
-		System.out.println(quote);
+//		//Forecast test
+//		ForecastTest ft = new ForecastTest();
+//		ft.refreshForecast();
+//		
+//		ForecastModel fm = new ForecastModel();
+//		
+//
+//			
+//		//QOTD GET test 
+//		QOTDModel qd = new QOTDModel();
+//		String quote = qd.getQuote();
+//		
+//		//QOTD SAVE test 
+//		qd.saveQuote();
+//		
+//		//QOTD PRINT test
+//		System.out.println(quote);
 	}
 }

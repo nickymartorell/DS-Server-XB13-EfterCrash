@@ -177,7 +177,6 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getAddEvent().getBtnSubmit()){
-				System.out.println("fritter");
 				String location = screen.getAddEvent().getTextField_Location().getText();
 				String cb = screen.getAddEvent().getTextField_Createdby().getText();
 				String start = screen.getAddEvent().getTextField_Start().getText();
@@ -186,8 +185,9 @@ public class GUILogic {
 				String type = screen.getAddEvent().getTextField_Type().getText();
 				String customevent = "1";
 				String aktiv = "1";
+				String calendarid = "9"; //ADMINS KALENDER
 				try {
-					sm.addNewEvent(cb,type , start, end, name,location,customevent,aktiv);
+					sm.addNewEvent(cb,type , start, end, name,location,customevent,aktiv, calendarid);
 				} catch (SQLException e1) {
 				
 					e1.printStackTrace();
@@ -248,9 +248,10 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getCalendars().getBtnSubmit()){
 			screen.show(Screen.CREATECALENDAR);
-			}
 			//if (e.getSource() == screen.getCalendars().getBtnRemove()){
-				//Metode til Remove 
+			//Metode til Remove 
+			}
+		
 			}
 		}
 	}
