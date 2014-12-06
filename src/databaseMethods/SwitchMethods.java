@@ -32,6 +32,40 @@ public class SwitchMethods extends Model
 	 * @throws SQLException
 	 */
 	
+	//SKAL TESTES IMORGEN
+	public String subscribeCalendars(String eMail,String Name) throws SQLException{
+		ResultSet rs;
+		String empty = "";
+		String stringToBeReturned ="";
+		String getCalendarId = "";
+		String getUserId = "";
+		String[] key = {"userid", "calendarid"};		
+		rs = qb.selectFrom("calendar").where("Name", "=", Name).ExecuteQuery();
+		while(rs.next())
+		{
+			getCalendarId = resultSet.getString("CalendarID");
+		}
+		if(!getCalendarId.contains(empty))
+		{
+			rs = qb.selectFrom("users").where("eMail", "=", eMail).ExecuteQuery();
+		}
+		while(rs.next())
+		{
+			getUserId = rs.getString("userid");
+		}
+		if(!getUserId.contains(empty))
+		{
+			String[] values = {getCalendarId, getUserId};
+			qb.insertInto("userevents", key).values(values).Execute();
+			stringToBeReturned = "You have now subscribed!";
+		}
+		else
+		{
+			stringToBeReturned = "Please only add public or request share";
+		}	
+		return stringToBeReturned;
+	}
+	
 	//VIRKER
 	public String getQuote() throws SQLException {
 		qotd = new Quote();

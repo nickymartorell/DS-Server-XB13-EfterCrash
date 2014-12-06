@@ -17,7 +17,9 @@ CREATE TABLE IF NOT EXISTS events
 	calendarid VARCHAR (200),
 	customevent boolean,
 	aktiv boolean,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	ADD FOREIGN KEY (calendarid),
+	REFERENCES calendar (calendarId)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 set global max_connections = 2000000000;
@@ -87,10 +89,11 @@ DROP TABLE userevents;
 
 CREATE TABLE IF NOT EXISTS userevents
 (
-	userid INT(200)
-	
+	userid INT(200),
+	calendarid INT(200)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
-calendarid INT(200)
+
+
 ALTER TABLE userevents
 	ADD FOREIGN KEY (calendarid)
 	REFERENCES calendar (KalId)
@@ -115,13 +118,13 @@ DROP TABLE locationdata;
 /* Create calendar */
 CREATE TABLE IF NOT EXISTS calendar
 (
-	KalId int NOT NULL AUTO_INCREMENT,
+	calendarId int NOT NULL AUTO_INCREMENT,
 	Name varchar(255) NOT NULL,
 	Active tinyint(1) DEFAULT '1',
 	CreatedBy varchar(255) NOT NULL,
 	PrivatePublic tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 = public
 	2 = private',
-	PRIMARY KEY (KalId)
+	PRIMARY KEY (calendarId)
 );
 
 CREATE TABLE IF NOT EXISTS locationdata
