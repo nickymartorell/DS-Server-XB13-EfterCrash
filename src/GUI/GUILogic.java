@@ -41,6 +41,7 @@ public class GUILogic {
 		screen.getAddEvent().addActionListener(new AddEventActionListener());
 		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
 		screen.getCalendars().addActionListener(new CalendarsActionListener());
+		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		
 
 		
@@ -148,6 +149,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getNoteList().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
+			if (e.getSource() == screen.getNoteList().getBtnAdd()){
+				screen.show(Screen.ADDNOTE);
+			}
 		
 			}
 		}
@@ -254,7 +258,21 @@ public class GUILogic {
 		
 			}
 		}
+	private class AddNoteActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getAddNote().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+		}
+			if (e.getSource() == screen.getAddNote().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getCalendars().getBtnSubmit()){
+				//Metode til add note 
+		}
+			
 	}
+}
+}	
 
 	
 	

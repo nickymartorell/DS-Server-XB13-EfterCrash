@@ -42,6 +42,7 @@ public class NoteList extends JPanel {
 	private JButton btnDelete;
 	private JButton btnMainMenu;
 	private JButton btnLogout;
+	private JButton btnAdd;
 	private JLabel label;
 	public  int urObjctInCell;
 	private ResultSet rs;
@@ -138,6 +139,13 @@ public class NoteList extends JPanel {
      			             }
      			            };
      			        } ); 
+		
+		btnAdd = new JButton("Add");
+		btnAdd.setOpaque(true);
+		btnAdd.setForeground(new Color(0, 0, 205));
+		btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+		btnAdd.setBounds(1221, 187, 118, 29);
+		add(btnAdd);
 		add(btnDelete);
 		
 		
@@ -184,9 +192,10 @@ private void printDebugData(JTable table) {
 
 	
 	public void addActionListener(ActionListener l) {
-		//btnDelete.addActionListener(1);
+		btnDelete.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
+		btnAdd.addActionListener(l);
 
 	}
 
@@ -198,9 +207,12 @@ private void printDebugData(JTable table) {
 	public JButton getBtnMainMenu() {
 		return btnMainMenu;
 	}
-
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
 	public JButton getBtnLogout() {
 		return btnLogout;
 	}
-	
 }
+
+	
