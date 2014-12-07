@@ -75,7 +75,7 @@ public class GiantSwitch {
 	    //VIRKER - ER TIL CLIENT
 		case "subscribeCalendar":
 			userevents uevents = gson.fromJson(jsonString, userevents.class);
-			answer = SW.subscribeCalendars(uevents.getEmail(), uevents.getName());
+			answer = SW.subscribeCalendars(uevents.getEmail(), uevents.getCalendarid());
 			break;
 			
 		//VIRKER

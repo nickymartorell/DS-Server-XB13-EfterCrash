@@ -32,12 +32,23 @@ public class SwitchMethods extends Model {
 	// VIRKER!
 	public String subscribeCalendars(String email, String Name)
 			throws SQLException {
-
+		System.out.println("HER ER MIT NAME FRA SM"+Name);
 		String stringToBeReturned = "";
 		String getCalendarId = "";
 		String getUserId = "";
+//		String tjekid = "";
+//		String tjekcalid = "";
 		System.out.println("fra switch methods: " + email + Name);
 		String[] key = { "calendarid", "userid" };
+//		
+//		resultSet = qb.selectFrom("userevents").where("userid", "=", getUserId).ExecuteQuery();
+//		while(resultSet.next()){
+//			tjekid = resultSet.getString("userid");	
+//		}
+//		resultSet = qb.selectFrom("userevents").where("calendarid", "=", getCalendarId).ExecuteQuery();
+//		while(resultSet.next()){
+//			tjekcalid = resultSet.getString("KalId");
+//		}
 		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 				.ExecuteQuery();
 		while (resultSet.next()) {
@@ -50,18 +61,24 @@ public class SwitchMethods extends Model {
 		while (resultSet.next()) {
 			getUserId = resultSet.getString("userid");
 			System.out.println("getUserId id:" + getUserId);
+		
 		}
-		if (!getUserId.equals("")) {
+		if(!getUserId.equals("")){
+			System.out.println("HER ER MIT NAME FRA SM MOR"+Name);
 			String[] values = { getCalendarId, getUserId };
 			qb.insertInto("userevents", key).values(values).Execute();
 			stringToBeReturned = "You have now subscribed!";
+		
 		} else {
-			stringToBeReturned = "Please only add public or request share";
+			System.out.println("please dont subscribe twice bitch asshole");	
+			
+			stringToBeReturned = "Please don't subscribe twice to the same event";
 		}
 		return stringToBeReturned;
 	}
+
 	
-	// TESTER
+	// VIRKER
 	public String unSubscribeCalendars(String email , String calendarid)
 			throws SQLException {
 
@@ -75,8 +92,6 @@ public class SwitchMethods extends Model {
 		
 		while (resultSet.next()) {
 			getUserId = resultSet.getString("userid");
-			System.out.println("TJEK LIGE HER MOR : "+ getUserId);
-			System.out.println("TJEK LIGE CALENDAR ID"+calendarid);
 		}
 		if (!getUserId.equals("")) {
 			String[] values = { softRemove, softRemove };
@@ -484,7 +499,7 @@ public class SwitchMethods extends Model {
 		String[] keys = { "userid", "email", "active", "password" };
 
 		qb = new QueryBuilder();
-
+		
 		// Henter info om bruger fra database via querybuilder
 		resultSet = qb.selectFrom(keys, "users").where("email", "=", email)
 				.ExecuteQuery();
@@ -496,7 +511,9 @@ public class SwitchMethods extends Model {
 			if (resultSet.getInt("active") == 1) {
 				// Hvis passwords matcher
 				if (resultSet.getString("password").equals(password)) {
-					return resultSet.getString("userid");
+					
+					return "1";
+					
 				} else {
 					return "3"; // returnerer fejlkoden "3" hvis password ikke
 								// matcher
@@ -506,7 +523,7 @@ public class SwitchMethods extends Model {
 							// inaktiv
 			}
 		} else {
-			return "1"; // returnerer fejlkoden "1" hvis email ikke findes
+			return "0"; // returnerer fejlkoden "1" hvis email ikke findes
 		}
 	}
 

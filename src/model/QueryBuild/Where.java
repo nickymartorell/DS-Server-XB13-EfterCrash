@@ -71,5 +71,6 @@ public class Where {
         //System.out.print("SELECT " + getSelectParameters() + " FROM " + getTableName() + " WHERE " + getWherekey() + " = " + getWherePlaceholders());
 
     }
+    
 
 }
