@@ -1,12 +1,17 @@
 package JsonClasses;
 
-public class getNote {
+public class getNote implements java.io.Serializable {
+/**
+	 * 
+	 */
+private static final long serialVersionUID = 1L;
 private String overallID = "getNote";
 private int noteID;
-private String note;
+private String notes;
 private String createdby;
-private String eventID;
-public String geteventID;
+private String eventid;
+private String isActive;
+
 public String getOverallID() {
 	return overallID;
 }
@@ -20,28 +25,32 @@ public void setNoteID(int noteID) {
 	this.noteID = noteID;
 }
 public String getNotes() {
-	return note;
+	return notes;
 }
-public void setNote(String note) {
-	this.note = note;
+public void setNote(String notes) {
+	this.notes = notes;
 }
-public String getEventID() {
-	return eventID;
-}
-public void setEventID(String eventID) {
-	this.eventID = eventID;
-}
-public String getGeteventID() {
-	return geteventID;
-}
-public void setGeteventID(String geteventID) {
-	this.geteventID = geteventID;
-
-	}
 public String getCreatedby() {
 	return createdby;
 }
 public void setCreatedby(String createdby) {
 	this.createdby = createdby;
 }
+public String getEventid() {
+	return eventid;
+}
+public void setEventid(String eventid) {
+	this.eventid = eventid;
+}
+public String getIsActive() {
+	return isActive;
+}
+public void setIsActive(String isActive) {
+	this.isActive = isActive;
+}
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+
 }

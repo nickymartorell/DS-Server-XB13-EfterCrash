@@ -12,6 +12,7 @@ import JsonClasses.Quote;
 import JsonClasses.getEvents;
 import JsonClasses.getForecast;
 import JsonClasses.createEvents;
+import JsonClasses.getNote;
 import JsonClasses.userevents;
 import model.Model;
 import model.QOTD.QOTDModel;
@@ -32,23 +33,11 @@ public class SwitchMethods extends Model {
 	// VIRKER!
 	public String subscribeCalendars(String email, String Name)
 			throws SQLException {
-		System.out.println("HER ER MIT NAME FRA SM"+Name);
 		String stringToBeReturned = "";
 		String getCalendarId = "";
 		String getUserId = "";
-//		String tjekid = "";
-//		String tjekcalid = "";
-		System.out.println("fra switch methods: " + email + Name);
 		String[] key = { "calendarid", "userid" };
-//		
-//		resultSet = qb.selectFrom("userevents").where("userid", "=", getUserId).ExecuteQuery();
-//		while(resultSet.next()){
-//			tjekid = resultSet.getString("userid");	
-//		}
-//		resultSet = qb.selectFrom("userevents").where("calendarid", "=", getCalendarId).ExecuteQuery();
-//		while(resultSet.next()){
-//			tjekcalid = resultSet.getString("KalId");
-//		}
+
 		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 				.ExecuteQuery();
 		while (resultSet.next()) {
@@ -64,20 +53,15 @@ public class SwitchMethods extends Model {
 		
 		}
 		if(!getUserId.equals("")){
-			System.out.println("HER ER MIT NAME FRA SM MOR"+Name);
 			String[] values = { getCalendarId, getUserId };
 			qb.insertInto("userevents", key).values(values).Execute();
 			stringToBeReturned = "You have now subscribed!";
 		
-		} else {
-			System.out.println("please dont subscribe twice bitch asshole");	
-			
+		} else {			
 			stringToBeReturned = "Please don't subscribe twice to the same event";
 		}
 		return stringToBeReturned;
-	}
-
-	
+	}	
 	// VIRKER
 	public String unSubscribeCalendars(String email , String calendarid)
 			throws SQLException {
@@ -200,12 +184,16 @@ public class SwitchMethods extends Model {
 	}
 
 	// VIRKER KUN ADMIN
-	// LAV LIGE IF SAA ADMIN IKKE SAETTER SIG SELV INAKTIV
 	public boolean deleteUser(String eMail) throws SQLException {
+		if(!eMail.equals("admin@admin.dk")){
 		String[] keys = { "active" };
 		String[] values = { "0" };
 		qb.update("users", keys, values).where("email", "=", eMail).Execute();
 		System.out.println("Succesfully deactivated: " + eMail);
+		}
+		else{
+			System.out.println("come on admin...");
+		}
 		return true;
 	}
 
@@ -389,7 +377,6 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	// Hent alle kalendere til visning
 	//VIRKER
 	public ArrayList<getCalendar> getAllCalendar() {
 		try {
@@ -470,19 +457,22 @@ public class SwitchMethods extends Model {
 		return null;
 	}
 
-	// VIRKER MEN BRUGER IKKE ENDNU
-	public String GetNote(String eventId) throws SQLException {
-		String stringToBeReturned = "";
-
-		resultSet = qb.selectFrom("notes").where("eventId", "=", eventId)
+	// VIRKER
+	public ArrayList<getNote> GetNote(String eventId) throws SQLException {
+		resultSet = qb.selectFrom("notes").where("eventid", "=", eventId)
 				.ExecuteQuery();
-
+		ArrayList<getNote> noter = new ArrayList<getNote>();
 		while (resultSet.next()) {
-			stringToBeReturned += resultSet.toString();
+			getNote gn = new getNote();
+			gn.setNoteID(resultSet.getInt("noteid"));
+			gn.setEventid(resultSet.getString("eventid"));
+			gn.setNote(resultSet.getString("note"));
+			gn.setCreatedby(resultSet.getString("createdby"));
+			gn.setIsActive(resultSet.getString("isActive"));
+			noter.add(gn);
 		}
-		return stringToBeReturned;
+		return noter;
 	}
-
 	/**
 	 * Allows the client to log in
 	 * 
@@ -623,13 +613,15 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 	// NOTE TING
-	// denne her skal dobbelttjekkes!!!!!
-	public String removeNote(String noteID, String UserName)
+	//VIRKER - CLIENT
+	public String removeNote(int noteid, String createdby)
 			throws SQLException {
+		System.out.println("her er noteid"+noteid+"her er createdby"+createdby);
 		String stringToBeReturned = "";
 		String userNameOfCreator = "";
 		String NoteExists = "";
-		resultSet = qb.selectFrom("notes").where("noteID", "=", noteID)
+		String id = String.valueOf(noteid);
+		resultSet = qb.selectFrom("notes").where("noteid", "=", id)
 				.ExecuteQuery();
 
 		while (resultSet.next()) {
@@ -638,20 +630,19 @@ public class SwitchMethods extends Model {
 			if (!NoteExists.equals("")) {
 				String[] value = { "CreatedBy" };
 				resultSet = qb.selectFrom(value, "notes")
-						.where("noteID", "=", noteID).ExecuteQuery();
+						.where("noteid", "=", id).ExecuteQuery();
 				while (resultSet.next()) {
 					userNameOfCreator = resultSet.toString();
 					System.out.println(userNameOfCreator);
 				}
-				if (!userNameOfCreator.equals(UserName)) {
+				if (!userNameOfCreator.equals(createdby)) {
 					stringToBeReturned = "Only the creator of the note is able to delete it!";
 				} else {
-					String[] keys = { "Active" };
-					String[] values = { "2" };
+					String[] keys = { "isActive" };
+					String[] values = { "0" };
 					qb.update("notes", keys, values)
-							.where("noteID", "=", noteID).Execute();
-					stringToBeReturned = "The note has been deleted"; // overvej
-																		// omformulering
+							.where("noteid", "=", id).Execute();
+					stringToBeReturned = "The note has been deleted"; 																	
 				}
 				stringToBeReturned = resultSet.toString();
 			} else {
@@ -660,9 +651,6 @@ public class SwitchMethods extends Model {
 		}
 		return stringToBeReturned;
 	}
-	
-	// NOTE TING
-	
 	
 	// KUN TIL ADMIN
 	// VIRKER
@@ -716,118 +704,14 @@ public class SwitchMethods extends Model {
 		}
 	}
 	return stringToBeReturned;
-	}
-	
+	}	
 	// VIRKER
-	// PAA CLIENT SIDE LAV EN IF DE HAR EVENTET
 	public String createNote(String eventid, String note, String createdby) throws SQLException {
 			String stringToBeReturned = "";
 			String yes = "1";
 			String[]keys = {"eventid","note","CreatedBy","isActive"};
-			String[] values = {eventid,note,createdby,yes};
+			String[]values = {eventid,note,createdby,yes};
 			qb.insertInto("notes", keys).values(values).Execute();
 			return stringToBeReturned;
 	}
-
-	// public String removeEvent (String description) throws SQLException{
-	// String stringToBeReturned ="";
-	// String userNameOfCreator ="";
-	// String EventExists = "";
-	// resultSet = qb.selectFrom("events").where("description", "=",
-	// description).ExecuteQuery();
-	//
-	// while(resultSet.next()){
-	// EventExists = resultSet.toString();
-	// }
-	// if(!EventExists.equals("")){
-	// String [] value = {"createdBy"};
-	// resultSet = qb.selectFrom(value, "events").where("name", "=",
-	// name).ExecuteQuery();
-	// while(resultSet.next()){
-	// userNameOfCreator = resultSet.toString();
-	// System.out.println(userNameOfCreator);
-	// }
-	//
-	// if(!userNameOfCreator.equals(createdBy)){
-	// stringToBeReturned =
-	// "Only the creator of the event is able to delete it!";
-	// }
-	// else{
-	// String [] keys = {"Active"};
-	// String [] values ={"2"};
-	// qb.update("Events", keys, values).where("Title", "=", name).Execute();
-	// stringToBeReturned = "The event has been set inactive"; //overvej
-	// omformulering
-	// }
-	// stringToBeReturned = resultSet.toString();
-	// }
-	// else{
-	// stringToBeReturned =
-	// "The event you are trying to delete does not exist!";
-	// }
-	// return stringToBeReturned;
-	// }
-//	public String getAllEvents(String type) {
-//		try {
-//			qb = new QueryBuilder();
-//			gson = new Gson();
-//			getEv = new getEvents();
-//			ResultSet rs = qb.selectFrom("events").where("type", "=", type)
-//					.ExecuteQuery();
-//			// List<Event> eventList = new ArrayList<>();
-//			String eventList = "";
-//			while (rs.next()) {
-//				// Event event = new Event();
-//				// event.setActivityid(rs.getString("id"));
-//				getEv.setType(rs.getString("type"));
-//				// event.setActivityid(rs.getString("activityid"));
-//				getEv.setLocation(rs.getString("location"));
-//				// event.setCreatedby(rs.getString("createdby"));
-//				// event.setDateStart(rs.getDate("start"));
-//				// event.setStrDateStart(rs.getString("start"));
-//				// event.setStrDateEnd(rs.getString("end"));
-//				eventList += rs.toString();
-//			}
-//			// rs.close();
-//			eventList = gson.toJson(getEv);
-//			System.out.println("FRA CLIENT GET EVENTS: " + getEv
-//					+ "HER ER EVENTLISTEN" + eventList);
-//			return gson.toJson(eventList);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
-//
-//	public ArrayList<Event> getEvents() {
-//		try {
-//			qb = new QueryBuilder();
-//			gson = new Gson();
-//
-//			ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
-//			ArrayList<Event> eventList = new ArrayList<Event>();
-//
-//			while (rs.next()) {
-//				Event event = new Event();
-//				event.setActivityid(rs.getString("id"));
-//				event.setType(rs.getString("type"));
-//
-//				// HUSK RET 2X ACTIVITY ID
-//				event.setActivityid(rs.getString("activityid"));
-//				event.setLocation(rs.getString("location"));
-//				// event.setCreatedby(rs.getString("createdby"));
-//				// event.setDateStart(rs.getDate("start"));
-//				event.setStrDateStart(rs.getString("start"));
-//				event.setStrDateEnd(rs.getString("end"));
-//				eventList.add(event);
-//			}
-//			rs.close();
-//			return eventList;
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
 }

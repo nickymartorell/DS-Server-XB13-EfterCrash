@@ -5,7 +5,7 @@ public class createNote {
 	private String overallID = "createNote";
 	private int noteID;
 	private String eventid;
-	private String note;
+	private String notes;
 	private String createdby;
 	public String isActive;
 	
@@ -28,10 +28,10 @@ public class createNote {
 		this.overallID = overallID;
 	}
 	public String getNote() {
-		return note;
+		return notes;
 	}
-	public void setNote(String note) {
-		this.note = note;
+	public void setNote(String notes) {
+		this.notes = notes;
 	}
 	public String getCreatedby() {
 		return createdby;

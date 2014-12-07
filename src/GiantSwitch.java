@@ -5,7 +5,6 @@ import model.Forecast.ForecastModel;
 import model.Forecast.ForecastTest;
 import model.QOTD.QOTDModel;
 import model.calendar.Event;
-import model.note.Note;
 import model.user.*;
 import JsonClasses.AuthUser;
 import JsonClasses.CreateCalendar;
@@ -31,7 +30,6 @@ public class GiantSwitch {
 
 		ForecastTest ft = new ForecastTest();
 		ForecastModel fm = new ForecastModel();
-		Note noteKlasse = new Note();
 		QOTDModel qm = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();	
 		Gson gson = new GsonBuilder().create();
@@ -104,12 +102,6 @@ public class GiantSwitch {
 			answer = SW.activateCalendar(ra.getCreatedBy(),ra.getName());
 			break;
 				
-//		case "getCalendar":
-//			getCalendar GC = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
-//			System.out.println("Recieved getCalendar");
-//			answer = SW.getCalendar(GC.getName());
-//			break;
-		
 		//VIRKER
 		case "getAllCalendar":
 			//getCalendar gac = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
@@ -121,13 +113,7 @@ public class GiantSwitch {
 		/*************
 		 ** EVENTS **
 		 *************/
-		//VIRKER skal lige rettes til
-//		case "getEvents":
-//			ArrayList<Event> events = SW.getEvents();			
-//			answer = gson.toJson(events);
-//			System.out.println("ANSWER FRA CLIENT:"+answer);
-//			break;
-			
+
 		//VIRKER 	
 		case "getCustomEvents":
 			ArrayList<getEvents> cusevents = SW.getCustomEvents();			
@@ -172,19 +158,22 @@ public class GiantSwitch {
 		//VIRKER
 		case "createNote":
 			createNote SN = (createNote)gson.fromJson(jsonString, createNote.class);
-			answer = SW.createNote(SN.getEventid(), SN.getNote(), SN.getCreatedby());
+			System.out.println(SN.getEventid()+SN.getCreatedby()+SN.getNote());
+			answer = SW.createNote(SN.getEventid(),SN.getCreatedby(),SN.getNote());
 			break;
 			
-		//IKKE IBRUG ENDNU
+		//VIRKER
 		case "getNote":
 			getNote GN =(getNote)gson.fromJson(jsonString, getNote.class);
-			answer = SW.GetNote(GN.geteventID);
+			ArrayList<getNote> getnotes = SW.GetNote(GN.getEventid());
+			answer = gson.toJson(getnotes);
+			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 					
-		//MANGLER AT TESTE
+		//VIRKER
 		case "removeNote":
 			removeNote DN = (removeNote)gson.fromJson(jsonString, removeNote.class);
-			answer = SW.removeNote(DN.geteventID, DN.getCreatedby());
+			answer = SW.removeNote(DN.getNoteID(), DN.getCreatedby());
 			break;
 
 		/**********
