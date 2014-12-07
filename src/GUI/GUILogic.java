@@ -22,6 +22,7 @@ public class GUILogic {
 	private Screen screen;
 	private boolean u;
 	private boolean full = false;
+	String tjek = "";
 	SwitchMethods sm = new SwitchMethods();
 
 	
@@ -81,9 +82,24 @@ public class GUILogic {
 	
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			
+			String user =	screen.getLogin().getTextFieldUsername().getText();
+			String pass =	screen.getLogin().getTextFieldPassword().getText();
+			boolean isAdmin = true;
+			String tjek = null;
+			try {
+				tjek = sm.authenticate(user, pass, isAdmin);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			if(tjek.equals("1")){
 				screen.show(Screen.MAINMENU);
 			}
-			
+			else {
+				JOptionPane.showMessageDialog (null, "Are you sure you are admin ?!", "Information", JOptionPane.INFORMATION_MESSAGE);
+			}
+			}		
 		}
 	
 	private class UserListActionListener implements ActionListener {
