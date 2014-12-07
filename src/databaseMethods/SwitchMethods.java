@@ -597,7 +597,7 @@ public class SwitchMethods extends Model {
 					userNameOfCreator = resultSet.toString();				
 				}
 				if (!userNameOfCreator.equals(createdby)) {
-					stringToBeReturned = "Only the creator of the note is able to delete it!";
+					stringToBeReturned = "Only the creator of the event is able to delete it!";
 				} else {
 					String[] keys = { "aktiv" };
 					String[] values = { "0" };

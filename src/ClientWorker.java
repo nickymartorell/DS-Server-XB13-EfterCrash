@@ -6,7 +6,6 @@ import java.net.Socket;
 
 public class ClientWorker implements  Runnable{
 	private Socket connectionSocketConected;
-	//private CalendarInfo CI = new CalendarInfo();
 	private GiantSwitch GS = new GiantSwitch();
 	private encryption cryp = new encryption();
 	private String incomingJson;
@@ -18,29 +17,25 @@ public class ClientWorker implements  Runnable{
 	@SuppressWarnings("unused")
 	@Override
 	public void run(){
-		try{
-			
-			
+		try{		
 			byte[] b = new byte[700];
 	
 			//saa vi kan laese bytes
 			int count = connectionSocketConected.getInputStream().read(b);
 			ByteArrayInputStream bais = new ByteArrayInputStream(b);
 	
-			//SERVEREN MODTAGER FRA CLIENTEN
+			//input
 			DataInputStream inFromClient = new DataInputStream(connectionSocketConected.getInputStream());		
-
-			//SERVEREN SENDER TILBAGE TIL CLIENTEN VIA SOCKET
+			//output
 			DataOutputStream outToClient = new DataOutputStream(connectionSocketConected.getOutputStream());
-			
-			
-			//Sets client sentence equals input from client		
+				
+			//trim for at fjerne mellemrum
 			String inputBesked = new String(b, "UTF-8").trim();
 			
-			//getter bytes
+			//getter bytes for at kunne kryptere
 			byte[] input = inputBesked.getBytes();
 			
-			//kryptere med
+			//kryptere med key
 			byte key = (byte) 3.1470;
 			byte[] encrypted = input;
 			for (int i = 0; i < encrypted.length; i++)
@@ -49,11 +44,8 @@ public class ClientWorker implements  Runnable{
 			}
 			
 			//dekryptere
-			String decrypted = new String(encrypted).trim();
-	
-			//System.out.println("Received: " + decrypted);
-			
-			//out to client
+			String decrypted = new String(encrypted).trim();		
+			//meddelelsen til switchen
 			String outputBesked = GS.GiantSwitchMethod(decrypted);
 
 			byte[] input2 = outputBesked.getBytes();
@@ -65,7 +57,7 @@ public class ClientWorker implements  Runnable{
 			}
 			String stringToClient = new String(encrypted2).trim();
 		
-			//Sends the capitalized message back to client!!
+			//klienten faar et svar tilbage
 			System.out.println(stringToClient);
 			outToClient.writeBytes(stringToClient+"\n");
 			
