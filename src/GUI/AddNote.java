@@ -60,7 +60,6 @@ public class AddNote extends JPanel {
 		lblCBSlogo.setBounds(10, 698, 250, 59);
 		add(lblCBSlogo);
 		
-
 		btnLogout = new JButton("Log out");
 		btnLogout.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
 		btnLogout.setForeground(new Color(255, 255, 255));
@@ -91,7 +90,7 @@ public class AddNote extends JPanel {
 		textField_Note = new JTextField();
 		textField_Note.setForeground(SystemColor.controlDkShadow);
 		textField_Note.setColumns(10);
-		textField_Note.setBounds(723, 306, 218, 96);
+		textField_Note.setBounds(723, 313, 218, 96);
 		add(textField_Note);
 		
 		JLabel lblNote = new JLabel("Note:");
@@ -115,13 +114,11 @@ public class AddNote extends JPanel {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 		
-				String eMail = getTextField_Email().getText();
-				String password =getTextField_Password().getText();
-				
+				String eventid = getTextField_Email().getText();
+				String createdby = getTextField_Password().getText();
+				String note = getTextField_Note().getText();
 				try {
-					sm.newUser(eMail,password);
-					JOptionPane.showMessageDialog(frame,
-						    "User created!");
+					sm.createNote(eventid, note, createdby);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

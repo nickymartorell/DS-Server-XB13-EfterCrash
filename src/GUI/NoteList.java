@@ -47,6 +47,7 @@ public class NoteList extends JPanel {
 	public  int urObjctInCell;
 	private ResultSet rs;
 	SwitchMethods sm = new SwitchMethods();
+	private JButton btnActivate;
 
 	/**
 	 * Create the panel.
@@ -97,6 +98,26 @@ public class NoteList extends JPanel {
 		    }
 		});
 		}     
+		
+		btnActivate = new JButton("Activate");
+		btnActivate.setOpaque(true);
+		btnActivate.setForeground(new Color(0, 0, 205));
+		btnActivate.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+		btnActivate.setBounds(1221, 267, 118, 29);
+		add(btnActivate);
+		btnActivate.addActionListener(new ActionListener() {
+        	
+     		public void actionPerformed(ActionEvent arg0) {
+     		
+     					try {   	    	  
+     						sm.activateNoteAdmin(urObjctInCell);
+     						
+     						} catch (SQLException e1) {
+     					
+     							e1.printStackTrace();
+     			             }
+     			            };
+     			        } ); 
 	
 		 //Create the scroll pane and add the table to it.
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -188,22 +209,16 @@ private void printDebugData(JTable table) {
         System.out.println();
     }
     System.out.println("--------------------------");
-}
-
-	
+}	
 	public void addActionListener(ActionListener l) {
 		btnDelete.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 		btnAdd.addActionListener(l);
-
 	}
-
 	public JButton getBtnDelete() {
 		return btnDelete;
 	}
-
-
 	public JButton getBtnMainMenu() {
 		return btnMainMenu;
 	}

@@ -61,14 +61,36 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 	
-	// TESTER!
+	// TESTER
+	public String unSubscribeCalendars(String email , String calendarid)
+			throws SQLException {
+
+		String stringToBeReturned = "";
+		String getUserId = "";
+		String softRemove = "0";
+		String[] key = { "calendarid", "userid" };
+		
+			resultSet = qb.selectFrom("users").where("email", "=", email)
+					.ExecuteQuery();
+		
+		while (resultSet.next()) {
+			getUserId = resultSet.getString("userid");
+			System.out.println("TJEK LIGE HER MOR : "+ getUserId);
+			System.out.println("TJEK LIGE CALENDAR ID"+calendarid);
+		}
+		if (!getUserId.equals("")) {
+			String[] values = { softRemove, softRemove };
+			qb.update("userevents", key,values).where("calendarid","=",calendarid).Execute();
+		}
+		return stringToBeReturned;
+	}
+	// VIRKER!
 	public String shareCalendars(String email, String Name, String receiver)
 			throws SQLException {
 
 		String stringToBeReturned = "";
 		String getCalendarId = "";
 		String getUserId = "";
-		System.out.println("fra switch methods: " + email + Name);
 		String[] key = { "calendarid", "userid" };
 		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 				.ExecuteQuery();
@@ -367,6 +389,7 @@ public class SwitchMethods extends Model {
 				getCal.setCreatedBy(rs.getString("CreatedBy"));
 				getCal.setActive(rs.getString("Active"));
 				getCal.setPublicOrPrivate(rs.getString("PrivatePublic"));
+				getCal.setCalendarid(rs.getString("KalId"));
 				calendarList.add(getCal);
 			}
 			rs.close();
@@ -651,12 +674,40 @@ public class SwitchMethods extends Model {
 	return stringToBeReturned;
 	}
 	
+	// KUN TIL ADMIN
+	// VIRKER
+	public String activateNoteAdmin(int noteid)
+			throws SQLException {
+		String stringToBeReturned = "";
+		String NoteExists = "";
+		String id = String.valueOf(noteid);
+		resultSet = qb.selectFrom("notes").where("noteid", "=", id)
+				.ExecuteQuery();
+
+		while (resultSet.next()) {
+			NoteExists = resultSet.toString();
+
+			if (!NoteExists.equals("")) {
+				
+					String[] keys = { "isActive" };
+					String[] values = { "1" };
+					qb.update("notes", keys, values)
+							.where("noteid", "=", id).Execute();
+					stringToBeReturned = "The note has been activated"; 	
+			} else {
+			stringToBeReturned = "The note you are trying to activate does not exist!";
+		}
+	}
+	return stringToBeReturned;
+	}
+	
 	// VIRKER
 	// PAA CLIENT SIDE LAV EN IF DE HAR EVENTET
 	public String createNote(String eventid, String note, String createdby) throws SQLException {
 			String stringToBeReturned = "";
-			String[]keys = {"eventid","note","CreatedBy"};
-			String[] values = {eventid,note,createdby};
+			String yes = "1";
+			String[]keys = {"eventid","note","CreatedBy","isActive"};
+			String[] values = {eventid,note,createdby,yes};
 			qb.insertInto("notes", keys).values(values).Execute();
 			return stringToBeReturned;
 	}

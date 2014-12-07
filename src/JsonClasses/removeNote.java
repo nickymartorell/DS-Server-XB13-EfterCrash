@@ -1,7 +1,7 @@
 package JsonClasses;
 
 public class removeNote {
-private String overallID = "REMOVENote";
+private String overallID = "removeNote";
 private int noteID;
 private String note;
 private String createdby;

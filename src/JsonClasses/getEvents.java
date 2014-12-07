@@ -19,6 +19,8 @@ public class getEvents implements java.io.Serializable
 	private String customevent;
 	private String calendarid;
 	private String aktiv;
+	private ArrayList<String> startTime;
+    private ArrayList<String> endTime;
 	
 	public getEvents(){
 		
@@ -112,5 +114,23 @@ public class getEvents implements java.io.Serializable
 	public void setCalendarid(String calendarid) {
 		this.calendarid = calendarid;
 	}
+
+	public ArrayList<String> getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(ArrayList<String> startTime) {
+		this.startTime = startTime;
+	}
+
+	public ArrayList<String> getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(ArrayList<String> endTime) {
+		this.endTime = endTime;
+	}
+
+
 
 }

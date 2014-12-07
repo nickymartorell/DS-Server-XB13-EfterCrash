@@ -12,6 +12,7 @@ public class getCalendar implements java.io.Serializable
 	private String CreatedBy;
 	private String publicOrPrivate;
 	private String Active;
+	private String calendarid;
 	
 	public getCalendar(){
 		
@@ -56,6 +57,14 @@ public class getCalendar implements java.io.Serializable
 
 	public void setActive(String active) {
 		Active = active;
+	}
+
+	public String getCalendarid() {
+		return calendarid;
+	}
+
+	public void setCalendarid(String calendarid) {
+		this.calendarid = calendarid;
 	}
 
 	

@@ -46,6 +46,7 @@ public class GiantSwitch {
 		 ** LOGIN ** 
 		 **********/		
 		//VIRKER
+		//LAV MED IF ACTIVE
 		case "logIn": 		
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
 			System.out.println("Recieved logIn");
@@ -78,6 +79,12 @@ public class GiantSwitch {
 			break;
 			
 		//VIRKER
+		case "unSubscribeCalendar":
+			userevents uee = gson.fromJson(jsonString, userevents.class);
+			answer = SW.unSubscribeCalendars(uee.getEmail(), uee.getCalendarid());
+			break;			
+			
+		//VIRKER
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
 			answer = SW.createNewCalendar(CC.getName(), CC.getCreatedBy(), CC.getPublicOrPrivate());
@@ -102,7 +109,8 @@ public class GiantSwitch {
 //			System.out.println("Recieved getCalendar");
 //			answer = SW.getCalendar(GC.getName());
 //			break;
-			
+		
+		//VIRKER
 		case "getAllCalendar":
 			//getCalendar gac = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
 			ArrayList<getCalendar> gCal = SW.getAllCalendar();
@@ -149,7 +157,7 @@ public class GiantSwitch {
 			answer = SW.removeEvent(DE.getDescription());		
 			break;
 			
-		//TESTER
+		//VIRKER
 		case "removeEventUser":
 			removeEvent eg = (removeEvent)gson.fromJson(jsonString, removeEvent.class);
 			System.out.println("Recieved removeEvent");
@@ -161,20 +169,19 @@ public class GiantSwitch {
 		 ** NOTES **
 		*************/
 			
-			//MANGLER AT TESTE
+		//VIRKER
 		case "createNote":
 			createNote SN = (createNote)gson.fromJson(jsonString, createNote.class);
 			answer = SW.createNote(SN.getEventid(), SN.getNote(), SN.getCreatedby());
 			break;
 			
-			//IKKE IBRUG ENDNU
+		//IKKE IBRUG ENDNU
 		case "getNote":
 			getNote GN =(getNote)gson.fromJson(jsonString, getNote.class);
 			answer = SW.GetNote(GN.geteventID);
 			break;
-			
-			
-			//MANGLER AT TESTE
+					
+		//MANGLER AT TESTE
 		case "removeNote":
 			removeNote DN = (removeNote)gson.fromJson(jsonString, removeNote.class);
 			answer = SW.removeNote(DN.geteventID, DN.getCreatedby());
@@ -256,6 +263,8 @@ public class GiantSwitch {
 			return "removeEventUser";
 		} else if (ID.contains("removeNote")) {
 			return "removeNote";
+		} else if (ID.contains("unSubscribeCalendar")) {
+			return "unSubscribeCalendar";
 		}
 		else
 			return "error";
