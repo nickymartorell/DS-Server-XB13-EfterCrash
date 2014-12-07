@@ -25,29 +25,17 @@ public class GUILogic {
 	String tjek = "";
 	SwitchMethods sm = new SwitchMethods();
 
-	
-
 	public GUILogic(){
 		screen = new Screen();
-
-
 		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
-		//screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
-		//screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
-		screen.getAddCourse().addActionListener(new AddCourseActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddEvent().addActionListener(new AddEventActionListener());
 		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
 		screen.getCalendars().addActionListener(new CalendarsActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
-		
-
-		
-
-		
 		
 	}
 	
@@ -79,7 +67,6 @@ public class GUILogic {
 		
 	}
 
-	
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
@@ -107,15 +94,12 @@ public class GUILogic {
 			String knap = e.getActionCommand();
 			
 			if(knap.equals(UserList.ADD)) {
-				
-				
-				
+		
 			    String firstName = JOptionPane.showInputDialog(null, "UserID", null);
 		        String lastName = JOptionPane.showInputDialog(null, "Email", null);
 		        String eMail = JOptionPane.showInputDialog(null, "Date", null);
 		        String password = JOptionPane.showInputDialog(null, "Write your password", null);
-		        
-		       
+       
 			}
 		}
 	}
@@ -137,9 +121,6 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnEventlist()){
 				screen.show(Screen.EVENTLIST);
-			}
-			if (e.getSource() == screen.getMainMenu().getAddCourse()){
-				screen.show(Screen.ADDCOURSE);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnCalendars()){
 				screen.show(Screen.CALENDARS);
@@ -171,23 +152,6 @@ public class GUILogic {
 		
 			}
 		}
-	private class AddCourseActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == screen.getAddCourse().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getAddCourse().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getAddCourse().getBtnAdd()){
-				//Metode til activiate
-			}
-			if (e.getSource() == screen.getAddCourse().getBtnDelete()){
-				//Metode til deactiviate
-			}
-			
-		}
-	}
 	private class AddEventActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddEvent().getBtnLogout()){

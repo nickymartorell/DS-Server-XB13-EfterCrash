@@ -29,7 +29,6 @@ public class Screen extends JFrame {
 	public static final String NOTELIST = "NOTELIST";
 	public static final String USERLIST = "USERLIST";
 	public static final String EVENTLIST = "EVENTLIST";
-	public static final String ADDCOURSE = "ADDCOURSE";
 	public static final String ADDUSER = "ADDUSER";
 	public static final String ADDEVENT = "ADDEVENT";
 	public static final String ADDNOTE = "ADDNOTE";
@@ -44,7 +43,6 @@ public class Screen extends JFrame {
 	private  NoteList noteList;
 	private  UserList userList;	
 	private  EventList eventList;
-	private AddCourse addCourse;
 	private  AddUser addUser; 
 	private showCalendar calendars;
 	private AddEvent addEvent;
@@ -53,23 +51,6 @@ public class Screen extends JFrame {
 	private AddNote addNote;
 	
 	CardLayout c;
-
-
-	
-//	  //Launch the application.
-//	
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Screen frame = new Screen();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	public Screen() {
 		setTitle("CBS Calendar Server");
@@ -100,9 +81,6 @@ public class Screen extends JFrame {
 	
         eventList = new EventList();
         contentPane.add(eventList, EVENTLIST);
-		
-		addCourse = new AddCourse();
-		contentPane.add(addCourse, ADDCOURSE);
 		
 		addUser = new AddUser();
 		contentPane.add(addUser, ADDUSER);
@@ -148,9 +126,6 @@ public class Screen extends JFrame {
 	}
 	public EventList getEventlist() {
 		return eventList;
-	}
-	public AddCourse getAddCourse() {
-		return addCourse;
 	}
 	public AddUser getAddUser() {
 		return addUser;
