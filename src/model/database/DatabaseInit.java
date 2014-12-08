@@ -15,9 +15,9 @@ public class DatabaseInit extends Model {
         new DatabaseInit().go();
     }
 /**
- * først sletter den dit schema hvis du har et som hedder cbscalendar
+ * foerst sletter den dit schema hvis du har et som hedder cbscalendar
  * Derefter opretter den cbscalendar og alle de påkrævede tabeller
- * Så tjekker den om der er blevet oprettet tabeller og hvis ikke, proever den at koere igen
+ * Saa tjekker den om der er blevet oprettet tabeller og hvis ikke, proever den at koere igen
  * @throws SQLException
  * @throws IOException
  */
