@@ -513,7 +513,7 @@ public class SwitchMethods extends Model {
 							// inaktiv
 			}
 		} else {
-			return "0"; // returnerer fejlkoden "1" hvis email ikke findes
+			return "0"; // returnerer fejlkoden "1" hvis email ikke findes DEN RETURNERE 0 FORDI JEG IKK ER OPRETTET
 		}
 	}
 
