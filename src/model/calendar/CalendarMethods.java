@@ -48,7 +48,12 @@ public class CalendarMethods extends Model {
         }
     }   
     
-    //Switch som sortere fagene under besmemte ID'er
+    /**
+     * Den sortere de forskellige fag i calendarid
+     * er vigtigt for at kunne implementere en subscribe funktion
+     * @param activityid
+     * @return
+     */
     public int sortCalendarId (String activityid)
     {
     	int sel = 0;
@@ -101,6 +106,14 @@ public class CalendarMethods extends Model {
     			return sel;
     }
     
+    /**
+     * exportere cbs calendar data til databasen
+     * laeser fra et url med vores readUrl metode.
+     * bruger userid og key til at hente en persons events.
+     * Det er EventCreator klassen som vi kan bygge arraylist af cbs eventsne
+     * bruger simpledateformat til at faa formateret til date format og 
+     * parser til string igen. 
+     */
     public void export2Database () {
     	try {
     		String json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserId.getUserId() + "/" + EncryptUserId.getKey() + ".json");
@@ -167,83 +180,13 @@ public class CalendarMethods extends Model {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }     
-    public ArrayList<Event> getEvents() {
-    	try {
-    		qb = new QueryBuilder();
-    		gson = new Gson();
-    		    		
-    		ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
-    		ArrayList<Event> eventList = new ArrayList<Event>();  
-    		
-    		while(rs.next()){
-    			Event event = new Event();
-    			event.setActivityid(rs.getString("id"));
-    			event.setType(rs.getString("type"));
-    			event.setActivityid(rs.getString("activityid"));
-    			event.setLocation(rs.getString("location"));
-    			//event.setCreatedby(rs.getString("createdby"));
-    			//event.setDateStart(rs.getDate("start"));
-    			event.setStrDateStart(rs.getString("start"));
-    			event.setStrDateEnd(rs.getString("end"));			
-    		    eventList.add(event);
-    		}
-    		rs.close();
-    		return eventList;
-    		
-    	} catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    } 
-    public String getUsers() {
-		
-    	try {
-    		qb = new QueryBuilder();
-    		gson = new Gson();
-    		    		
-    		ResultSet rs = qb.selectFrom("users").all().ExecuteQuery();
-    		ArrayList<Users> userList = new ArrayList<>();      		
-    		while(rs.next()){  			
-    		Users user = new Users();
-    		user.setUserId(rs.getInt("userid"));
-    		user.setEmail(rs.getString("email"));
-    		user.setPassword(rs.getString("password"));
-    		user.setAdmin(rs.getBoolean("admin"));
-    		user.setActive(rs.getBoolean("active"));
-    		userList.add(user);    		
-    		
-    		return gson.toJson(userList);
-    		}} catch (Exception e) {
-             e.printStackTrace();
-         }
-         return null;
-     }
-    
-//public String getForecast() {
-//		
-//    	try {
-//    		qb = new QueryBuilder();
-//    		gson = new Gson();
-//    		    		
-//    		ResultSet rs = qb.selectFrom("forecast").all().ExecuteQuery();
-//    		
-//    		List<ForecastTest> fcast = new ArrayList<>();      		
-//    		while(rs.next()){  			
-//    		ForecastArray farray = new ForecastArray();
-//    		farray.setDesc(rs.getString("des"));
-//    		farray.setCelsius(rs.getString("cels"));
-//    		farray.setDateDate(rs.getDate("date"));
-//    		fcast.add(farray);    		
-//    		
-//    		
-//    		return gson.toJson(fcast);
-//    		}} catch (Exception e) {
-//             e.printStackTrace();
-//         }
-//         return null;
-//     }
-    
+    }
+
+    /**
+     * koerer export2database
+     * @param args
+     * @throws Exception
+     */
     public static void main (String[]args) throws Exception{
   
     	new CalendarMethods().export2Database();

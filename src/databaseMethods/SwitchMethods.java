@@ -30,11 +30,19 @@ public class SwitchMethods extends Model {
 	ArrayList<String> subEvents = new ArrayList<String>();
 	ResultSet rs;
 
-	// VIRKER!
+	/**
+	 * subscribe til kalender. tjekker om kalenderen er public
+	 * ellers kan brugeren ikke subscribe
+	 * @param email
+	 * @param Name
+	 * @return
+	 * @throws SQLException
+	 */
 	public String subscribeCalendars(String email, String Name)
 			throws SQLException {
 		String stringToBeReturned = "";
 		String getCalendarId = "";
+		boolean pub = false;
 		String getUserId = "";
 		String[] key = { "calendarid", "userid" };
 
@@ -42,8 +50,9 @@ public class SwitchMethods extends Model {
 				.ExecuteQuery();
 		while (resultSet.next()) {
 			getCalendarId = resultSet.getString("calendarId");
+			pub = resultSet.getBoolean("PrivatePublic");
 		}
-		if (!getCalendarId.equals("")) {
+		if (!getCalendarId.equals("") && pub == true) {
 			resultSet = qb.selectFrom("users").where("email", "=", email)
 					.ExecuteQuery();
 		}
@@ -62,7 +71,14 @@ public class SwitchMethods extends Model {
 		}
 		return stringToBeReturned;
 	}	
-	// VIRKER
+	/**
+	 * unsubscribe til kalender igen.
+	 * kun owner kan goere det
+	 * @param email
+	 * @param calendarid
+	 * @return
+	 * @throws SQLException
+	 */
 	public String unSubscribeCalendars(String email , String calendarid)
 			throws SQLException {
 
@@ -83,7 +99,16 @@ public class SwitchMethods extends Model {
 		}
 		return stringToBeReturned;
 	}
-	// VIRKER!
+	/**
+	 * en bruger deler sin kalender. der bliver tjekket om deleren er creator
+	 * hvis det er sandt, vil den nedskrevne user som er receiver kunne faa kalenderen
+	 * indsaetter userid og calendarid i userevents
+	 * @param email
+	 * @param Name
+	 * @param receiver
+	 * @return
+	 * @throws SQLException
+	 */
 	public String shareCalendars(String email, String Name, String receiver)
 			throws SQLException {
 
@@ -114,7 +139,18 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	// VIRKER
+	/**
+	 * denne metode henter klient brugerens subscribede events.
+	 * Foerst ser den hvad brugerens userid er ved at kigger paa hans email
+	 * naar der er fundet et match paa email, kan der lavet et selectFrom paa userid.
+	 * Saa er der et if statement som tjekker at resultset returnerede en bruger
+	 * dernaest finder den calendarid fra userevents som holder paa userid og calendarid
+	 * hvis der return paa calendarid, vil der blive lavet et arraylist som holder
+	 * de events brugeren er tilmeldt
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<getEvents> getSubEvents(String email) throws SQLException {
 
 		String who = "";
@@ -156,14 +192,17 @@ public class SwitchMethods extends Model {
 		return subEventsArray;
 	}
 
-	// VIRKER
+	/**
+	 * henter quote
+	 * @return
+	 * @throws SQLException
+	 */
 	public String getQuote() throws SQLException {
 		qotd = new Quote();
 		ResultSet rs;
 		String strReturn = "";
-		// qm.refreshQuote();
+		qm.refreshQuote();
 		qm.saveQuote();
-		// qm.getQuote();
 		rs = qb.selectFrom("quote").all().ExecuteQuery();
 
 		while (rs.next()) {
@@ -175,7 +214,14 @@ public class SwitchMethods extends Model {
 		return strReturn;
 	}
 
-	// VIRKER
+	/**
+	 * admin kan lave ny bruger
+	 * skal bruge 2 parametre
+	 * @param eMail
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean newUser(String eMail, String password) throws SQLException {
 		String[] field = { "email", "active", "password", "admin" };
 		String[] values = { eMail, "1", password, "0" };
@@ -183,7 +229,14 @@ public class SwitchMethods extends Model {
 		return true;
 	}
 
-	// VIRKER KUN ADMIN
+	/**
+	 * admin sletter brugere
+	 * der er en if statement der sikrer at admin
+	 * ikke sletter sig selv
+	 * @param eMail
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean deleteUser(String eMail) throws SQLException {
 		if(!eMail.equals("admin@admin.dk")){
 		String[] keys = { "active" };
@@ -197,7 +250,13 @@ public class SwitchMethods extends Model {
 		return true;
 	}
 
-	// VIRKER KUN ADMIN
+	/**
+	 * admins metode til at aktivere users igen
+	 * kun admin kan aktivere brugere
+	 * @param eMail
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean activateUser(String eMail) throws SQLException {
 
 		String[] keys = { "active" };
@@ -207,7 +266,15 @@ public class SwitchMethods extends Model {
 		return true;
 	}
 
-	// VIRKER
+	/**
+	 * bruger adnewcalendar og authenticatenewcalendar
+	 * til at lave ny calendar
+	 * @param Name
+	 * @param CreatedBy
+	 * @param privatePublic
+	 * @return
+	 * @throws SQLException
+	 */
 	public String createNewCalendar(String Name, String CreatedBy,
 			String privatePublic) throws SQLException {
 		String stringToBeReturned = "";
@@ -221,7 +288,12 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	// VIRKER
+	/**
+	 * godkender at kalenderen ikke ligger i databasen
+	 * @param Name
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean authenticateNewCalendar(String Name) throws SQLException {
 		getConn();
 		boolean authenticate = false;
@@ -234,7 +306,13 @@ public class SwitchMethods extends Model {
 		return authenticate;
 	}
 
-	// VIRKER
+	/**
+	 * laver ny kalender
+	 * @param newCalendarName
+	 * @param userName
+	 * @param publicOrPrivate
+	 * @throws SQLException
+	 */
 	public void addNewCalendar(String newCalendarName, String userName,
 			String publicOrPrivate) throws SQLException {
 		String[] keys = { "Name", "Active", "CreatedBy", "PrivatePublic" };
@@ -242,7 +320,14 @@ public class SwitchMethods extends Model {
 		qb.insertInto("calendar", keys).values(values).Execute();
 	}
 
-	// VIRKER
+	/**
+	 * users metode til at slette kalender
+	 * skal vaere creator
+	 * @param CreatedBy
+	 * @param Name
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeCalendar(String CreatedBy, String Name)
 			throws SQLException {
 		String stringToBeReturned = "";
@@ -278,13 +363,19 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 		}
 	
-		// TESTER
+		/**
+		 * klienters metode til at aktivere kalender
+		 * kun klienter som har lavet kalenderen kan aktivere
+		 * @param CreatedBy
+		 * @param Name
+		 * @return
+		 * @throws SQLException
+		 */
 		public String activateCalendar(String CreatedBy, String Name)
 				throws SQLException {
 			String stringToBeReturned = "";
 			String usernameOfCreator = "";
 			String calendarExists = "";
-			System.out.println("DETTE ER NAME" +Name);
 			resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 					.ExecuteQuery();
 			while (resultSet.next()) {
@@ -313,8 +404,12 @@ public class SwitchMethods extends Model {
 			}
 			return stringToBeReturned;
 		}
-	// KUN TIL ADMIN
-	//VIRKER
+	/**
+	 * admins metode til at slette kalendere
+	 * @param Name
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeCalendarAdmin(String Name) throws SQLException {
 		String stringToBeReturned = "";
 		String calendarExists = "";
@@ -335,7 +430,13 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	// VIRKER KUN TIL ADMIN
+	/**
+	 * admins metode til at slette events.
+	 * han skal ikke bruge creator som parameter
+	 * @param uid
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeEventAdmin(String uid) throws SQLException {
 		String stringToBeReturned = "";
 
@@ -353,7 +454,12 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	// VIRKER KUN TIL ADMIN
+	/**
+	 * admins metode til at aktivere events
+	 * @param description
+	 * @return
+	 * @throws SQLException
+	 */
 	public String activateEventAdmin(String description) throws SQLException {
 		createEvents ev = new createEvents();
 		String stringToBeReturned = "";
@@ -377,7 +483,11 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	//VIRKER
+	/**
+	 * henter alle kalendere som
+	 * ligger i databasen
+	 * @return
+	 */
 	public ArrayList<getCalendar> getAllCalendar() {
 		try {
 			qb = new QueryBuilder();
@@ -403,7 +513,11 @@ public class SwitchMethods extends Model {
 		return null;
 	}
 
-	// VIRKER
+	/**
+	 * henter alle events som er lavet
+	 * af klienter
+	 * @return
+	 */
 	public ArrayList<getEvents> getCustomEvents() {
 		try {
 			qb = new QueryBuilder();
@@ -432,7 +546,11 @@ public class SwitchMethods extends Model {
 		return null;
 	}
 
-	// VIRKER
+	/**
+	 * laver arraylist af forecast data
+	 * hiver data fra databasen
+	 * @return
+	 */
 	public ArrayList<getForecast> getForecast() {
 		try {
 			qb = new QueryBuilder();
@@ -446,7 +564,6 @@ public class SwitchMethods extends Model {
 				gfc.setCels(rs.getString("des"));
 				gfc.setDesc(rs.getString("cels"));
 				fca.add(gfc);
-				System.out.println(gfc);
 			}
 			rs.close();
 			return fca;
@@ -457,7 +574,13 @@ public class SwitchMethods extends Model {
 		return null;
 	}
 
-	// VIRKER
+	/**
+	 * laver arraylist af de noter med det
+	 * soegte eventid
+	 * @param eventId
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<getNote> GetNote(String eventId) throws SQLException {
 		resultSet = qb.selectFrom("notes").where("eventid", "=", eventId)
 				.ExecuteQuery();
@@ -517,16 +640,32 @@ public class SwitchMethods extends Model {
 		}
 	}
 
-	// EVENT TING
-	// VIRKER
+	/**
+	 * bruger metoden autenticatenewevent til
+	 * at se om eventet allerede findes
+	 * @param location
+	 * @param cb
+	 * @param start
+	 * @param end
+	 * @param description
+	 * @param type
+	 * @param customevent
+	 * @param aktiv
+	 * @param calendarid
+	 * @return
+	 * @throws SQLException
+	 */
 	public String createEvents(String location, String cb, String start,
 			String end, String description, String type, String customevent,
 			String aktiv, String calendarid) throws SQLException {
+		
 		String stringToBeReturned = "";
 		testConnection();
+		
 		if (autenticateNewEvent(description) == false) {
 			addNewEvent(location, cb, start, start, description, type,
 					customevent, aktiv, calendarid);
+			
 			stringToBeReturned = "The new event has been created!!";
 		} else {
 			stringToBeReturned = "The new event has not been created :( ";
@@ -534,20 +673,44 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 
-	// VIRKER
+	/**
+	 * indsaetter i databasen.
+	 * skal godkendes foerst
+	 * @param location
+	 * @param cb
+	 * @param start
+	 * @param end
+	 * @param description
+	 * @param type
+	 * @param customevent
+	 * @param aktiv
+	 * @param calendarid
+	 * @return
+	 * @throws SQLException
+	 */
 	public String addNewEvent(String location, String cb, String start,
 			String end, String description, String type, String customevent,
 			String aktiv, String calendarid) throws SQLException {
+		
 		String hehe = "";
 		String[] keys = { "location", "createdby", "type", "description",
 				"start", "end", "customevent", "aktiv", "calendarid" };
+		
 		String[] values = { location, cb, type, description, start, end,
 				customevent, aktiv, calendarid };
+		
 		qb.insertInto("events", keys).values(values).Execute();
 		return hehe;
 	}
 
-	// VIRKER
+	/**
+	 * tjekker om event findes
+	 * kan ikke oprette med calendar id
+	 * 1-9 da det er CBS og admins kalendere 
+	 * @param desription
+	 * @return
+	 * @throws SQLException
+	 */
 	private boolean autenticateNewEvent(String desription) throws SQLException {
 		getConn();
 		boolean authenticate = false;
@@ -557,18 +720,22 @@ public class SwitchMethods extends Model {
 		while (resultSet.next()) {
 			String x = resultSet.getString("calendarid");
 			int y = Integer.parseInt(x);
-			// saa vi ikke kan add til cbs calendar
-			// kun til egen oprettede
 			if (y <= 9) {
 				authenticate = true;
 			} else {
-				System.out
-						.println("Please do not add to Cbs official calendar");
+				System.out.println("Please do not add to Cbs official calendar");
 			}
 		}
 		return authenticate;
 	}
-	// VIRKER KUN BRUGES AF ADMIN
+
+	/**
+	 * saetter event inaktivt
+	 * kun admin.
+	 * @param description
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeEvent(String description) throws SQLException {
 		String stringToBeReturned = "";
 		String[] keys = { "aktiv" };
@@ -578,7 +745,15 @@ public class SwitchMethods extends Model {
 		stringToBeReturned = "The event has been set inactive";
 		return stringToBeReturned;
 	}
-	//VIRKER
+
+	/**
+	 * brugerens remove event
+	 * her er en parameter mere som tjekker om det er brugeren som er creator
+	 * @param description
+	 * @param createdby
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeEventUser(String description, String createdby) throws SQLException {
 		String stringToBeReturned = "";
 		String userNameOfCreator = "";
@@ -612,11 +787,18 @@ public class SwitchMethods extends Model {
 		}
 		return stringToBeReturned;
 	}
-	// NOTE TING
-	//VIRKER - CLIENT
+
+
+	/**
+	 * fjerner note igen. tjekker om creator er samme
+	 * som den der requester at fjerne en note
+	 * @param noteid
+	 * @param createdby
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeNote(int noteid, String createdby)
 			throws SQLException {
-		System.out.println("her er noteid"+noteid+"her er createdby"+createdby);
 		String stringToBeReturned = "";
 		String userNameOfCreator = "";
 		String NoteExists = "";
@@ -652,8 +834,13 @@ public class SwitchMethods extends Model {
 		return stringToBeReturned;
 	}
 	
-	// KUN TIL ADMIN
-	// VIRKER
+
+	/**
+	 * admin har direkte adgang til at slette note
+	 * @param noteid
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeNoteAdmin(int noteid)
 			throws SQLException {
 		String stringToBeReturned = "";
@@ -679,8 +866,12 @@ public class SwitchMethods extends Model {
 	return stringToBeReturned;
 	}
 	
-	// KUN TIL ADMIN
-	// VIRKER
+	/**
+	 * admin kan aktivere en note
+	 * @param noteid
+	 * @return
+	 * @throws SQLException
+	 */
 	public String activateNoteAdmin(int noteid)
 			throws SQLException {
 		String stringToBeReturned = "";
@@ -705,7 +896,15 @@ public class SwitchMethods extends Model {
 	}
 	return stringToBeReturned;
 	}	
-	// VIRKER
+
+	/**
+	 * create note
+	 * @param eventid
+	 * @param note
+	 * @param createdby
+	 * @return
+	 * @throws SQLException
+	 */
 	public String createNote(String eventid, String note, String createdby) throws SQLException {
 			String stringToBeReturned = "";
 			String yes = "1";

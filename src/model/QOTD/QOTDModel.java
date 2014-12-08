@@ -91,7 +91,6 @@ public class QOTDModel extends Model {
 				q = resultSet.getString("quote");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return q;

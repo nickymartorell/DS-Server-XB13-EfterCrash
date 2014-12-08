@@ -43,19 +43,20 @@ public class GiantSwitch {
 		/**********
 		 ** LOGIN ** 
 		 **********/		
-		//VIRKER
-		//LAV MED IF ACTIVE
+		
+		/**
+		 * bruger jsonklassen authuser til at sette vaerdier
+		 * koerer authenticate metoden i SM
+		 */
 		case "logIn": 		
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
-			System.out.println("Recieved logIn");
 			try {
 				answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword(), AU.getAuthUserIsAdmin());
 			} catch (Exception e) {
 				answer = "Error";
 				e.printStackTrace();
 			}
-			
-		//BRUGER BARE SYSTEM.EXIT
+	
 		case "logOut":
 			System.out.println("Recieved logOut");
 			break;
@@ -64,48 +65,63 @@ public class GiantSwitch {
 		 ** CALENDAR **
 		 *************/
 		
-		//VIRKER - ER TIL CLIENT
+		
+		/**
+		 * bruges af clienten og er metoden til at share kalendere
+		 */	
 		case "shareCalendar":
 			userevents sa = gson.fromJson(jsonString, userevents.class);
 			answer = SW.shareCalendars(sa.getEmail(),sa.getName(),sa.getReceiver());
 			break;
 			
-	    //VIRKER - ER TIL CLIENT
+		/**
+		 *subscribe til kalender
+		 */
 		case "subscribeCalendar":
 			userevents uevents = gson.fromJson(jsonString, userevents.class);
 			answer = SW.subscribeCalendars(uevents.getEmail(), uevents.getCalendarid());
 			break;
 			
-		//VIRKER
+			/**
+			 * unsubscriber igen
+			 */
 		case "unSubscribeCalendar":
 			userevents uee = gson.fromJson(jsonString, userevents.class);
 			answer = SW.unSubscribeCalendars(uee.getEmail(), uee.getCalendarid());
 			break;			
 			
-		//VIRKER
+			/**
+			 * lav ny kalender
+			 */
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
 			answer = SW.createNewCalendar(CC.getName(), CC.getCreatedBy(), CC.getPublicOrPrivate());
 			break;
 		
-		//VIRKER
+			/**
+			 * set kalender inactive
+			 * 
+			 */
 		case "removeCalendar":
 			removeCalendar rc = (removeCalendar)gson.fromJson(jsonString, removeCalendar.class);
 			System.out.println("SERVER SIDEN" + rc.getName()+rc.getCreatedBy());
 			answer = SW.removeCalendar(rc.getCreatedBy(),rc.getName());
 			break;
 			
-		//VIRKER
+			/**
+			 * aktivere kalender
+			 */
 		case "activateCalendar":
 			removeCalendar ra = (removeCalendar)gson.fromJson(jsonString, removeCalendar.class);
-			System.out.println("SERVER SIDEN" + ra.getName()+ra.getCreatedBy());
 			answer = SW.activateCalendar(ra.getCreatedBy(),ra.getName());
 			break;
 				
-		//VIRKER
+			/**
+			 * henter alle kalendere til visning
+			 * bliver lagt i arraylist
+			 */
 		case "getAllCalendar":
 			ArrayList<getCalendar> gCal = SW.getAllCalendar();
-			System.out.println("Recieved getCalendar");
 			answer = gson.toJson(gCal);
 			break;
 
@@ -113,39 +129,54 @@ public class GiantSwitch {
 		 ** EVENTS **
 		 *************/
 
-		//VIRKER 	
+			/**
+			 * henter custom events.
+			 * events lavet af klienter
+			 */
 		case "getCustomEvents":
 			ArrayList<getEvents> cusevents = SW.getCustomEvents();			
 			answer = gson.toJson(cusevents);
-			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 			
-		//VIRKER 	
+			/**
+			 * henter subscribede events
+			 */
 		case "getSubEvents":
 			userevents ge = (userevents)gson.fromJson(jsonString, userevents.class);
 			ArrayList<getEvents> subEvents = SW.getSubEvents(ge.getEmail());			
 			answer = gson.toJson(subEvents);
-			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 
-		//VIRKER
+			/**
+			 * laver events
+			 * kreaver en lang raekke parametre for at 
+			 * kunne lave nyt event
+			 * location, createdby, start tid, slut tid, fagets navn
+			 * om det er forelaesning eller oevelsestime
+			 * customevent og active er sat true default
+			 * calendarid
+			 */
 		case "createEvents":
 			createEvents CE = (createEvents)gson.fromJson(jsonString, createEvents.class);
 			answer = SW.addNewEvent(CE.getLocation(),CE.getCreatedby(), CE.getStart(),CE.getEnd(), CE.getDescription(),
 					                CE.getType(), CE.getCustomevent(),CE.getAktiv(),CE.getCalendarid());
 			break; 
 			
-		//VIRKER - KUN ADMIN
+			/**
+			 * kun admin. fjern event. 
+			 * kan fjerne alle
+			 */
 		case "removeEvent":
 			removeEvent DE = (removeEvent)gson.fromJson(jsonString, removeEvent.class);
-			System.out.println("Recieved removeEvent");
 			answer = SW.removeEvent(DE.getDescription());		
 			break;
 			
-		//VIRKER
+			/**
+			 * brugers fjern event
+			 * kraever han er creator af det
+			 */
 		case "removeEventUser":
 			removeEvent eg = (removeEvent)gson.fromJson(jsonString, removeEvent.class);
-			System.out.println("Recieved removeEvent");
 			answer = SW.removeEventUser(eg.getDescription(),eg.getCreatedby());		
 			break;
 		
@@ -154,22 +185,30 @@ public class GiantSwitch {
 		 ** NOTES **
 		*************/
 			
-		//VIRKER
+			/**
+			 * laver ny note
+			 * note skal bruge eventid
+			 * createdby og en tekst besked
+			 */
 		case "createNote":
 			createNote SN = (createNote)gson.fromJson(jsonString, createNote.class);
-			System.out.println(SN.getEventid()+SN.getCreatedby()+SN.getNote());
 			answer = SW.createNote(SN.getEventid(),SN.getCreatedby(),SN.getNote());
 			break;
 			
-		//VIRKER
+			/**
+			 * laver arraylist af de adspurgte notes
+			 * bruger eventid til at soege i dem
+			 */
 		case "getNote":
 			getNote GN =(getNote)gson.fromJson(jsonString, getNote.class);
 			ArrayList<getNote> getnotes = SW.GetNote(GN.getEventid());
 			answer = gson.toJson(getnotes);
-			System.out.println("ANSWER FRA CLIENT:"+answer);
 			break;
 					
-		//VIRKER
+			/**
+			 * fjerner note med 
+			 * note id (PK)
+			 */
 		case "removeNote":
 			removeNote DN = (removeNote)gson.fromJson(jsonString, removeNote.class);
 			answer = SW.removeNote(DN.getNoteID(), DN.getCreatedby());
@@ -179,22 +218,23 @@ public class GiantSwitch {
 		 ** QUOTE **
 		 **********/
 			
-		//VIRKER
+			/**
+			 * henter quote
+			 */
 		case "getQuote":
-		System.out.println("Recived getQuote");
-		System.out.println(jsonString);	
 		answer = SW.getQuote();
-		System.out.println(answer);
 		break;
 
 		/************
 		 ** WEATHER **
 		 ************/
-		//VIRKER
-		case "getForecast":
-			//Sletter og henter ny
+		/**
+		 * refresh sletter gammel data
+		 * og ligger ny ind i databasen
+		 * bliver lagt i et arraylist
+		 */
+		case "getForecast":	
 			ft.refreshForecast();
-			//Ligger som arraylist
 			ArrayList<getForecast> gfc = SW.getForecast();	
 			answer = gson.toJson(gfc);
 		default:
