@@ -6,8 +6,8 @@ import java.net.*;
  
 class ServerUpload
 {
-    public void serverUpload () throws IOException
-    {
+	  public static void main(String args[])throws Exception
+	    {
     	//til at flytte filen fra project folder
     	InputStream inStream = null;
     	OutputStream outStream = null;
@@ -40,7 +40,7 @@ class ServerUpload
 	 	//til at undgaa for store filer
 	    long size = xy.length(); 
 	    if (size > 20480000) {
-	        System.out.println("File is too large. 20mb is max. styr dig selv");
+	        System.out.println("File is too large. 20mb is max.");
 	    }
 	    
 	    //streamer til project folder
