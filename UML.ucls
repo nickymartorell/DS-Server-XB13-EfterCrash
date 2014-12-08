@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.7" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="ClientWorker" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/ClientWorker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="197" x="675" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="encryption" project="DS-Server-XB13" file="/DS-Server-XB13/src/encryption.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="129" x="788" y="734"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="GiantSwitch" project="DS-Server-XB13" file="/DS-Server-XB13/src/GiantSwitch.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="187" x="561" y="734"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Main" project="DS-Server-XB13" file="/DS-Server-XB13/src/Main.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="3200" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="ServerUpload" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/ServerUpload.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="122" x="3038" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="TCPServer" project="DS-Server-XB13" file="/DS-Server-XB13/src/TCPServer.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="1288" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="config.Configurations" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/config/Configurations.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1314" y="3178"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="databaseMethods.SwitchMethods" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/databaseMethods/SwitchMethods.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4210" y="3196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="GUI.AddEvent" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/AddEvent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="215" x="3219" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="GUI.AddNote" project="DS-Server-XB13" file="/DS-Server-XB13/src/GUI/AddNote.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="215" x="4029" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="GUI.AddUser" project="DS-Server-XB13" file="/DS-Server-XB13/src/GUI/AddUser.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="215" x="4794" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="GUI.AuthUser" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/AuthUser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="156" x="1677" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="GUI.CreateCalendar" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/CreateCalendar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="477" width="218" x="3750" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="GUI.EventList" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/EventList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="215" x="5049" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="GUI.GUILogic.LoginActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3378" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="GUI.GUILogic.MainMenuActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2676" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="GUI.GUILogic" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3105" y="2481"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="GUI.GUILogic.NoteListActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2442" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="GUI.GUILogic.CreateCalendarActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3847" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="GUI.GUILogic.AddNoteActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3612" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="GUI.GUILogic.AddEventActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1974" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="GUI.GUILogic.CalendarsActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2910" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="GUI.GUILogic.EventListActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3144" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="GUI.GUILogic.AddUserActionListener" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/GUILogic.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2208" y="2908"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="GUI.Login" project="DS-Server-XB13" file="/DS-Server-XB13/src/GUI/Login.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="221" x="2703" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="GUI.MainMenu" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/MainMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="215" x="2964" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="GUI.NoteList" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/NoteList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="215" x="4284" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="GUI.Screen" project="DS-Server-XB13" file="/DS-Server-XB13/src/GUI/Screen.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="202" x="3455" y="734"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="GUI.showCalendar" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/showCalendar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="215" x="4539" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="GUI.UserInfo" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/UserInfo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="215" x="2448" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="GUI.UserInformation" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/UserInformation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="169" x="62" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="GUI.UserList" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/GUI/UserList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="215" x="3495" y="1341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="JsonClasses.AuthUser" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/AuthUser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="196" x="1441" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="JsonClasses.CreateCalendar" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/CreateCalendar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="173" x="271" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="JsonClasses.createEvents" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/createEvents.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3778" y="3929"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="JsonClasses.createNote" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/createNote.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="150" x="2658" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="JsonClasses.getCalendar" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/getCalendar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3991" y="3794"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="JsonClasses.getEvents" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/getEvents.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4534" y="4062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="JsonClasses.getForecast" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/getForecast.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="182" x="2076" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="JsonClasses.getNote" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/getNote.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="150" x="2468" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="JsonClasses.Quote" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/Quote.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4193" y="3731"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="JsonClasses.removeCalendar" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/removeCalendar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="151" x="912" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="JsonClasses.removeEvent" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/removeEvent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="657" width="163" x="1873" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="JsonClasses.removeNote" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/removeNote.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="150" x="2848" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="JsonClasses.userevents" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/userevents.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="151" x="484" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="JsonClasses.Users" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/JsonClasses/Users.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="431" y="3794"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="model.Model" project="DS-Server-XB13" file="/DS-Server-XB13/src/model/Model.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1915" y="2598"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="model.calendar.CalendarMethods" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/calendar/CalendarMethods.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1900" y="3677"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="model.calendar.EncryptUserId" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/calendar/EncryptUserId.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="145" x="1103" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="model.calendar.Event" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/calendar/Event.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="805" y="4028"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="model.calendar.EventCreator" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/calendar/EventCreator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1069" y="2944"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="model.database.DatabaseInit" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/database/DatabaseInit.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1738" y="2917"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="model.Forecast.ForecastArray" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/Forecast/ForecastArray.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="134" y="4698"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="model.Forecast.ForecastModel" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/Forecast/ForecastModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="159" y="3641"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="model.Forecast.ForecastTest" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/Forecast/ForecastTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="867" y="2917"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="model.QOTD.QOTD" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/QOTD/QOTD.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2986" y="4644"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="model.QOTD.QOTDModel" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/QOTD/QOTDModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2974" y="3668"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="model.QueryBuild.Execute" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/QueryBuild/Execute.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1553" y="3034"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="model.QueryBuild.QueryBuilder" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/QueryBuild/QueryBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1878" y="4743"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="model.QueryBuild.Values" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/QueryBuild/Values.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1645" y="3668"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="model.QueryBuild.Where" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/QueryBuild/Where.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1417" y="3731"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="model.user.AuthenticateUser" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/user/AuthenticateUser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1174" y="3632"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="model.user.encryptionAES" project="DS-Server-XB13" 
+    file="/DS-Server-XB13/src/model/user/encryptionAES.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="130" x="2298" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="64">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="65" name="gc">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <bendpoint x="4549" y="1948"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="68" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="70">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="72">    
+    <bendpoint x="3998" y="734"/>    
+    <bendpoint x="3998" y="1341"/>    
+    <bendpoint x="3998" y="1948"/>    
+    <bendpoint x="4000" y="2429"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="73" name="qm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="76" name="GS">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="77" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="79" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="80" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="82" name="mainMenu">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="83" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="85" name="cm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="88" name="userInfo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <bendpoint x="1810" y="734"/>    
+    <bendpoint x="1810" y="1341"/>    
+    <bendpoint x="1810" y="1948"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="91" name="ft">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="55" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="94" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="95" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="97" name="ev">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="98" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="100" name="qm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="101" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="102">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="20"/>  
+  </nesting>  
+  <association id="103">    
+    <bendpoint x="2417" y="734"/>    
+    <bendpoint x="2417" y="1341"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="104" name="gl">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="105" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="107" name="gl">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="108" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="109">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="110">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="111" name="addUser">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="112" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="113">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="114" name="screen">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="115" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="117" name="login">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="118" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="119">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="120" name="userList">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="121" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="122">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <association id="123">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="124" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="125" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="126">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="23"/>  
+  </nesting>  
+  <association id="127">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="128" name="addEvent">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="129" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="131" name="qotd">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="132" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="133">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="134">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="135" name="addCourseForm">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="136" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="137">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="138" name="events">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="139" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="141" name="forecastList">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="142" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="143">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <association id="144">    
+    <bendpoint x="1785" y="3574"/>    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="145" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="147">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="148" name="values">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="149" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="150">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="151" name="where">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="152" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="61" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="154" name="createCalendar">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="155" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="156">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="157" name="noteList">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="158" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="159">    
+    <bendpoint x="1764" y="3574"/>    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="160" name="queryBuilder">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="161" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <bendpoint x="2879" y="3574"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="163" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="164" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="165">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="166" name="getEv">        
+        <position height="0" width="0" x="25" y="500"/>      
+      </attribute>      
+      <multiplicity id="167" minimum="0" maximum="1">        
+        <position height="0" width="0" x="25" y="500"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="168">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="19"/>  
+  </nesting>  
+  <association id="169">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="170" name="addNote">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="171" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <bendpoint x="3772" y="1948"/>    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="173" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="174" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="175">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <nesting id="176">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="16"/>  
+  </nesting>  
+  <association id="177">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="178" name="cf">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="179" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="180">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="181" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="182" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="183">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="184" name="qotdlist2">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="185" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="186">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="15"/>  
+  </nesting>  
+  <association id="187">    
+    <bendpoint x="4294" y="1948"/>    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="188" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="189" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <bendpoint x="4167" y="1948"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="191" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="192" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <bendpoint x="3464" y="1341"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="194" name="screen">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="195" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <bendpoint x="4422" y="1948"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="197" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="198" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="199">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="200">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="201" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="202" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="203">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="204" name="eventList">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="205" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="206">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="207" name="cryp">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="208" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="209">    
+    <end type="SOURCE" refId="62" navigable="false">      
+      <attribute id="210" name="qb">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="211" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="212">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="24"/>  
+  </nesting>  
+  <generalization id="213">    
+    <bendpoint x="1825" y="2859"/>    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="214">    
+    <bendpoint x="4019" y="1948"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="215" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="216" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="217">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="218" name="qotdlist">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="219" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="220">    
+    <bendpoint x="4040" y="1948"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="221" name="sm">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="222" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="223">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="224" name="users">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="225" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="226">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="227" name="calendars">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="228" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="229">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="230" name="queryBuilder">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </attribute>      
+      <multiplicity id="231" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="430"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="232">    
+    <bendpoint x="1846" y="2859"/>    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
