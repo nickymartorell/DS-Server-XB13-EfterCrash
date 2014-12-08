@@ -41,7 +41,7 @@ public class SwitchMethods extends Model {
 		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 				.ExecuteQuery();
 		while (resultSet.next()) {
-			getCalendarId = resultSet.getString("KalId");
+			getCalendarId = resultSet.getString("calendarId");
 		}
 		if (!getCalendarId.equals("")) {
 			resultSet = qb.selectFrom("users").where("email", "=", email)
@@ -94,7 +94,7 @@ public class SwitchMethods extends Model {
 		resultSet = qb.selectFrom("calendar").where("Name", "=", Name)
 				.ExecuteQuery();
 		while (resultSet.next()) {
-			getCalendarId = resultSet.getString("KalId");
+			getCalendarId = resultSet.getString("calendarId");
 		}
 		if (!getCalendarId.equals("")) {
 			resultSet = qb.selectFrom("users").where("email", "=", email)
@@ -391,7 +391,7 @@ public class SwitchMethods extends Model {
 				getCal.setCreatedBy(rs.getString("CreatedBy"));
 				getCal.setActive(rs.getString("Active"));
 				getCal.setPublicOrPrivate(rs.getString("PrivatePublic"));
-				getCal.setCalendarid(rs.getString("KalId"));
+				getCal.setCalendarid(rs.getString("calendarId"));
 				calendarList.add(getCal);
 			}
 			rs.close();

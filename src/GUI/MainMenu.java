@@ -33,7 +33,6 @@ public class MainMenu extends JPanel {
 	private JButton btnEventlist;
 	private JButton btnNotelist;
 	private JLabel lblCBSlogo;
-	private JButton btnAddCourse;
 	private JButton btnCalendars;
 	
 	
@@ -86,22 +85,13 @@ public class MainMenu extends JPanel {
 		btnLogOut.setBounds(610, 583, 145, 50);
 		add(btnLogOut);
 		
-		btnAddCourse = new JButton("Courses");
-		btnAddCourse.setForeground(Color.WHITE);
-		btnAddCourse.setFont(new Font("Arial", Font.BOLD, 30));
-		btnAddCourse.setContentAreaFilled(false);
-		btnAddCourse.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnAddCourse.setBackground(Color.WHITE);
-		btnAddCourse.setBounds(610, 403, 145, 50);
-		add(btnAddCourse);
-		
 		btnCalendars = new JButton("Calendars");
 		btnCalendars.setForeground(Color.WHITE);
 		btnCalendars.setFont(new Font("Arial", Font.BOLD, 28));
 		btnCalendars.setContentAreaFilled(false);
 		btnCalendars.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
 		btnCalendars.setBackground(Color.WHITE);
-		btnCalendars.setBounds(610, 464, 145, 50);
+		btnCalendars.setBounds(610, 403, 145, 50);
 		add(btnCalendars);
 		
 		lblCBSlogo = new JLabel("");
@@ -117,7 +107,6 @@ public class MainMenu extends JPanel {
 	}
 	public void addActionListener(ActionListener X) {
 		btnLogOut.addActionListener(X);
-		btnAddCourse.addActionListener(X);
 		btnEventlist.addActionListener(X);
 		btnCalendars.addActionListener(X);
 		btnNotelist.addActionListener(X);
@@ -137,9 +126,6 @@ public class MainMenu extends JPanel {
 	}
 	public JButton getBtnLogOut() {
 		return btnLogOut;
-	}
-	public JButton getAddCourse() {
-		return btnAddCourse;
 	}
 	public JButton getBtnCalendars() {
 		return btnCalendars;

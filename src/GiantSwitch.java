@@ -104,7 +104,6 @@ public class GiantSwitch {
 				
 		//VIRKER
 		case "getAllCalendar":
-			//getCalendar gac = (getCalendar)gson.fromJson(jsonString, getCalendar.class);
 			ArrayList<getCalendar> gCal = SW.getAllCalendar();
 			System.out.println("Recieved getCalendar");
 			answer = gson.toJson(gCal);

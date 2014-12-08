@@ -1,8 +1,8 @@
+DROP SCHEMA cbscalendar;
+
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
 SET SESSION FOREIGN_KEY_CHECKS=0;
-
-DROP TABLE events;
 
 CREATE TABLE IF NOT EXISTS events
 (
@@ -21,11 +21,7 @@ CREATE TABLE IF NOT EXISTS events
 
 	)
 	ENGINE=InnoDB DEFAULT CHARSET=latin1;
-set global max_connections = 2000000000;
-
-
-	ADD FOREIGN KEY (calendarid),
-	REFERENCES calendar (calendarId)
+	set global max_connections = 2000000000;
 
 CREATE TABLE users (
   userid int(11) NOT NULL AUTO_INCREMENT,
@@ -39,27 +35,21 @@ CREATE TABLE users (
 INSERT INTO users (userid, email, active, password, admin)
 VALUES
   (1,'admin@admin.dk',1,'admin', 1),
-  (2,'mamu13ag@student.cbs.dk',1,'hej123',0);
+  (2,'mamu13ag',1,'hej123',0);
 
---forecast
+
 CREATE TABLE forecast (
   date datetime NOT NULL,
   des varchar(200) NOT NULL,
-  cels varchar(20) NOT NULL
+  cels varchar(20) NOT NULL); 
 
-) 
---QOTD
-DROP TABLE quote;
 
 CREATE TABLE IF NOT EXISTS quote
 (
 	quote varchar(300) NOT NULL,
 	author varchar (100) NOT NULL,
-	topic varchar(100) NOT NULL
-);
+	topic varchar(100) NOT NULL);
 
-DROP TABLE notes;
---created datetime NOT NULL,
 CREATE TABLE IF NOT EXISTS notes
 (
 	noteid int NOT NULL AUTO_INCREMENT,
@@ -73,53 +63,12 @@ CREATE TABLE IF NOT EXISTS notes
 INSERT INTO notes (noteid, eventid, note, createdby, isActive)
 VALUES             (1,11,'Hej med dig','Stefan', 1);
 
-ALTER TABLE notes
-	ADD FOREIGN KEY (createdby)
-	REFERENCES users (userid)
-	ON UPDATE RESTRICT
-;
-
-
-CREATE TABLE IF NOT EXISTS roles
-(
-	roleid int NOT NULL AUTO_INCREMENT,
-	userid int NOT NULL,
-	type varchar(200) NOT NULL,
-	PRIMARY KEY (roleid)
-);
-
-DROP TABLE userevents;
-
 CREATE TABLE IF NOT EXISTS userevents
 (
 	userid INT(200),
 	calendarid INT(200)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-ALTER TABLE userevents
-	ADD FOREIGN KEY (calendarid)
-	REFERENCES calendar (KalId)
-	ON UPDATE RESTRICT;
-
-ALTER TABLE userevents
-	ADD FOREIGN KEY (userid)
-	REFERENCES users (userid)
-	ON UPDATE RESTRICT;
-
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.500160', '55.685454', 'Flintholm');
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.529438', '55.681603', 'Solbjerg Plads');
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.524756', '55.680476', 'Dit-Lab');
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.521812', '55.677934', 'Porcelaenshaven');
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.524964', '55.681074', 'Kilen');
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.515375', '55.683510', 'Dalgas Have');
-INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.433252', '55.235522', 'Falkoner Bio');
-
-
-DROP TABLE locationdata;
-
-/* Create calendar */
-/* lav lige active og privatepublic til boolean*/
 CREATE TABLE IF NOT EXISTS calendar
 (
 	calendarId int NOT NULL AUTO_INCREMENT,
@@ -140,7 +89,14 @@ CREATE TABLE IF NOT EXISTS locationdata
 	PRIMARY KEY (locationdataid)
 );
 
-DROP TABLE calendar;
+
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.500160', '55.685454', 'Flintholm');
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.529438', '55.681603', 'Solbjerg Plads');
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.524756', '55.680476', 'Dit-Lab');
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.521812', '55.677934', 'Porcelaenshaven');
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.524964', '55.681074', 'Kilen');
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.515375', '55.683510', 'Dalgas Have');
+INSERT INTO cbscalendar.locationdata (longitude, latitude, location_Name) VALUES ('12.433252', '55.235522', 'Falkoner Bio');
 
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (LA)', 'admin@cbs.dk');
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Makrooekonomi (XB)', 'admin@cbs.dk');
@@ -150,5 +106,4 @@ INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Virksomhedens oekono
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (LA)', 'admin@cbs.dk');
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (XB)', 'admin@cbs.dk');
 INSERT INTO cbscalendar.calendar (Name, CreatedBy) VALUES ('Ledelse af IS - forandring, innovation og viden (XA)', 'admin@cbs.dk');
-
-
+	

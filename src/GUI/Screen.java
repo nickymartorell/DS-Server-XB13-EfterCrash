@@ -75,9 +75,6 @@ public class Screen extends JFrame {
 		
 		noteList = new NoteList();
 		contentPane.add(noteList, NOTELIST);
-		
-		//userList = new UserList();
-		//contentPane.add(userList, USERLIST);
 	
         eventList = new EventList();
         contentPane.add(eventList, EVENTLIST);

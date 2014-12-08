@@ -1,1 +1,0 @@
-insert into `users` (`userid`, `email`, `active`, `created`, `password`, `admin`) values(, 'mamu13ag', 'true', '10', '123', 'true')
