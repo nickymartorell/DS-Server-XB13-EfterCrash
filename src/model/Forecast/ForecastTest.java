@@ -11,12 +11,10 @@ public class ForecastTest extends Model {
 
 	//smider den friske data i db
     public void Forecast2db() {
-
     	try{
             ForecastModel fm = new ForecastModel();
             QueryBuilder qb = new QueryBuilder();
             ArrayList<ForecastArray> forecastList = fm.requestForecast();
-
             String[] fields = {"date", "des", "cels"};
             
             for(int i = 0; i < forecastList.size(); i++) {
@@ -35,7 +33,7 @@ public class ForecastTest extends Model {
     public void refreshForecast(){
         try{
         	//rydder gammelt data
-            PreparedStatement ps = doQuery("TRUNCATE TABLE forecast;");
+            PreparedStatement ps = doQuery("TRUNCATE TABLE forecast;");    
             ps.execute();
             Forecast2db();
         } catch (SQLException e){
